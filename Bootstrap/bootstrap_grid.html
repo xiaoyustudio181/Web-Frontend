@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap响应式1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <!--<script src="dist/js/jquery-3.0.0.min.js"></script>-->
+    <!--<script src="dist/js/bootstrap.min.js"></script>-->
+    <style>
+        .row>div{border: 1px solid}
+        .row>div:nth-child(2n){background-color: skyblue}
+        .row>div:nth-child(2n+1){background-color: pink}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>我的第一个 Bootstrap 页面</h1>
+        <p>重置窗口大小，查看响应式效果！</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>第一列</h3>
+            <p>学的不仅是技术，更是梦想！</p>
+            <p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>第二列</h3>
+            <p>学的不仅是技术，更是梦想！</p>
+            <p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>第三列</h3>
+            <p>学的不仅是技术，更是梦想！</p>
+            <p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">.col-md-8</div>
+        <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">.col-md-6</div>
+        <div class="col-md-6">.col-md-6</div>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <div class="container-fluid">
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+        <div class="row">
+            <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+
+        <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+        <div class="row">
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+        <div class="row">
+            <div class="col-xs-6">.col-xs-6</div>
+            <div class="col-xs-6">.col-xs-6</div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-xs-9">.col-xs-9</div>
+        <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+        <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+</div>
+
+</body>
+</html>

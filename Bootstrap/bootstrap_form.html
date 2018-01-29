@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap form</title>
+</head>
+<body>
+<!--
+所有设置了 .form-control 类的 <input>、<textarea> 和 <select> 元素都将被默认设置宽度属性为 width: 100%;。 将 label 元素和前面提到的控件包裹在 .form-group 中可以获得最好的排列。
+-->
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Check me out
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<hr />
+<!--
+为 <form> 元素添加 .form-inline 类可使其内容左对齐并且表现为 inline-block 级别的控件。只适用于视口（viewport）至少在 768px 宽度时（视口宽度再小的话就会使表单折叠）。
+可能需要手动设置宽度：
+在 Bootstrap 中，输入框和单选/多选框控件默认被设置为 width: 100%; 宽度。在内联表单，我们将这些元素的宽度设置为 width: auto;，因此，多个控件可以排列在同一行。根据你的布局需求，可能需要一些额外的定制化组件。
+一定要添加 label 标签：
+如果你没有为每个输入控件设置 label 标签，屏幕阅读器将无法正确识别。对于这些内联表单，你可以通过为 label 设置 .sr-only 类将其隐藏。还有一些辅助技术提供label标签的替代方案，比如 aria-label、aria-labelledby 或 title 属性。如果这些都不存在，屏幕阅读器可能会采取使用 placeholder 属性，如果存在的话，使用占位符来替代其他的标记，但要注意，这种方法是不妥当的。
+-->
+<form class="form-inline">
+    <div class="form-group">
+        <label for="exampleInputName2">Name</label>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail2">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+    </div>
+    <button type="submit" class="btn btn-default">Send invitation</button>
+</form>
+<hr />
+<form class="form-inline">
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail3">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword3">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+<hr />
+<form class="form-inline">
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Transfer cash</button>
+</form>
+<hr />
+<!--
+通过为表单添加 .form-horizontal 类，并联合使用 Bootstrap 预置的栅格类，可以将 label 标签和控件组水平并排布局。这样做将改变 .form-group 的行为，使其表现为栅格系统中的行（row），因此就无需再额外添加 .row 了。
+
+-->
+<form class="form-horizontal">
+    <div class="form-group"><!--2+10=12-->
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Sign in</button>
+        </div>
+    </div>
+</form>
+<hr />
+<input type="text" class="form-control" placeholder="Text input">
+<input type="text" class="form-control" placeholder="Disabled Text input" disabled>
+<hr />
+<textarea class="form-control" rows="3"></textarea>
+<hr />
+<div class="checkbox">
+    <label>
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great
+    </label>
+</div>
+<div class="checkbox disabled">
+    <label>
+        <input type="checkbox" value="" disabled>
+        Option two is disabled
+    </label>
+</div>
+
+<div class="radio">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        Option one is this and that&mdash;be sure to include why it's great
+    </label>
+</div>
+<div class="radio">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        Option two can be something else and selecting it will deselect option one
+    </label>
+</div>
+<div class="radio disabled">
+    <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+        Option three is disabled
+    </label>
+</div>
+<hr />
+<label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+</label>
+<label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+</label>
+<label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+</label>
+<br />
+<label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+</label>
+<label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+</label>
+<label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+</label>
+<hr />
+<select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
+<hr />
+<select class="form-control" multiple >
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
+<hr />
+<!--如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 <p> 元素添加 .form-control-static 类即可。-->
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">email@example.com</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+</form>
+<form class="form-inline">
+    <div class="form-group">
+        <label class="sr-only">Email</label>
+        <p class="form-control-static">email@example.com</p>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default">Confirm identity</button>
+</form>
+<hr />
+<!--
+为<fieldset> 设置 disabled 属性,可以禁用 <fieldset> 中包含的所有控件。
+<a> 标签的链接功能不受影响
+默认情况下，浏览器会将 <fieldset disabled> 内所有的原生的表单控件（<input>、<select> 和 <button> 元素）设置为禁用状态，防止键盘和鼠标与他们交互。然而，如果表单中还包含 <a ... class="btn btn-*"> 元素，这些元素将只被赋予 pointer-events: none 属性。正如在关于 禁用状态的按钮 章节中（尤其是关于锚点元素的子章节中）所描述的那样，该 CSS 属性尚不规范，并且在 Opera 18 及更低版本的浏览器或 Internet Explorer 11 总没有得到全面支持，并且不会阻止键盘用户能够获取焦点或激活这些链接。所以为了安全起见，建议使用自定义 JavaScript 来禁用这些链接。
+跨浏览器兼容性
+虽然 Bootstrap 会将这些样式应用到所有浏览器上，Internet Explorer 11 及以下浏览器中的 <fieldset> 元素并不完全支持 disabled 属性。因此建议在这些浏览器上通过 JavaScript 代码来禁用 <fieldset>。
+-->
+<form>
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledTextInput">Disabled input</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+        </div>
+        <div class="form-group">
+            <label for="disabledSelect">Disabled select menu</label>
+            <select id="disabledSelect" class="form-control">
+                <option>Disabled select</option>
+            </select>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Can't check this
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>
+<hr />
+<input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+<hr />
+<div class="form-group has-success">
+    <label class="control-label" for="inputSuccess1">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+    <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+</div>
+<div class="form-group has-warning">
+    <label class="control-label" for="inputWarning1">Input with warning</label>
+    <input type="text" class="form-control" id="inputWarning1">
+</div>
+<div class="form-group has-error">
+    <label class="control-label" for="inputError1">Input with error</label>
+    <input type="text" class="form-control" id="inputError1">
+</div>
+<div class="has-success">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="checkboxSuccess" value="option1">
+            Checkbox with success
+        </label>
+    </div>
+</div>
+<div class="has-warning">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="checkboxWarning" value="option1">
+            Checkbox with warning
+        </label>
+    </div>
+</div>
+<div class="has-error">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="checkboxError" value="option1">
+            Checkbox with error
+        </label>
+    </div>
+</div>
+<hr />
+<!--
+添加额外的图标：
+　　你还可以针对校验状态为输入框添加额外的图标。只需设置相应的 .has-feedback 类并添加正确的图标即可。
+反馈图标（feedback icon）只能使用在文本输入框 <input class="form-control"> 元素上。
+图标、label 和输入控件组：
+　　对于不带有 label 标签的输入框以及右侧带有附加组件的输入框组，需要手动为其图标定位。为了让所有用户都能访问你的网站，我们强烈建议为所有输入框添加 label 标签。如果你不希望将 label 标签展示出来，可以通过添加 .sr-only 类来实现。如果的确不能添加 label 标签，请调整图标的 top 值。对于输入框组，请根据你的实际情况调整 right 值。
+向辅助技术设备传递图标的含义：
+　　为了确保辅助技术- 如屏幕阅读器 - 正确传达一个图标的含义，额外的隐藏的文本应包含在 .sr-only 类中，并明确关联使用了 aria-describedby 的表单控件。或者，以某些其他形式（例如，文本输入字段有一个特定的警告信息）传达含义，例如改变与表单控件实际相关联的 <label> 的文本。
+虽然下面的例子已经提到各自表单控件本身的 <label> 文本的验证状态，上述技术（使用 .sr-only 文本 和 aria-describedby) ）已经包括了需要说明的目的。
+-->
+<div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputSuccess2">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+</div>
+<div class="form-group has-warning has-feedback">
+    <label class="control-label" for="inputWarning2">Input with warning</label>
+    <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+    <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+    <span id="inputWarning2Status" class="sr-only">(warning)</span>
+</div>
+<div class="form-group has-error has-feedback">
+    <label class="control-label" for="inputError2">Input with error</label>
+    <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+    <span id="inputError2Status" class="sr-only">(error)</span>
+</div>
+<div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+    <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+    </div>
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+</div>
+<hr />
+<!--
+为水平排列的表单和内联表单设置可选的图标
+-->
+<form class="form-horizontal">
+    <div class="form-group has-success has-feedback">
+        <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+            <span id="inputSuccess3Status" class="sr-only">(success)</span>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+            </div>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+            <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
+        </div>
+    </div>
+</form>
+<hr />
+<form class="form-inline">
+    <div class="form-group has-success has-feedback">
+        <label class="control-label" for="inputSuccess4">Input with success</label>
+        <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span id="inputSuccess4Status" class="sr-only">(success)</span>
+    </div>
+</form>
+<form class="form-inline">
+    <div class="form-group has-success has-feedback">
+        <label class="control-label" for="inputGroupSuccess3">Input group with success</label>
+        <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+        </div>
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
+    </div>
+</form>
+<hr />
+<!--
+可选的图标与设置 .sr-only 类的 label
+如果你使用 .sr-only 类来隐藏表单控件的 <label> （而不是使用其它标签选项，如 aria-label 属性）， 一旦它被添加，Bootstrap 会自动调整图标的位置。
+-->
+<div class="form-group has-success has-feedback">
+    <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+    <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputSuccess5Status" class="sr-only">(success)</span>
+</div>
+<div class="form-group has-success has-feedback">
+    <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
+    <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
+    </div>
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
+</div>
+<hr />
+<!--
+控件尺寸
+通过 .input-lg 类似的类可以为控件设置高度，通过 .col-lg-* 类似的类可以为控件设置宽度。
+高度尺寸
+创建大一些或小一些的表单控件以匹配按钮尺寸。
+-->
+<input class="form-control input-lg" type="text" placeholder=".input-lg">
+<input class="form-control" type="text" placeholder="Default input">
+<input class="form-control input-sm" type="text" placeholder=".input-sm">
+
+<select class="form-control input-lg">
+    <option>input-lg</option>
+</select>
+<select class="form-control">
+    <option>default</option>
+</select>
+<select class="form-control input-sm">
+    <option>input-sm</option>
+</select>
+<hr />
+<!--
+通过添加 .form-group-lg 或 .form-group-sm 类，为 .form-horizontal 包裹的 label 元素和表单控件快速设置尺寸。
+-->
+<form class="form-horizontal">
+    <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+        </div>
+    </div>
+</form>
+<hr />
+<div class="row">
+    <div class="col-xs-2">
+        <input type="text" class="form-control" placeholder=".col-xs-2">
+    </div>
+    <div class="col-xs-3">
+        <input type="text" class="form-control" placeholder=".col-xs-3">
+    </div>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" placeholder=".col-xs-4">
+    </div>
+</div>
+<hr />
+</body>
+</html>

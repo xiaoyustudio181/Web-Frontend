@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue form</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id='vmodel'>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    {{ picked }}
+    <hr />
+
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+    <label for="mike">Mike</label>
+    {{ checkedNames }}
+    <hr />
+
+    <select v-model="selected1">
+        <option disabled value="">选择</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+    {{ selected1 }}
+    <hr />
+
+    <select v-model="selected2">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    {{ selected2 }}
+    <hr />
+
+    <select v-model="selected3" multiple style="width: 50px;">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    {{ selected3 }}
+    <hr />
+
+    <input type="checkbox" id="ch1"
+           v-model="toggleVal"
+           v-bind:true-value="val_t"
+           v-bind:false-value="val_f" /><label for="ch1">选择</label>
+    {{ toggleVal }}
+</div>
+<script>
+    new Vue({
+        el: '#vmodel',
+        data: {
+            checkedNames: [],
+            picked:'',
+            selected1:'',
+            selected2:'',
+            selected3:'',
+            options: [
+                { text: 'One', value: 'a' },
+                { text: 'Two', value: 'b' },
+                { text: 'Three', value: 'c' }
+            ],
+            val_t:'T',
+            val_f:'F',
+            toggleVal:''
+        }
+    });
+</script>
+</body>
+</html>

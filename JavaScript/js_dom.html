@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js dom</title>
+    <script src="helper.js"></script>
+</head>
+<body>
+<p id="p1" class="default default2" attr1="usa">
+    this is a paragraph
+</p>
+<button id="b1-1">.innerHTML</button>
+<button id="b1-1-2">.innerHTML='hello world'</button><br />
+
+<button id="b1-2">.id</button>
+<button id="b1-2-1">.id='p2'</button><br />
+
+<button id="b1-3">.className</button>
+<button id="b1-3-2">.className='default3 default4'</button><br />
+
+<button id="b1-4">.getAttribute('attr1')</button>
+<button id="b1-4-2">.setAttribute('attr1','ufo')</button>
+<button id="b1-4-3">.removeAttribute('attr1')</button><br />
+
+<button id="b1-5">.style</button>
+<button id="b1-5-2">.style....</button>
+<button id="b1-5-3">.style=...</button><br />
+
+<script>
+    var p1=findID('p1');
+    bindClick('b1-1',function () {
+        alert(p1.innerHTML);
+    });
+    bindClick('b1-1-2',function () {
+        p1.innerHTML='hello world';
+    });
+    bindClick('b1-2',function () {
+        alert(p1.id);
+    });
+    bindClick('b1-2-1',function () {
+        p1.id='p2';
+    });
+    bindClick('b1-3',function () {
+        alert(p1.className);
+    });
+    bindClick('b1-3-2',function () {
+        p1.className='default3 default4';
+    });
+    bindClick('b1-4',function () {
+        alert(p1.getAttribute('attr1'));
+    });
+    bindClick('b1-4-2',function () {
+        p1.setAttribute('attr1','ufo');
+    });
+    bindClick('b1-4-3',function () {
+        p1.removeAttribute('attr1');
+    });
+    bindClick('b1-5',function () {
+        alert(p1.style);
+        msg(p1.style);
+    });
+    bindClick('b1-5-2',function () {
+        p1.style.fontFamily='Comic Sans MS';
+        p1.style.fontSize='20px';
+        p1.style.backgroundColor='';
+    });
+    bindClick('b1-5-3',function () {
+        p1.style='font-family:"Consolas"; font-size:20px; background-color:skyblue';
+    });
+</script>
+<hr />
+<input id="i1" type="text" value="hello sea" />
+<br />
+<button id="b6">.value</button>
+<button id="b6-2">.value='hello beach'</button>
+<script>
+    var i1=findID('i1');
+    bindClick('b6',function () {
+        alert(i1.value);
+    });
+    bindClick('b6-2',function () {
+        i1.value='hello beach';
+    });
+</script>
+</body>
+<style>
+    *{font-size: large;font-family:"Calibri";}
+</style>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue basis</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<a id="a1"></a>
+<script>//引用关系
+var data1 = { v1: 1 };
+var vm = new Vue({
+    el: '#a1',
+    data: data1
+});
+//msg( vm.v1 === data1.v1 ); //true
+//msg( vm.$data === data1 ); //true
+//msg( vm.$el === document.getElementById('a1') ); //true
+</script>
+<!--============================-->
+<!--============================-->
+<!--============================-->
+<div id="app1" class="default1" v-bind:class="classObj" v-bind:style="styleObj"
+     v-bind:title="title" v-if="exist" v-show="seen">
+
+    <span v-html="bTag">{{bTag}}</span>
+    <hr />
+    {{bTag}}
+    <hr />
+    {{bTag.split('').reverse().join('')}}
+    <hr />
+    {{reversebTag}}
+    <hr />
+    {{num+1}}
+    <hr />
+    {{ok?'ok':'not ok'}}
+    <hr />
+
+    <input type="text" v-model="msg" />
+    {{msg}}
+    <button v-on:click="reverseMsg">Reverse</button>
+    <hr />
+
+    <span v-once>{{once}}</span>
+    <hr />
+    {{fullName}}
+    <hr />
+    <span v-if="ok">yes</span><span v-else>no</span>
+    <hr />
+    <span v-if="msg == 'A'">A</span>
+    <span v-else-if="msg == 'B'">B</span>
+    <span v-else-if="msg == 'C'">C</span>
+    <span v-else>no</span>
+    <hr />
+
+    <button v-on:click="toggleType">toggle</button>
+    <template v-if="loginType == 'username'">
+        <label>Username</label>
+        <input placeholder="Enter username" key="1" /><!--用key作区分以免被复用(复用不会清除input已输入的内容)-->
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter email address" key="2" />
+    </template>
+    <hr />
+
+    <button
+            @keyup.enter="functioned"
+            @keyup.page-down="functioned"
+            @keyup.c="functioned"
+            @keyup.alt.v="functioned">
+        focus and press<br />
+        Enter<br />
+        or PageDown<br />
+        or C<br />
+        or Alt+V
+    </button>
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app1',
+        data: {
+            title: "v-bind:title "+new Date().toLocaleString(),
+            exist:1,//试执行app.seen1=false
+            seen:true,//v-show只是切换CSS属性display，比起v-if更适用于频繁地切换，不支持<template>元素，不支持v-else
+            classObj:{default2: true, 'default-3': true},//试执行app.classObj.default2=false
+            styleObj:{fontSize:'18px', border:'1px dotted'},
+            bTag:'<b>Hello</b>',//在控制台执行：app.message1='hi'，查看响应式结果
+            msg:'hello world',
+            num:5,
+            ok:true,//试执行app.ok=false
+            once:'once value',
+            loginType:'username',
+            firstName:'Harry',
+            lastName:'Potter'
+
+        },
+        mounted(){//加载后执行
+            console.log('mounted.');
+        },
+        methods: {
+            reverseMsg: function (event) {
+                this.msg = this.msg.split('').reverse().join('');
+                console.log(event.target.tagName);
+            },
+            toggleType:function () {
+                if(this.loginType=='username')this.loginType='email';
+                else this.loginType='username';
+            },
+            functioned:function () {
+                alert('functioned');
+            }
+        },
+        computed:{//计算属性，基于它们的依赖进行缓存
+            reversebTag: function () {
+                return this.bTag.split('').reverse().join('');
+            },
+            /*fullName:function () {//侦听属性的介绍，试改变firstName的值，查看结果
+             return this.firstName+' '+this.lastName;
+             }*/
+            fullName:{
+                get:function () {
+                    return this.firstName+' '+this.lastName;
+                },
+                set:function (newValue) {//试执行app.fullName='aa bb'
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        },
+        watch:{
+            firstName:function (newValue,oldValue) {//回调将在 firstName 改变后调用
+                console.log('firstName: '+oldValue+" => "+newValue);
+            }
+        }
+    });
+    /*v-bind: 绑定值，缩写 :
+     v-if= 插入/移除
+     v-html= 输出真HTML
+     v-model= 双向绑定
+     v-on:click= 点击事件，缩写 @click
+     v-once 绑定不可改值
+     v-for= 遍历*/
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js var</title>
+</head>
+<body>
+<!---------------------------------------------------------------->
+<script>
+    console.warn('数据类型：');
+    console.dir(Number);
+    console.dir(String);
+    console.dir(Boolean);
+    console.dir(Array);
+    console.dir(Date);
+    console.dir(Object);
+    console.dir(Function);
+
+    console.warn('====');
+    console.log(1=='1');//true,转换类型后判断值
+    console.log(1==='1');//false,判断类型和值
+
+    console.warn('====');
+    console.log(typeof 12.3);//number
+    console.log(typeof 'abc');//string
+    console.log(typeof true);//boolean
+    console.log(typeof [12,'ab']);//object
+    console.log(typeof {a:12,b:'ab'});//object
+    console.log(typeof function (){});//function
+    console.log(typeof null);//object//null显示为Object类型而非null类型是为了向下兼容。
+    console.log(typeof a);//boolean
+
+    console.warn('====');
+    //变量的作用域
+    //非var定义的变量都是【全局变量】，不论是在方法外还是方法内定义。
+    //在方法内用var定义的变量是【局部变量】（包括参数），局部变量只在方法内有效。
+    var person1={name:'harry',gender:1};
+    for(var key in person1)
+        console.log(key+": "+person1[key]);
+
+    delete(person1.gender);
+
+    for(var key in person1)
+        console.log(key+": "+person1[key]);
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js object</title>
+</head>
+<body>
+</body>
+<script>
+    console.dir(Object);
+    var obj={name:'peter',age:24,gender:true,中文:1.1,12:'十二'};
+    console.log(obj);
+    console.log(obj['name']);
+    obj['hobby']='singing';
+    console.log(obj);
+    console.log(Object.keys(obj));
+
+    console.warn('for');
+    for(key in obj){
+        console.log(key,'-',obj[key]);
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,450 @@
+<html>
+	<head>
+		<title>hkuc CSSLab</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style>
+			.text-color{ color:#abcdef; }
+			.text-letter-spacing{ letter-spacing:0.5em; }
+			.text-text-align-left{ text-align:left; }
+			.text-text-align-center{ text-align:center; }
+			.text-text-align-right{ text-align:right; }
+			.text-vertical-align-top{ vertical-align:top; }
+			.text-vertical-align-middle{ vertical-align:middle; }
+			.text-vertical-align-bottom{ vertical-align:bottom; }
+			.text-text-decoration-line-through{ text-decoration:line-through; }
+			.text-text-decoration-underline{ text-decoration:underline; }
+			.text-text-decoration-overline{ text-decoration:overline; }
+			/*.text-text-decoration-combo{ text-decoration:underline line-through; color:red; }*/
+			.text-text-decoration-combo *{ text-decoration:underline line-through; color:red; }
+			.text-text-decoration-none{ text-decoration:none; }
+			.text-text-indent{ text-indent:2em; }
+			.text-text-indent{ border:1px solid blue; }
+			.text-text-indent *{ border:1px solid red; }
+			
+			.text-word-break{ word-break:break-all; }
+			.text-word-break-keep-all{ word-break:keep-all; }
+			.text-white-space{ white-space:nowrap; }
+			.text-word-break-white-space{ word-break:break-all; white-space:nowrap; }
+			
+			.text-font-family{ font-family:hkuc,simsun, "Microsoft Yahei"; }
+			.text-font-size{ font-size:2em; }
+			.text-font-style{ font-style:italic; }
+			.text-font-style-normal{ font-style:normal; }
+			.text-font-weight{ font-weight:bold; }
+			.text-font-weight-normal{ font-weight:normal; }
+			
+			.text-line-height-200{ line-height:200%; }
+			.text-line-height-200{ border:1px solid blue; }
+			.text-line-height-200 *{ border:1px solid red; }
+			.text-line-height-100{ line-height:100%; }
+		</style>
+		<script>
+			window.addEventListener('load',function(){
+				var labels=document.getElementsByTagName('legend');
+				for(var i=0;i<labels.length;i++){
+					labels[i].addEventListener('click',function(){
+						this.nextSibling.nextSibling.style.display=this.nextSibling.nextSibling.style.display=='none'?'block':'none';
+					})
+				}
+			})
+		
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>文本</legend>
+			<div class="content" style="display:none;">
+			<dl>
+				<dt>font-family</dt>
+				<dd>
+					<span class="text-font-family">文本字体</span>
+					<span style="font-family:simhei">文本字体</span>
+					<span style="font-family:'楷体'">文本字体</span>
+					<span style="font-family:'隶书'">文本字体</span>
+					<span style="font-family:'华文琥珀'">文本字体</span>
+					<span style="font-family:'花纹琥珀'">文本字体</span>
+				</dd>
+				<dt>font-size</dt>
+				<dd><span class="text-font-size">文本字号<span class="text-font-size">内嵌文本字号</span></span></dd>
+				<dt>font-style</dt>
+				<dd><span class="text-font-style">文本斜体<span class="text-font-style-normal">不倾斜</span></span></dd>
+				<dt>font-weight</dt>
+				<dd><span class="text-font-weight">文本加粗<span class="text-font-weight-normal">不加粗</span></span></dd>
+				<dt>line-height</dt>
+				<dd>
+					<ul>
+						<li><span class="text-line-height-200">两倍行高-内联元素</span></li>
+						<li><div class="text-line-height-200">两倍行高-块状元素<div class="text-line-height-200">内嵌</div></div></li>
+						<li><div class="text-line-height-100" style="border:1px solid blue; ">单倍行高-块状元素</div></li>
+						<li><div style="border:1px solid blue; ">无行高-块状元素</div></li>
+					</ul>
+				</dd>
+				<dt>color</dt>
+				<dd><span class="text-color">文本颜色<span>子元素</span></span></dd>
+				<dt>letter-spacing</dt>
+				<dd><span class="text-letter-spacing">字符间距</span></dd>
+				<dt>text-align</dt>
+				<dd>
+					<ul>
+						<li><div class="text-text-align-left">文字左对齐</div></li>
+						<li><div class="text-text-align-center">文字居中对齐</div></li>
+						<li><div class="text-text-align-right">文字右对齐</div></li>
+					</ul>
+				</dd>
+				<dt>vertical-align</dt>
+				<dd>
+					<ul>
+						<li><div><img src="https://www.baidu.com/img/bdlogo.png" height="40" style="border:1px solid #000; vertical-align:top;"><span>文字顶端对齐</span></div></li>
+						<li><div><img src="https://www.baidu.com/img/bdlogo.png" height="40" style="border:1px solid #000; vertical-align:middle"><span>文字居中对齐</span></div></li>
+						<li><div><img src="https://www.baidu.com/img/bdlogo.png" height="40" style="border:1px solid #000; vertical-align:bottom;"><span>文字底端对齐</span></div></li>
+					</ul>
+				</dd>
+				<dt>text-decoration</dt>
+				<dd>
+					<ul>
+						<li><span class="text-text-decoration-line-through">文字中划线</span></li>
+						<li><span class="text-text-decoration-underline">文字下划线</span></li>
+						<li><span class="text-text-decoration-overline">文字上划线</span></li>
+						<li><span class="text-text-decoration-combo"><span>组</span><span class="text-text-decoration-none">无修饰</span><span>合</span></span></li>
+					</ul>
+				</dd>
+				<dt>text-indent</dt>
+				<dd>
+						<span class="text-text-indent">文字缩进-行内元素</span>
+						<div class="text-text-indent">文字缩进-块状元素<br><span>行内元素</span><div>块状元素<div>子块状元素</div></div></div>	
+						<div class="text-text-indent">块状元素</div>
+						<div class="text-text-indent">块状元素</div>
+				</dd>
+				<dt>word-break</dt>
+				<dd>
+					<div style="width:440px; ">
+						<ul>
+							<li>
+								<div style="border:1px solid #000;">
+									服务承诺：
+										京东平台卖家展示销售并由京东发货的商品，由平台卖家提供相应的售后服务。请您放心购买！
+								</div>
+								<hr />
+								<div class="text-word-break" style="border:1px solid #000;">
+									服务承诺：
+										京东平台卖家展示销售并由京东发货的商品，由平台卖家提供相应的售后服务。请您放心购买！
+								</div>
+							</li>
+							<li>
+								<div style="border:1px solid #000;">
+									Hundreds of militants stormed the city before dawn, quickly seizing key buildings and advancing on the airport.
+									The government says it has sent reinforcements to Kunduz and fighting is ongoing.
+								</div>
+								<hr />
+								<div class="text-word-break" style="border:1px solid #000;">
+									Hundreds of militants stormed the city before dawn, quickly seizing key buildings and advancing on the airport.
+									The government says it has sent reinforcements to Kunduz and fighting is ongoing.
+								</div>
+								<hr />
+								<div class="text-word-break" style="border:1px solid #000;">
+									citybeforedawn,quicklyseizingkeybuildingsandadvancingontheairport.
+									ThegovernmentsaysithassentreinforcementstoKunduzandfightingisongoing.
+								</div>
+							</li>
+							<li>
+								<div style="border:1px solid #000;">
+									<a href="http://sh.sina.com.cn/" target="_blank">上海</a> <a target="_blank" href="http://tj.sina.com.cn/">天津</a> <a href="http://cq.sina.com.cn/" target="_blank">重庆</a> <a href="http://gd.sina.com.cn/" target="_blank">广东</a> <a href="http://henan.sina.com.cn/" target="_blank">河南</a> <a href="http://sc.sina.com.cn/" target="_blank">四川</a> <a href="http://fj.sina.com.cn/" target="_blank">福建</a> <a href="http://mn.sina.com.cn/" target="_blank">闽南</a> <a href="http://zj.sina.com.cn/" target="_blank">浙江</a> <a href="http://jiangsu.sina.com.cn" target="_blank">江苏</a> <a href="http://hebei.sina.com.cn/" target="_blank">河北</a> <a href="http://hb.sina.com.cn/" target="_blank">湖北</a> <a href="http://hunan.sina.com.cn/" target="_blank">湖南</a> <a href="http://sx.sina.com.cn/" target="_blank">陕西</a> <a href="http://ln.sina.com.cn/" target="_blank">辽宁</a> <a href="http://hlj.sina.com.cn" target="_blank">黑龙江</a> <a href="http://ah.sina.com.cn" target="_blank">安徽</a> <a href="http://jx.sina.com.cn/" target="_blank">江西</a> <a href="http://jl.sina.com.cn/" target="_blank">吉林</a> <a href="http://shanxi.sina.com.cn/" target="_blank">山西</a> <a href="http://hainan.sina.com.cn/" target="_blank">海南</a> <a target="_blank" href="http://sd.sina.com.cn/">山东</a> <a target="_blank" href="http://gx.sina.com.cn/">广西</a>
+								</div>
+								<hr />
+								<div class="text-word-break-keep-all" style="border:1px solid #000;">
+									<a href="http://sh.sina.com.cn/" target="_blank">上海</a> <a target="_blank" href="http://tj.sina.com.cn/">天津</a> <a href="http://cq.sina.com.cn/" target="_blank">重庆</a> <a href="http://gd.sina.com.cn/" target="_blank">广东</a> <a href="http://henan.sina.com.cn/" target="_blank">河南</a> <a href="http://sc.sina.com.cn/" target="_blank">四川</a> <a href="http://fj.sina.com.cn/" target="_blank">福建</a> <a href="http://mn.sina.com.cn/" target="_blank">闽南</a> <a href="http://zj.sina.com.cn/" target="_blank">浙江</a> <a href="http://jiangsu.sina.com.cn" target="_blank">江苏</a> <a href="http://hebei.sina.com.cn/" target="_blank">河北</a> <a href="http://hb.sina.com.cn/" target="_blank">湖北</a> <a href="http://hunan.sina.com.cn/" target="_blank">湖南</a> <a href="http://sx.sina.com.cn/" target="_blank">陕西</a> <a href="http://ln.sina.com.cn/" target="_blank">辽宁</a> <a href="http://hlj.sina.com.cn" target="_blank">黑龙江</a> <a href="http://ah.sina.com.cn" target="_blank">安徽</a> <a href="http://jx.sina.com.cn/" target="_blank">江西</a> <a href="http://jl.sina.com.cn/" target="_blank">吉林</a> <a href="http://shanxi.sina.com.cn/" target="_blank">山西</a> <a href="http://hainan.sina.com.cn/" target="_blank">海南</a> <a target="_blank" href="http://sd.sina.com.cn/">山东</a> <a target="_blank" href="http://gx.sina.com.cn/">广西</a>
+								</div>
+							</li>
+							
+							
+						</ul>
+					</div>				
+				</dd>
+				<dt>white-space</dt>
+				<dd>
+					<div style="width:700px; ">
+						<ul>
+							<li>
+								<div style="border:1px solid #000;">
+									Hundreds of militants stormed the city before dawn, quickly seizing key buildings and advancing on the airport.
+									The government says it has sent reinforcements to Kunduz and fighting is ongoing.
+								</div>
+								<hr />
+								<div style="border:1px solid #000;">
+									<span class="text-white-space">Hundreds of militants stormed the city before dawn,</span> 
+									<span class="text-white-space">quickly seizing key buildings and advancing on the airport.</span>
+									<span class="text-white-space">The government says it has sent reinforcements to Kunduz and fighting is ongoing.</span>
+								</div>
+								<hr />
+								<div style="width:1000px;border:1px solid #000;">
+									<span class="text-white-space">Hundreds of militants stormed the city before dawn,</span> 
+									<span class="text-white-space">quickly seizing key buildings and advancing on the airport.</span>
+									<span class="text-white-space">The government says it has sent reinforcements to Kunduz and fighting is ongoing.</span>
+								</div>
+							</li>
+						</ul>
+					</div>				
+				</dd>
+			</dl>
+			</div>
+		</fieldset>
+		
+		<style>
+			.box-padding-10{ padding:10px; }
+			.box-padding-left-10{ padding-left:10px; }
+			.box-padding-combo{ padding:5px 10px 15px 20px; }
+			.box-padding-combo2{ padding:5px 10px 15px; }
+			.box-border-red{ border:1px solid red; }
+			.box-border-left-10{ border-left:10px dashed red; }
+			.box-border-right-10{ border-right:10px dotted red; }
+			.box-border-combo{ border-top:10px solid green; border-left:10px solid red; }
+			.box-border-combo2{ border:10px solid green; border-left:10px dotted red; }
+			.box-border-special{ border-top:30px solid #000; border-left:10px solid white; border-right:10px solid white; }
+			.box-border-special2{ border-top:30px solid #000; border-left:30px solid transparent; }
+			.box-border-special3{ border-top:30px solid #000; border-left:30px solid rgba(255,0,0,0.3); }
+			.box-margin{ margin:10px; }
+			.box-position-absolute{ position:absolute; }
+			.box-position-relative{ position:relative; }
+			.box-position-fixed{ position:fixed; }
+			.box-float-left{ float:left; background-color:rgba(255,128,0,0.5); }
+			.box-float-right{ float:right; background-color:rgba(0,128,0,0.5); }
+			.box-clear{ clear:both; }
+		</style>
+		
+		<fieldset>
+			<legend>框模型</legend>
+		
+			<dl style="display:none;">
+				<dt>background</dt>
+				<dt>padding</dt>
+				<dd>
+					<ul>
+						<li>
+							<div class="box-padding-10" style="background:red;"></div>
+							<hr />
+							<div class="box-padding-10" style="background:red; "><div style="background:yellow">hkuc</div></div>
+							<hr />
+							<div class="box-padding-10" style="background:red; width:100%;"><div style="background:yellow">hkuc</div></div>
+						</li>
+						<li style="height:50px;"></li>
+						<li>
+							<span style="background:red;"></span>
+							<hr />
+							<span style="background:red; padding-left:10px;"></span>
+							<hr />
+							<span class="box-padding-left-10" style="background:red;"></span>
+							<hr />
+							<span class="box-padding-combo" style="background:red;"><span style="background:yellow;">hkuc</span></span>
+							<hr />
+							<span class="box-padding-combo2" style="background:red;"><span style="background:yellow;">hkuc</span></span>lionLigueston
+						</li>
+						<li>
+							行内元素和块状元素padding所占位置的区别
+						</li>
+					</ul>
+				</dd>
+				<dt>border</dt>
+				<dd>
+						<div class="box-border-red"></div>
+						<hr />
+						<div class="box-border-red" style="height:30px; width:30px;"></div>
+						<hr />
+						<div class="box-border-left-10 box-border-right-10" style="height:200px; width:30px; background:yellow"></div>
+						<hr />
+						<div class="box-border-combo" style="height:30px; width:30px; background:yellow"></div>
+						<hr />
+						<div class="box-border-combo2" style="height:30px; width:30px; background:yellow"></div>
+						<hr />
+						<div style="background:yellow; padding:10px;">
+							<div class="box-border-special" style="width:0; height:0;"></div>
+						</div>
+						<hr />
+						<div style="background:yellow; padding:10px;">
+							<div class="box-border-special2" style="width:0; height:0;"></div>
+						</div>
+						<hr />
+						<div style="background:yellow; padding:10px;">
+							<div style="position:relative; top:2em; color:white; z-index:1;">hkuc</div>
+							<div class="box-border-special3" style="width:0; height:0; position:relative; z-index:2"></div>
+						</div>
+				</dd>
+				<dt>margin</dt>
+				<dd>
+					<div style="background:red; height:20px"></div>
+					<div class="box-margin" style="background:green; height:20px"></div>
+					<div class="box-margin" style="background:green; height:20px"></div>
+					<div style="background:blue"></div>
+					<div class="box-margin" style="background:green; height:20px; width:100%;"></div>
+					<div style="height:1px; background:blue"></div>
+					<div class="box-margin" style="background:green; height:20px"></div>
+					<div style="background:blue; height:20px"></div>
+					<hr>
+					<div style="background:red; height:20px; margin-bottom:5px;"></div>
+					<div style="height:50px; background:blue">
+						<div class="box-margin" style="height:20px; background:green"></div>
+					</div>
+					<hr>
+					<div style="background:red; height:20px"></div>
+					<div style="height:50px; background:blue">
+						<div style="height:1px; background:yellow"></div>
+						<div class="box-margin" style="height:20px; background:green"></div>
+					</div>
+					
+					<hr>
+					<div style="background:red; height:20px"></div>
+					<div style="height:50px; background:blue; padding:1px">
+						<div class="box-margin" style="height:20px; background:green"></div>
+					</div>
+					
+				</dd>
+				<dt>position</dt>
+				<dd>
+					<ul>
+						<li>static</li>
+						<li>absolute
+							<ul>
+								<li>
+									<div style="width:50px; height:50px; background:red">Static</div>
+									<div style="width:50px; height:50px; background:blue; top:0; right:0;">Absolute</div>
+									hkuc
+									<hr />
+									<div style="width:50px; height:50px; background:red">Static</div>
+									<div class="box-position-absolute" style="width:50px; height:50px; background:blue; top:-10px; right:10px;">Absolute</div>
+									hkuc
+								</li>
+							</ul>
+						</li>
+						<li>relative
+							<ul>
+								<li>
+									<div style="width:50px; height:50px; background:red">Static</div>
+									<div style="width:50px; height:50px; background:blue; top:0; right:0;">Absolute</div>
+									hkuc
+									<hr />
+									<div style="width:50px; height:50px; background:red">Static</div>
+									<div class="box-position-relative" style="width:50px; height:50px; background:blue; top:-20px; right:-20px;">Absolute</div>
+									hkuc
+								</li>
+							</ul>
+						
+						</li>
+						<li>fixed
+							<div style="width:50px; height:50px; background:orange">Static</div>
+							<div class="box-position-fixed" style="width:50px; height:50px; background:orange; top:100px; right:0;">fixed</div>
+						</li>
+						<li>combo
+							A-R
+							<div class="box-position-absolute" style="width:50px; height:50px; background:green; top:50px; right:10px;">
+								<div class="box-position-relative" style="width:50px; height:50px; background:red; top:-20px; right:-20px;">A-R</div>
+							</div>
+							<hr />
+							R-A
+							<div class="box-position-relative" style="width:50px; height:50px; background:red; top:-5px; right:-20px;">
+								<div class="box-position-absolute" style="width:50px; height:50px; background:green; top:50px; right:10px;">R-A</div>
+							</div>
+							<hr />
+							R-F
+							<div class="box-position-relative" style="width:50px; height:50px; background:red; top:-5px; right:-20px;">
+								<div class="box-position-fixed" style="width:50px; height:50px; background:orange; top:50px; right:10px;">R-F</div>
+							</div>
+						</li>
+					</ul>
+				</dd>
+				<dt>float</dt>
+				<dd>
+					<ul>
+						<li>none</li>
+						<li>left/right
+							<ul>
+								<li>
+									<span>hkuc</span><span>lion</span>
+									<hr />
+									<span class="box-float-left">hkuc</span><span>lion</span>
+									<hr />
+									<span>hkuc</span><span class="box-float-left">lion</span>
+									<hr />
+									<span>hkuc</span><span class="box-float-left">lion</span><span class="box-float-left">HKUC</span>
+									<hr>
+									金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理<span class="box-float-left">中文的文字</span>系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。<span class="box-float-left">hkuclion</span>
+									<hr>
+									金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。<span class="box-float-left">hkuc<br />lion</span>
+									<hr class="box-clear">
+									<span class="box-float-left" style="font-size:12px;">hkuc<br />li</span>金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。
+									<hr>
+									<span class="box-float-left">hkuc<br />lion</span><div style="background:yellow">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div>
+									<hr>
+									<span class="box-float-left">hkuc<br />lion</span><div style="background:yellow"><div style="background:red; height:2em; color:white">HKUC</div>金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div>
+									<hr>
+									<span>hkuc<br />lion</span><div class="box-float-left" style="background:yellow">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div><span>ligueston</span><div style="background:red; color:white">HKUC</div>
+									<hr>
+									<span class="box-float-left">hkuc<br />lion</span><div class="box-float-left" style="background:yellow">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div><span>ligueston</span><div style="background:red; color:white">HKUC</div>
+									<hr class="box-clear">
+									<div class="box-float-left" style="background:red; color:white">HKUC</div>
+									<div class="box-float-left" style="background:yellow">LION</div>
+									<hr class="box-clear">
+									<div class="box-float-left" style="background:red; color:white">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div>
+									<div class="box-float-left" style="background:yellow">LION</div>
+									<hr class="box-clear">
+									<div class="box-float-left" style="background:red; color:white">HKUC</div>
+									<div class="box-float-left" style="background:yellow">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div>
+									<hr class="box-clear">
+									<span style="background:yellow; width:100px; height:100px;">HKUC</span>
+									<hr class="box-clear">
+									<span class="box-float-left"  style="background:yellow; width:100px; height:100px;">HKUC</span>
+									<hr class="box-clear">
+									<span class="box-float-right">hkuc<br />lion</span><div style="background:yellow">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div>
+									<hr class="box-clear">
+									<span class="box-float-left">hkuc<br />lion</span><span class="box-float-right">HKUC</span><div style="background:yellow">金明科技8年时间成功开发过多类型，多功能的门户、地方门户系统，论坛系统的二次开发，商城系统的源创开发和二次开发；为众多单位、企业开发了以WEB为基础的各种管理系统，有办公管理系统，文件管理系统人员管理系统。我们采用PHP+MYSQL为系统核心开发工具，前端融入了DIV+CSS3+HTML5+JAVASCRIPT等丰富前沿的技术进行用户交互体验，我们在项目开发过程中积累了丰富的实战经验，能够高效的为客户提出专业的技术解决方案。</div>
+									<hr>
+									<div style="background:red">
+										<div>HKUC</div>
+										<div>LION</div>
+									</div>
+									<hr>
+									<div style="background:red">
+										<div class="box-float-left">HKUC</div>
+										<div class="box-float-left">LION</div>
+									</div>
+									<hr class="box-clear">
+									<div style="background:red">
+										<div class="box-float-left">HKUC</div>
+										<div class="box-float-left">LION</div>
+										<div class="box-clear"></div>
+									</div>
+									<hr class="box-clear">
+									<div style="background:red">
+										<div class="box-float-left">HKUC</div>
+										<div class="box-clear"></div>
+										<div class="box-float-left">LION</div>
+									</div>
+									<hr class="box-clear">
+									<div style="background:red">
+										<div class="box-float-left" style="width:49%">HKUC</div>
+										<div class="box-float-right" style="width:49%">LION</div>
+										<div class="box-clear"></div>
+									</div>
+									<hr class="box-clear">
+									<div style="background:red">
+										<div class="box-float-left" style="width:50%">HKUC</div>
+										<div class="box-float-right" style="width:51%">LION</div>
+										<div class="box-clear"></div>
+									</div>
+									
+								</li>
+							</ul>
+							
+						
+						
+						</li>
+					</ul>
+				
+				</dd>
+			</dl>
+		
+		
+		</fieldset>
+		
+		
+		
+	</body>
+</html>

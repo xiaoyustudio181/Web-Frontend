@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue component</title>
+    <!--<script src="https://unpkg.com/vue"></script>-->
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="comp1">
+    <mycomponent1></mycomponent1>
+</div>
+<script>
+    Vue.component('mycomponent1',{
+        template:'<p style="color:blue;">my first component</p>'
+    });
+    new Vue({el:'#comp1'});
+</script>
+<hr />
+<!--=======================================================-->
+<div id="comp2">
+    <table cellpadding="0" cellspacing="0" border="1">
+        <tr is="myrow"></tr>
+        <tr is="myrow"></tr>
+    </table>
+</div>
+<script>
+    Vue.component('myrow',{//tr is用法
+        template:'<tr style="height: 35px;"><mytd></mytd><mytd></mytd></tr>'
+    });
+    Vue.component('mytd',{
+        template:'<td>content</td>'
+    });
+    new Vue({el:'#comp2'});
+</script>
+<hr />
+<!--=======================================================-->
+<div id="comp3">
+    <mycounter></mycounter>
+    <mycounter></mycounter>
+</div>
+<script>
+    Vue.component('mycounter',{//普通事件
+        template:'<button @click="counter++">{{counter}}</button>',
+        data:function () {
+            return { counter: 0 };
+        }
+    });
+    new Vue({el:'#comp3'});
+</script>
+<hr />
+<div id="comp5">
+    <mycounter2 v-on:event1="increaseSum"></mycounter2>
+    <mycounter2 v-on:event1="increaseSum"></mycounter2> {{total}}<br />
+</div>
+<script>
+    Vue.component('mycounter2',{//自定义事件
+        template:'<button v-on:click="increase">{{counter}}</button>',
+        data:function () {
+            return { counter: 0 };
+        },
+        methods: {
+            increase: function () {
+                this.counter += 1;
+                this.$emit('event1');//触发事件
+            }
+        }
+    });
+    new Vue({el:'#comp5',
+        data:{
+            total:0
+        },
+        methods:{
+            increaseSum: function () {
+                this.total ++;
+            }
+        }
+    });
+</script>
+<hr />
+<!--=======================================================-->
+<!--=======================================================-->
+<div id="comp4">
+    <mycomponent2 message="hello"></mycomponent2>
+    <mycomponent3 my-message="world"></mycomponent3>
+    <hr />
+    <input v-model="bindval" />
+    <mycomponent2 :message="bindval"></mycomponent2>
+</div>
+<script>
+    Vue.component('mycomponent2', {//props用法
+        props: ['message'],//像data一样，prop也可以在模板中使用，同样可在vm实例中通过this.message来使用
+        template: '<span>{{ message }}</span>'
+    });
+    Vue.component('mycomponent3', {//props驼峰命名法用法
+        template: '<span>{{ myMessage }}</span>',
+        props: ['myMessage']//HTML特性是不区分大小写的。所以，当使用的不是字符串模板时，camelCase(驼峰式命名)的prop 需要转换为相对应的kebab-case (短横线分隔式命名)
+    });
+    new Vue({el:'#comp4',data:{bindval:'screen'}});
+</script>
+<hr />
+<!--=======================================================-->
+<div id="comp6">
+    <ul><!--自定义组件-->
+        <todo v-for="each in list" v-bind:item="each" v-bind:key="each.id">
+            <!--key是为了使vue重用和重新排序现有元素，而不复用-->
+        </todo>
+    </ul>
+</div>
+<script>
+    Vue.component('todo', {//props直接绑定对象属性
+        props: ['item'],
+        template: '<li>{{ item.txt }}</li>'
+    });
+    new Vue({
+        el:'#comp6',
+        data:{
+            list: [
+                { id: 1, txt: 'java' },
+                { id: 2, txt: 'c#' },
+                { id: 3, txt: 'php' }
+            ]
+        }});
+</script>
+<hr />
+<!--=======================================================-->
+<div id="comp7">
+    <currency></currency>
+</div>
+<script>
+    Vue.component('currency', {
+        template: '\
+    <span>$\
+      <input ref="input1" aa="a1" v-bind:value="value" v-on:input="updateValue($event.target.value)" >\
+      <span ref="span1"></span>\
+    </span>',
+        props: ['value'],
+        methods: {
+            updateValue: function (value) {//不直接更新值，而用此方法来对输入值进行格式化和位数限制
+                var formattedValue = value.trim().slice(0, value.indexOf('.') === -1 ? value.length : value.indexOf('.') + 3);//保留2位小数
+                if (formattedValue !== value) {// 如果值尚不合规，则覆盖为合规的值
+                    this.$refs.input1.value = formattedValue;
+                    this.$refs.span1.innerHTML='functioned';
+                }
+                //this.$emit('input', Number(formattedValue));//通过input事件带出数值
+            }
+        }
+    });
+    new Vue({el:'#comp7'});
+</script>
+</body>
+</html>

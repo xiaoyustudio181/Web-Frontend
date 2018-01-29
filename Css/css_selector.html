@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>css selector</title>
+	<!--CSS的使用：
+	一，外部引用。
+	<link href="test.css" rel="stylesheet" type="text/css" />
+	二，内部引用。
+	<style type="text/css">*{}</style>
+	三，内嵌混合。
+	<style type="text/css">@import "test.css";  *{}</style>
+	四，HTML标签使用style属性。-->
+
+	<!--基本选择器：
+	1，元素内嵌style；
+	2，#（id选择器）；
+	3，.（class选择器）；
+	4，[]（属性选择器）；
+	5，:（伪选择器）；
+	6，标签名选择器；
+	7，*（全局选择器）；
+	8，浏览器默认样式。
+
+	基本选择器优先级：（通过测试）
+	1,2,[3,4,5],6,7,8
+
+	组合选择器：
+	1，两个或多个选择器紧挨：同时满足这些选择器的元素
+	2，用空格相连的选择器：前者的后代元素
+	3，用“>”连接的选择器：前者的第一代子元素
+	4，用“+”连接的选择器：前者后面的第一个兄弟元素
+	5，用“~”连接的选择器：前者后面的所有兄弟元素
+	6，用“,”连接的选择器：分别满足这些选择器的元素
+
+	组合选择器优先级：
+	特指度ICE(Id,Class,Element)公式，对于一个CSS选择器，
+	每个"#"使特指度加100，每个"."使特指度加10(":","[]"一样)，每个元素选择器使特指度加1，!important优先级最高。
+	若两个选择器的优先级相同，则按出现的先后顺序，以后出现的选择器为高优先级。
+	最高优先级是在元素style属性中使用!important。
+
+	高效的CSS，组合选择器尽量不使用多余无用的选择器。
+	-->
+	<style>
+		/*  【伪选择器】  */
+		#a1:link{color: red}
+		#a1:visited{color: black}
+		#a1:hover{color:yellowgreen;}
+		#a1:active{color:blue;}
+		/* 必须按照如下顺序书写，
+        a:link -> a:visted -> a:hover -> a:active
+        :link的效果有时需要清除浏览器缓存才能看到，且href的值不能为空*/
+
+		#input1:focus{background-color: yellow}
+
+		span:lang(en){color: red}
+		span:lang(cn){color: blue}
+		span:lang(en),span:lang(cn){font-weight: bold}
+
+		#ul1>li:not(:last-child){color: blue}
+		#ul1>li:not(:first-child){color: red}
+
+		.ol1>li:only-child{color: green}
+
+		#ol2>li:nth-child(2n+1){color: brown}
+		#ol2>li:nth-last-child(1){color: blue}
+
+		#div1>p:first-of-type{color: red}
+		/*
+		#div1>p:first-child{color: blue}
+		不同于上面的是，div1中没有既满足p又满足:first-child的元素。
+		div1中只有既满足p又满足:first-of-type的元素。
+		*/
+		#div1>p:last-of-type{color: blue}
+		#div1>p:nth-of-type(2){color: brown}
+		#div1>p:nth-last-of-type(2){color: deeppink}
+
+		#div2>em:only-of-type{color: green}
+
+		p:empty{height: 20px; background:black; }
+
+		#checkbox1+span{color:white}
+		#checkbox1:checked+span{color:black}
+
+		.input1:enabled{background-color: yellow}
+		.input1:disabled{background-color: greenyellow}
+
+		p:target{background-color: yellowgreen}
+		/*  【伪元素选择器】  */
+		.p1:first-letter{color: red}
+
+		.p2:first-line{color:blue}
+
+		#em1:before{content:"before it...";color: red}
+		#em1:after{content:"after it...";color:blue}
+
+		#input2::-moz-placeholder{color:purple;font-weight: bold}
+
+		.p3::-moz-selection{background-color: pink}
+	</style>
+</head>
+<body>
+<a id="a1" href="" target="_blank"><strong>Link Tag</strong></a>
+<br />
+<!----------------------------------------------------------------------->
+<input id="input1" type="text" />
+<br />
+<!----------------------------------------------------------------------->
+<span lang="en">English article.</span>
+<span lang="cn">Chinese article.</span>
+<br />
+<!----------------------------------------------------------------------->
+<ul id="ul1">
+	<li>first item</li>
+	<li>last item</li>
+</ul>
+<!----------------------------------------------------------------------->
+<ol class="ol1">
+	<li>only item</li>
+</ol>
+<ol class="ol1">
+	<li>only item</li>
+	<li>only item</li>
+</ol>
+<!----------------------------------------------------------------------->
+<ol id="ol2">
+	<li>first item</li>
+	<li>second item</li>
+	<li>thrid item</li>
+	<li>fourth item</li>
+</ol>
+<!----------------------------------------------------------------------->
+<div id="div1">
+	<span>span 1</span>
+	<p>paragraph 1</p>
+	<p>paragraph 2</p>
+	<p>paragraph 3</p>
+	<p>paragraph 4</p>
+	<span>span 2</span>
+</div>
+<!----------------------------------------------------------------------->
+<div id="div2">
+	<em>only em</em>,
+	<strong>strong 1</strong>,
+	<strong>strong 2</strong>
+</div>
+<!----------------------------------------------------------------------->
+<p></p>
+<!----------------------------------------------------------------------->
+<input id="checkbox1" type="checkbox" />
+<span>Checked</span>
+<br />
+<!----------------------------------------------------------------------->
+<input class="input1" type="text" placeholder="enabled" />
+<input class="input1" type="text" disabled="disabled" value="disabled" />
+<br />
+<!----------------------------------------------------------------------->
+<a href="#ee">Jump to &lt;p&gt;</a>
+<p id="ee">&lt;p&gt; as a link target</p>
+<!----------------------------------------------------------------------->
+<p class="p1">Hello world.</p>
+<p class="p1">你好世界。</p>
+<!----------------------------------------------------------------------->
+<p class="p2">
+	first line<br />
+	second line
+</p>
+<p class="p2">
+	第一行<br />
+	第二行
+</p>
+<!----------------------------------------------------------------------->
+<em id="em1">this is in em tag...</em>
+<br />
+<!----------------------------------------------------------------------->
+<input id="input2" type="text" placeholder="see color?" />
+<!----------------------------------------------------------------------->
+<p class="p3">select me</p>
+</body>
+</html>

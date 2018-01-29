@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap basis</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <!--<script src="dist\js\bootstrap.min.js"></script>
+    <script src="dist\js\bootstrap.js"></script>
+    <script src="dist\js\jquery-3.0.0.min.js"></script>
+    <script src="dist\js\npm.js"></script>-->
+    <style>hr{border:1px solid;}</style>
+</head>
+<body>
+<h1>h1. Bootstrap heading <small>Secondary text</small></h1>
+<h2>h2. Bootstrap heading <small>Secondary text</small></h2>
+<h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+<h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+<h5>h5. Bootstrap heading <small>Secondary text</small></h5>
+<h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+<hr />
+<p>
+    普通段落p标签, <mark>突出文本用mark标签</mark>Nullam quis <del>突出被删除或无用文本用del标签或s标签</del>risus eget <ins>突出插入或带下划线文本用ins标签或u标签</ins>urna mollis <small>小号文本用small标签</small>ornare vel<strong>强调文本用strong标签</strong> eu leo. <em>斜体文本用em标签</em>Cum sociis <abbr title="加上class=initialism可以让文本字母大写并缩小" class="initialism">缩写词用abbr标签+title属性</abbr> natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+    Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+</p>
+<p class="lead"><!--突出显示-->
+    突出段落p标签class=lead, Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
+    Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+</p>
+<hr />
+<p class="text-left">class="text-left".内容左对齐</p>
+<p class="text-center">class="text-center".内容居中</p>
+<p class="text-right">class="text-right".内容右对齐</p>
+<p class="text-justify">class="text-justify".内容两端对齐</p>
+<p class="text-nowrap">class="text-nowrap".内容不绕行</p>
+
+<p class="text-lowercase">class="text-lowercase".全体小写</p>
+<p class="text-uppercase">class="text-uppercase".全体大写</p>
+<p class="text-capitalize">class="text-capitalize".首字母大写</p>
+
+<blockquote>
+    <p>blockquote标签表示引用。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>添加footer用于标明引用来源。来源的名称可以包裹进cite标签中。Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+<blockquote class="blockquote-reverse">
+    <p>.blockquote-reverse 类呈现内容右对齐的效果。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>添加footer用于标明引用来源。来源的名称可以包裹进cite标签中。Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+<hr />
+<ul>
+    <li>aa</li>
+    <li>
+        bb
+        <ul>
+            <li>bb1</li>
+            <li>bb2</li>
+        </ul>
+    </li>
+    <li>cc</li>
+</ul>
+<hr />
+<ol>
+    <li>aa</li>
+    <li>
+        bb
+        <ol>
+            <li>bb1</li>
+            <li>bb2</li>
+        </ol>
+    </li>
+    <li>cc</li>
+</ol>
+<hr />
+<ul class="list-unstyled">
+    <li>aa class="list-unstyled"</li>
+    <li>
+        bb
+        <ul>
+            <li>bb1</li>
+            <li>bb2</li>
+        </ul>
+    </li>
+    <li>cc</li>
+</ul>
+<hr />
+<ul class="list-inline">
+    <li>aa class="list-inline"</li>
+    <li>bb</li>
+    <li>cc</li>
+</ul>
+<hr />
+<dl>
+    <dt>dl,dd,dt Description lists</dt>
+    <dd>A description list is perfect for defining terms.</dd>
+    <dt>Euismod</dt>
+    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+    <dt>Malesuada porta</dt>
+    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+</dl>
+<hr />
+<dl class="dl-horizontal">
+    <dt>class="dl-horizontal"</dt>
+    <dd>A description list is perfect for defining terms.</dd>
+    <dt>Euismod</dt>
+    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+    <dt>Malesuada porta</dt>
+    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+</dl>
+<hr />
+kbd tag, To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+<hr />
+<pre>&lt;pre&gt;Sample text here...&lt;/pre&gt;
+还可以使用 .pre-scrollable 类，其作用是设置 max-height 为 350px ，并在垂直方向展示滚动条。</pre>
+<hr />
+通过 var 标签标记变量。<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+<hr />
+通过 samp 标签来标记程序输出的内容。<samp>This text is meant to be treated as sample output from a computer program.</samp>
+<hr />
+<!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+<!-- 可选: 包含 jQuery 库 -->
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
+<script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

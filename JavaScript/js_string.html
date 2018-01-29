@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js string function</title>
+</head>
+<body>
+</body>
+<script>
+    console.dir(String);
+    var str='abc-dea-';
+    console.log(str);
+    console.log(typeof str);//string
+    console.log(str.length);//8
+    console.log(str+'fg');//abc-dea-fg
+    console.log(str.concat('fg'));//abc-dea-fg
+    console.log(str.charAt(0));//a
+    console.log(str.indexOf('a'));//0
+    console.log(str.lastIndexOf('a'));//6
+    console.log(str.startsWith('ab'));//true
+    console.log(str.padStart(10,'1'));//11abc-dea-
+    console.log(str.toUpperCase());//ABC-DEA-
+    console.log(str.padEnd(10,'1'));//abc-dea-11
+    console.log(str.repeat(2));//abc-dea-abc-dea-
+    console.log(str.replace('abc','123'));//123-dea-
+    console.log(str.split('-'));//["abc", "dea", ""]
+    console.log(str.split('-',2));//["abc", "dea"]
+    console.log(String.valueOf(str));//ƒ String() { [native code] }
+
+    console.log(str.slice(1));//bc-dea-
+    console.log(str.slice(1,2));//b [start,end)
+    console.log(str.slice(-3));//ea-
+
+    console.log(str.substr(1));//bc-dea-
+    console.log(str.substr(1,2));//bc [start,end]
+    console.log(str.substr(-3));//ea-
+
+    console.log(str.substring(1));//bc-dea-
+    console.log(str.substring(1,2));//b [start,end)
+    console.log(str.substring(-3));//ea-
+
+    console.log(str.search(/bc-d/));//1 返回与正则表达式查找内容匹配的第一个子字符串的位置
+    console.log(str.match(/^abc-dea-$/));//[...] 有匹配
+    console.log(str.match(/abc-df/));//null 无匹配
+
+    str='  abc-dea- ';
+    console.log(str);//  abc-dea-
+    console.log(str.length);//11
+    console.log(str.trimLeft().length);//9
+    console.log(str.trimRight().length);//10
+    console.log(str.trim().length);//8
+
+</script>
+</html>

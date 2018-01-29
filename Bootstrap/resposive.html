@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>resposive</title>
+    <meta charset="utf-8">
+    <style>
+        .resposive{margin: 0 auto; padding: 20px 15px; box-sizing: border-box}
+        @media (max-width: 750px) {/*浏览器宽度<750px时*/
+            .resposive{background-color: yellowgreen;}
+            .resposive::before{content:"widow-width<750px";font-family: "Comic Sans MS";font-size: 30px;}}
+        @media (min-width: 750px){/*浏览器宽度>=750px时*/
+            .resposive{width: 750px;background-color: lightgrey;}
+            .resposive::before{content:"widow-width>=750px";font-family: "Comic Sans MS";font-size: 30px;}}
+        @media (min-width: 1000px){/*浏览器宽度>=1000px时*/
+            .resposive{width: 1000px;background-color: pink;}
+            .resposive::before{content:"widow-width>=1000px";font-family: "Comic Sans MS";font-size: 30px;}}
+        @media (min-width: 1280px){/*浏览器宽度>=1280px时*/
+            .resposive{width: 1280px;background-color: skyblue;}
+            .resposive::before{content:"widow-width>=1280px";font-family: "Comic Sans MS";font-size: 30px;}}
+        /*以上顺序不可改变（宽度范围大的样式覆盖宽度范围小的样式），
+        @media (max-width:x){...}，窗口实际宽度<x时（当浏览器宽度可能增到x时）；
+        @media (min-width:x){...}，窗口实际宽度>=x时（当浏览器宽度可能减到x时）。*/
+        /*响应式的其他笔记：
+        0，firebug的调试状态会使浏览器的宽度值变小，影响响应式的变化刻度；
+        1，CSS中写死了宽度的元素不能适应浏览器的宽度变化，没有设定宽度的元素才能适应。
+        2，响应式图像，max-width: 100%; 圆边框图像，border-radius: 50%。
+        3，当div的box-sizing设为border-box后，它的宽度值包括左右内边距的和，否则不包括*/
+    </style>
+</head>
+<body>
+<br />
+<div class="resposive">
+    响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，响应式布局，
+    <script>
+        document.getElementsByTagName('div')[0].addEventListener('click',function (){
+            alert("当前浏览器宽度："+document.body.clientWidth+"px");
+        });
+    </script>
+</div>
+</body>
+</html>

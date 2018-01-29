@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function OpenAccess() {
+        con=new ActiveXObject("ADODB.Connection");//只适用于IE
+        var DBpath=(location.href.substring(0,location.href.indexOf("JavaScriptLab.html"))+"db.mdb").substr(8).replace("%20"," ");
+        con.ConnectionString="Data Source="+DBpath+";provider=Microsoft.Jet.OLEDB.4.0;Jet OleDb:DataBase Password=22";//prompt("Password:","")
+        try{con.open();console.info("Database is open.");}
+        catch(e){alert(e.message);}
+        //record=new ActiveXObject("ADODB.Recordset");
+    }
+    function Query(sql) {
+        record=con.execute(sql);
+        //console.info(record.Fields.count);//查询结果的字段总数
+        var container=document.createElement("div");
+        container.id="Access View";
+        document.getElementById('access').appendChild(container);
+        var html="<table border='1' width='200px'><tr><th>ID</th><th>Word</th></tr>";
+        while(!record.eof){
+            var id=record.Fields(0);
+            var word=record.Fields("word");
+            html+="<tr><td>"+id+"</td><td>"+word+"</td></tr>";
+            record.moveNext();
+        }
+        html+="</table>";
+        container.innerHTML=html;
+        record.close();
+    }
+    //OpenAccess();
+    //Query("select top 10 * from words order by id desc");
+    //con.close();con=null;
+</script>
+</body>
+</html>

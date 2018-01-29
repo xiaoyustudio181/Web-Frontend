@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq css</title>
+    <style>
+        button{font-size: large;font-family:"Calibri";}
+    </style>
+    <script src="../JavaScript/helper.js"></script>
+    <script src="jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<p id="p1">this is a paragraph</p>
+<button id="b1">.css('background-color')</button>
+<button id="b1-2">.css('background-color','skyblue')</button>
+<button id="b1-3">.css('background-color')=='rgb(135, 206, 235)'</button>
+<button id="b1-4">.css({border:'2px solid',fontSize:'20px'})</button>
+<script>
+    $p1=$('#p1');
+    bindClick('b1',function () {
+        alert($p1.css('background-color'));
+    })
+    bindClick('b1-2',function () {
+        $p1.css('background-color','skyblue');
+    })
+    bindClick('b1-3',function () {
+        alert($p1.css('background-color')=='rgb(135, 206, 235)');
+    })
+    bindClick('b1-4',function () {
+        $p1.css({border:'2px solid',fontSize:'20px'});
+    })
+    /*
+     .width()，设置或返回元素的宽度（不包括内边距、边框或外边距）。
+     .height()，设置或返回元素的高度（不包括内边距、边框或外边距）。
+     .innerWidth()，返回元素的宽度（包括内边距）。
+     .innerHeight()，返回元素的高度（包括内边距）。
+     .outerWidth()，返回元素的宽度（包括内边距和边框），加上参数true则包括外边距。
+     .outerHeight()，返回元素的高度（包括内边距和边框），加上参数true则包括外边距。
+     .offset().left(.top)，获得匹配的元素集合中的第一个元素的相对于document的当前坐标。
+     .position().left(.top)，获得匹配的元素集合中第一个元素的当前坐标，相对于最接近的有定位的祖先元素。
+     */
+</script>
+</body>
+</html>

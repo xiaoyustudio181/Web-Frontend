@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css animation</title>
+</head>
+<body>
+<style>
+    .div1{width:200px; height:100px;  background-color:green; color:white;
+        margin-left:20px; margin-top:5px; float:left;}
+
+    #tran1:hover{ opacity: 0  }
+    #tran1{transition:opacity 0.5s;}
+
+    #tran2:hover{transform:rotateX(180deg);color:green;}
+    #tran2{transition:transform 0.5s,color 0.5s;}
+
+    #tran3:hover{transform:rotateY(180deg);color:green;}
+    #tran3{transition:transform 0.5s,color 0.5s;}
+
+    #tran4:hover{transform:scale(2,2)}
+    #tran4{transition:transform 1s;}
+
+    #tran5:hover{transform:translate(-10px,-10px)}
+    #tran5{transition:transform 0.5s;}
+
+    #tran6:hover{transform:skew(20deg,0deg)}
+    #tran6{transition:transform 0.5s;}
+
+    @keyframes frame1{
+        0% {background: green; color:green;}
+        25%{background: yellow; color:black;}
+        50%{background: green; color:green;}
+        75%{background: lightpink; color:black;}
+        100% {background: green; color:green;}
+    }
+    #anim1:hover{animation:frame1 1.5s;}
+</style>
+<div id="tran1" class="div1">hover 变化</div>
+<div id="tran2" class="div1">hover X轴旋转</div>
+<div id="tran3" class="div1">hover Y轴旋转</div>
+<div id="tran4" class="div1">hover 比例</div>
+<div id="tran5" class="div1">hover 位移</div>
+<div id="tran6" class="div1">hover 歪斜</div>
+<div class="clear"></div>
+
+<div id="anim1" class="div1" style="color: green">hover 动画</div>
+<div class="clear"></div>
+</body>
+</html>

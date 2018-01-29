@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js special</title>
+</head>
+<body>
+</body>
+<script>
+    console.warn('&& 与 || 用法：');
+    //a && b : 将a, b转换为Boolean类型, 再执行逻辑与, true返回b, false返回a
+    //&& false-1 true-2
+    console.log(1&&55);//55
+    console.log(1&&"aa");//aa
+    console.warn('====');
+
+    console.log(0&&55);//0
+    console.log(0&&"aa");//0
+
+    //a || b : 将a, b转换为Boolean类型, 再执行逻辑或, true返回a, false返回b
+    //|| true-1 false-2
+    console.warn('====');
+    console.log(1||55);//1
+    console.log(1||"aa");//1
+
+    console.warn('====');
+    console.log(0||55);//55
+    console.log(0||"aa");//aa
+
+    console.warn('小数运算精度丢失：');
+    console.log(0.3-0.1);
+</script>
+</html>

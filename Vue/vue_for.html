@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue for</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    <ul><!--遍历JSON（Javascript对象的数组）-->
+        <li v-for="subject in subjects">
+            {{ subject.title }}
+        </li>
+    </ul>
+
+    <dl><!--遍历JSON（Javascript对象的数组）+v-if判断-->
+        <template v-for="subject in subjects" v-if="!subject.finished">
+            <dt>Subject: [ {{ subject.title }} ]</dt>
+            <dd>Notes: {{subject.note}}</dd>
+        </template>
+    </dl>
+
+    <dl><!--遍历JSON（Javascript对象的数组）+index元素索引-->
+        <dd v-for="(subject,index) in subjects">
+            [{{index}}] {{ subject.title }}
+        </dd>
+    </dl>
+
+    <dl><!--遍历JS对象：值-键-索引-->
+        <dd v-for="(value,key,index) in hpinfo">
+            [{{index}}] {{key}} - {{value}}
+        </dd>
+    </dl>
+
+    <dl>
+        <dd v-for="(value,index) in things">
+            [{{index}}] {{value}}
+        </dd>
+    </dl>
+
+    <dl><!--遍历数字-->
+        <dd v-for="n in 3">
+            {{n}}
+        </dd>
+    </dl>
+
+    <dl><!--遍历数字-->
+        <dd v-for="n in evens">
+            {{n}}
+        </dd>
+    </dl>
+
+    <dl><!--遍历数字-->
+        <dd v-for="n in odd(numbers)">
+            {{n}}
+        </dd>
+    </dl>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app1',
+        data: {
+            numbers:[1,2,3,4,5],
+            things:['pencil','pen','eraser'],
+            subjects: [
+                { title: 'HTML' ,finished:true, note:' html notes'},
+                { title: 'CSS' ,finished:false, note:' css notes'},
+                { title: 'JavaScript',finished:false, note:' js notes'}
+                //试执行app.list1.push({title:'PHP',finished:0,note:'php notes'})
+            ],
+            hpinfo:{
+                firstname:'Harry',
+                lastname:'Potter',
+                age:25
+            }
+        },
+        methods:{
+            odd: function (numbers) {
+                return numbers.filter(function (number) {
+                    return number % 2 != 0;
+                });
+            }
+        },
+        computed:{
+            evens: function () {
+                return this.numbers.filter(function (num) {
+                    return num % 2 === 0;
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

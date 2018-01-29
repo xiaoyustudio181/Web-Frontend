@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html form</title>
+</head>
+<body>
+<form method="post" action="" enctype="multipart/form-data">
+    <dl>
+        <dt>basic</dt>
+        <dd>
+            <input type="text" placeholder="username" />
+        </dd>
+        <dd>
+            <input type="password" placeholder="password" />
+        </dd>
+        <dt>gender</dt>
+        <dd>
+            <input id="male1" type="radio" name="gender" value="male" checked="checked" />
+            <label for="male1">male</label>
+            <input id="female1" type="radio" name="gender" value="female" />
+            <label for="female1">female</label>
+        </dd>
+        <dt>hobby</dt>
+        <dd>
+            <input id="reading1" type="checkbox" name="hobby[]" value="reading" />
+            <label for="reading1">reading</label>
+
+            <label>
+                <input type="checkbox" name="hobby[]" value="running" />
+                running
+            </label>
+
+            <input id="hiking1" type="checkbox" name="hobby[]" value="hiking" />
+            <label for="hiking1">walking</label>
+
+            <input id="swimming1" type="checkbox" name="hobby[]" value="swim" />
+            <label for="swimming1">swimming</label>
+        </dd>
+        <dt>birth year</dt>
+        <dd>
+            <select name="birthyear" style="width: 80px">
+                <optgroup label="After 80">
+                    <option>1980</option>
+                    <option>1981</option>
+                </optgroup>
+                <optgroup label="After 90">
+                    <option>1990</option>
+                    <option>1991</option>
+                </optgroup>
+            </select>
+        </dd>
+        <dt>e-mail</dt>
+        <dd>
+            <input type="email" name="email" />
+        </dd>
+        <dt>native place (multiple)</dt>
+        <dd>
+            <select multiple="multiple" name="native[]" style="width: 100px">
+                <optgroup label="四川省">
+                    <option value="chengdu">成都市</option>
+                    <option value="mianyang">绵阳市</option>
+                    <option value="chengdu">自贡市</option>
+                    <option value="panzhihua">攀枝花</option>
+                    <option value="luzhou">泸州</option>
+                </optgroup>
+                <optgroup label="广东省">
+                    <option value="guangzhou">广州市</option>
+                    <option value="shenzhen">深圳市</option>
+                    <option value="zhuhai">珠海市</option>
+                    <option value="shantou">汕头市</option>
+                    <option value="foshan">佛山市</option>
+                </optgroup>
+            </select>
+        </dd>
+        <dt>head image (multiple)</dt>
+        <dd>
+            <input name="img[]" type="file" multiple="multiple">
+        </dd>
+        <dt>lucky number</dt>
+        <dd>
+            <input type="number" name="lucknumber" min="1" max="9" value="1" />
+        </dd>
+        <dt>country code</dt>
+        <dd>
+            <input type="text" name="country_code" pattern="[A-z]{3}" title="3 letters only" placeholder="3 letters" />
+            <!--（用pattern属性设置了正则表达式：只能包含三个字母的文本域，不能包含数字及特殊字符）-->
+        </dd>
+        <dt>IT's degree of proficiency</dt>
+        <dd>
+            <input type="range" name="degree" min="0" max="100" value="0" />
+        </dd>
+        <dt>favorite website</dt>
+        <dd>
+            <input type="url" list="url_list" name="fsite" placeholder="website url" style="width:200px;" />
+            <datalist id="url_list">
+                <option label="Mtime">http://www.mtime.com/</option>
+                <option label="Baidu" value="http://www.baidu.com"></option>
+                <option label="Microsoft" value="http://www.microsoft.com"></option>
+            </datalist>
+        </dd>
+        <dt>more information</dt>
+        <dd>
+            <textarea style="vertical-align:top;" rows="5" cols="40" placeholder="more"></textarea>
+        </dd>
+        <dt>operation</dt>
+        <dd>
+            <input value="Submit" type="submit">
+            <input value="Reset" type="reset">
+        </dd>
+    </dl>
+</form>
+</body>
+</html>
