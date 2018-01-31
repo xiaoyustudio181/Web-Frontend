@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap component 2</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <style>hr{border:1px solid;}</style>
+    <script src="../jQuery/jquery-3.0.0.min.js"></script>
+    <!--<script src="dist/js/bootstrap.js"></script>-->
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $(".dropdown-toggle").dropdown();
+        });
+    </script>
+</head>
+<body>
+<!--
+Bootstrap 中的导航组件都依赖同一个 .nav 类，状态类也是共用的。改变修饰类可以改变样式。
+确保导航组件的可访问性
+如果你在使用导航组件实现导航条功能，务必在 <ul> 的最外侧的逻辑父元素上添加 role="navigation" 属性，或者用一个 <nav> 元素包裹整个导航组件。不要将 role 属性添加到 <ul> 上，因为这样可以被辅助设备（残疾人用的）上被识别为一个真正的列表。
+标签页
+注意 .nav-tabs 类依赖 .nav 基类。
+-->
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="#">Home</a></li>
+    <li role="presentation" class="active"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<hr />
+<!--
+胶囊式标签页
+HTML 标记相同，但使用 .nav-pills 类
+胶囊是标签页也是可以垂直方向堆叠排列的。只需添加 .nav-stacked 类
+-->
+<ul class="nav nav-pills">
+    <li role="presentation"><a href="#">Home</a></li>
+    <li role="presentation" class="active"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<ul class="nav nav-pills nav-stacked">
+    <li role="presentation"><a href="#">Home</a></li>
+    <li role="presentation" class="active"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<hr />
+<!--
+两端对齐的标签页
+在大于 768px 的屏幕上，通过 .nav-justified 类可以很容易的让标签页或胶囊式标签呈现出同等宽度。在小屏幕上，导航链接呈现堆叠样式。
+禁用的链接
+对任何导航组件（标签页、胶囊式标签页），都可以添加 .disabled 类，从而实现链接为灰色且没有鼠标悬停效果。
+链接功能不受到影响
+这个类只改变 <a> 的外观，不改变功能。可以自己写 JavaScript 禁用这里的链接。
+-->
+<ul class="nav nav-tabs nav-justified">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<ul class="nav nav-pills nav-justified">
+    <li role="presentation"><a href="#">Home</a></li>
+    <li role="presentation" class="active"><a href="#">Profile</a></li>
+    <li role="presentation" class="disabled"><a href="#">Messages</a></li>
+</ul>
+<hr />
+<!--
+添加下拉菜单
+-->
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Dropdown <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Dropdown link</a></li>
+            <li><a href="#">Dropdown link</a></li>
+        </ul>
+    </li>
+</ul>
+<ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Dropdown <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Dropdown link</a></li>
+            <li><a href="#">Dropdown link</a></li>
+        </ul>
+    </li>
+</ul>
+<hr />
+
+</body>
+</html>
