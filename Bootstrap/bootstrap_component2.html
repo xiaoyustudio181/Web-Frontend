@@ -134,7 +134,8 @@ HTML 标记相同，但使用 .nav-pills 类
 
 我们将在 v4 版本中重写这个组件时重新审视这个功能。
 
-
+反色的导航条
+通过添加 .navbar-inverse 类可以改变导航条的外观。
 -->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -205,6 +206,149 @@ HTML 标记相同，但使用 .nav-pills 类
     </div>
 </nav>
 <hr />
+<!--
+路径导航
+在一个带有层次的导航结构中标明当前页面的位置。
+各路径间的分隔符已经自动通过 CSS 的 :before 和 content 属性添加了。
+-->
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+<hr />
+<!--
+分页
+为您的网站或应用提供带有展示页码的分页组件，或者可以使用简单的翻页组件。
+
+默认分页
+受 Rdio 的启发，我们提供了这个简单的分页组件，用在应用或搜索结果中超级棒。组件中的每个部分都很大，优点是容易点击、易缩放、点击区域大。
+Labelling the pagination component
+The pagination component should be wrapped in a <nav> element to identify it as a navigation section to screen readers and other assistive technologies. In addition, as a page is likely to have more than one such navigation section already (such as the primary navigation in the header, or a sidebar navigation), it is advisable to provide a descriptive aria-label for the <nav> which reflects its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be aria-label="Search results pages".
+禁用和激活状态
+链接在不同情况下可以定制。你可以给不能点击的链接添加 .disabled 类、给当前页添加 .active 类。
+我们建议将 active 或 disabled 状态的链接（即 <a> 标签）替换为 <span> 标签，或者在向前/向后的箭头处省略<a> 标签，这样就可以让其保持需要的样式而不能被点击。
+
+尺寸
+.pagination-lg 或 .pagination-sm 类提供了额外可供选择的尺寸。
+-->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<hr />
+<!--
+翻页
+用简单的标记和样式，就能做个上一页和下一页的简单翻页。用在像博客和杂志这样的简单站点上棒极了。
+
+默认实例
+在默认的翻页中，链接居中对齐。
+-->
+<nav aria-label="...">
+    <ul class="pager">
+        <li><a href="#">Previous</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</nav>
+<hr />
+<!--
+对齐链接
+你还可以把链接向两端对齐
+可选的禁用状态
+.disabled 类也可用于翻页中的链接。
+-->
+<nav aria-label="...">
+    <ul class="pager">
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+<hr />
+<!--
+标签
+-->
+<h2>Example heading <span class="label label-default">New</span></h2>
+<h3>Example heading <span class="label label-default">New</span></h3>
+<hr />
+<!--
+可用的变体
+用下面的任何一个类即可改变标签的外观。
+
+如果你有大量的设置为 inline 属性的标签全部放在一个较窄的容器元素内，在页面上展示这些标签就会出现问题，每个标签就会有自己的一个 inline-block 元素（就像图标一样）。解决的办法是为每个标签都设置为 display: inline-block; 属性。关于这个问题以及实例，请参考 #13219 。
+-->
+<span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+<span class="label label-info">Info</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span>
+<hr />
+<!--
+徽章
+给链接、导航等元素嵌套 <span class="badge"> 元素，可以很醒目的展示新的或未读的信息条目。
+
+Self collapsing
+如果没有新的或未读的信息条目，也就是说不包含任何内容，徽章组件能够自动隐藏（通过CSS的 :empty 选择符实现) 。
+
+跨浏览器兼容性
+徽章组件在 Internet Explorer 8 浏览器中不会自动消失，因为 IE8 不支持 :empty 选择符。
+适配导航元素的激活状态
+
+Bootstrap 提供了内置的样式，让胶囊式导航内处于激活状态的元素所包含的徽章展示相匹配的样式。
+-->
+<a href="#">Inbox <span class="badge">42</span></a>
+<button class="btn btn-primary" type="button">
+    Messages <span class="badge">4</span>
+</button>
+<ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+</ul>
+<hr />
+<!--
+巨幕
+这是一个轻量、灵活的组件，它能延伸至整个浏览器视口来展示网站上的关键内容。
+如果需要让巨幕组件的宽度与浏览器宽度一致并且没有圆角，请把此组件放在所有 .container 元素的外面，并在组件内部添加一个 .container 元素。
+-->
+<div class="jumbotron">
+    <h1>Hello, world!</h1>
+    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+<hr />
+<!--
+页头
+页头组件能够为 h1 标签增加适当的空间，并且与页面的其他部分形成一定的分隔。它支持 h1 标签内内嵌 small 元素的默认效果，还支持大部分其他组件（需要增加一些额外的样式）。
+-->
+<div class="page-header">
+    <h1>Example page header <small>Subtext for header</small></h1>
+</div>
+<hr />
+<!--
+缩略图
+通过缩略图组件扩展 Bootstrap 的 栅格系统，可以很容易地展示栅格样式的图像、视频、文本等内容。
+
+如果你想实现一个类似 Pinterest 的页面效果（不同高度和/宽度的缩略图顺序排列）的话，你需要使用一个第三方插件，比如 Masonry、Isotope 或 Salvattore。
+
+默认样式的实例
+Boostrap 缩略图的默认设计仅需最少的标签就能展示带链接的图片。
+-->
 
 </body>
 </html>
