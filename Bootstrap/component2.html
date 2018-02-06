@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>bootstrap component 2</title>
+    <title>component 2</title>
     <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
     <style>hr{border:1px solid;}</style>
     <script src="../jQuery/jquery-3.0.0.min.js"></script>
@@ -139,6 +139,11 @@ HTML 标记相同，但使用 .nav-pills 类
 -->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="img/B.png" width="20" height="20" />
+            </a>
+        </div>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -200,7 +205,7 @@ HTML 标记相同，但使用 .nav-pills 类
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="./B.png">
+                <img alt="Brand" src="img/B.png" width="20" height="20" />
             </a>
         </div>
     </div>
@@ -280,82 +285,223 @@ The pagination component should be wrapped in a <nav> element to identify it as 
 </nav>
 <hr />
 <!--
-标签
--->
-<h2>Example heading <span class="label label-default">New</span></h2>
-<h3>Example heading <span class="label label-default">New</span></h3>
-<hr />
-<!--
-可用的变体
-用下面的任何一个类即可改变标签的外观。
-
-如果你有大量的设置为 inline 属性的标签全部放在一个较窄的容器元素内，在页面上展示这些标签就会出现问题，每个标签就会有自己的一个 inline-block 元素（就像图标一样）。解决的办法是为每个标签都设置为 display: inline-block; 属性。关于这个问题以及实例，请参考 #13219 。
--->
-<span class="label label-default">Default</span>
-<span class="label label-primary">Primary</span>
-<span class="label label-success">Success</span>
-<span class="label label-info">Info</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
-<hr />
-<!--
-徽章
-给链接、导航等元素嵌套 <span class="badge"> 元素，可以很醒目的展示新的或未读的信息条目。
-
-Self collapsing
-如果没有新的或未读的信息条目，也就是说不包含任何内容，徽章组件能够自动隐藏（通过CSS的 :empty 选择符实现) 。
-
-跨浏览器兼容性
-徽章组件在 Internet Explorer 8 浏览器中不会自动消失，因为 IE8 不支持 :empty 选择符。
-适配导航元素的激活状态
-
-Bootstrap 提供了内置的样式，让胶囊式导航内处于激活状态的元素所包含的徽章展示相匹配的样式。
--->
-<a href="#">Inbox <span class="badge">42</span></a>
-<button class="btn btn-primary" type="button">
-    Messages <span class="badge">4</span>
-</button>
-<ul class="nav nav-pills" role="tablist">
-    <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
-</ul>
-<hr />
-<!--
-巨幕
-这是一个轻量、灵活的组件，它能延伸至整个浏览器视口来展示网站上的关键内容。
-如果需要让巨幕组件的宽度与浏览器宽度一致并且没有圆角，请把此组件放在所有 .container 元素的外面，并在组件内部添加一个 .container 元素。
--->
-<div class="jumbotron">
-    <h1>Hello, world!</h1>
-    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
-<hr />
-<!--
-页头
-页头组件能够为 h1 标签增加适当的空间，并且与页面的其他部分形成一定的分隔。它支持 h1 标签内内嵌 small 元素的默认效果，还支持大部分其他组件（需要增加一些额外的样式）。
--->
-<div class="page-header">
-    <h1>Example page header <small>Subtext for header</small></h1>
-</div>
-<hr />
-<!--
 缩略图
 通过缩略图组件扩展 Bootstrap 的 栅格系统，可以很容易地展示栅格样式的图像、视频、文本等内容。
 
 如果你想实现一个类似 Pinterest 的页面效果（不同高度和/宽度的缩略图顺序排列）的话，你需要使用一个第三方插件，比如 Masonry、Isotope 或 Salvattore。
 
 默认样式的实例
-Boostrap 缩略图的默认设计仅需最少的标签就能展示带链接的图片。
+Boostrap 缩略图的默认设计仅需最少的标签就能展示带链接的图片。随浏览器尺寸变化可缩放。
 -->
-<div class="row">
-    <div class="col-xs-6 col-md-3">
-        <a class="thumbnail">
-            <img src="sq.jpg" alt="..." />
-        </a>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a class="thumbnail" href="http://baidu.com" target="_blank">
+                <img src="img/sample.jpg" alt="..." />
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a class="thumbnail">
+                <img src="img/sample.jpg" alt="..." />
+            </a>
+        </div>
     </div>
-    ...
 </div>
+<hr />
+<!--
+自定义内容
+添加一点点额外的标签，就可以把任何类型的 HTML 内容，例如标题、段落或按钮，加入缩略图组件内。
+-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <a class="thumbnail">
+                    <img src="img/sample.jpg" alt="...">
+                </a>
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <a class="thumbnail">
+                    <img src="img/sample.jpg" alt="...">
+                </a>
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<!--
+媒体对象
+这是一个抽象的样式，用以构建不同类型的组件，这些组件都具有在文本内容的左或右侧对齐的图片（就像博客评论或 Twitter 消息等）。
+
+默认样式
+默认样式的媒体对象组件允许在一个内容块的左边或右边展示一个多媒体内容（图像、视频、音频）。
+
+.pull-left 和 .pull-right 这两个类以前也曾经被用在了媒体组件上，但是，从 v3.3.0 版本开始，他们就不再被建议使用了。.media-left 和 .media-right 替代了他们，不同之处是，在 html 结构中， .media-right 应当放在 .media-body 的后面。
+-->
+<div class="container">
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+        <div class="media-body media-right">
+            <h4 class="media-heading">media-right</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left media-top">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">media-top</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br /><br />
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left media-middle">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">media-middle</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br /><br />
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left media-bottom">
+            <a href="#">
+                <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">media-bottom</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br /><br />
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+    </div>
+</div>
+<hr />
+<!--
+媒体对象列表
+用一点点额外的标记，就能在列表内使用媒体对象组件（对评论或文章列表很有用）。
+-->
+<div class="container">
+    <ul class="media-list">
+        <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                    </div>
+                </div>
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+        </li>
+    </ul>
+</div>
+
 </body>
 </html>

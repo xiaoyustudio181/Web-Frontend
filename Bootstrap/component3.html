@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component 3</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <style>hr{border:1px solid;}</style>
+    <script src="../jQuery/jquery-3.0.0.min.js"></script>
+    <!--<script src="dist/js/bootstrap.js"></script>-->
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $(".dropdown-toggle").dropdown();
+        });
+    </script>
+</head>
+<body>
+<!--
+标签
+-->
+<h2>Example heading <span class="label label-default">New</span></h2>
+<h3>Example heading <span class="label label-default">New</span></h3>
+<hr />
+<!--
+可用的变体
+用下面的任何一个类即可改变标签的外观。
+
+如果你有大量的设置为 inline 属性的标签全部放在一个较窄的容器元素内，在页面上展示这些标签就会出现问题，每个标签就会有自己的一个 inline-block 元素（就像图标一样）。解决的办法是为每个标签都设置为 display: inline-block; 属性。关于这个问题以及实例，请参考 #13219 。
+-->
+<span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+<span class="label label-info">Info</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span>
+<hr />
+<!--
+徽章
+给链接、导航等元素嵌套 <span class="badge"> 元素，可以很醒目的展示新的或未读的信息条目。
+
+Self collapsing
+如果没有新的或未读的信息条目，也就是说不包含任何内容，徽章组件能够自动隐藏（通过CSS的 :empty 选择符实现) 。
+
+跨浏览器兼容性
+徽章组件在 Internet Explorer 8 浏览器中不会自动消失，因为 IE8 不支持 :empty 选择符。
+适配导航元素的激活状态
+
+Bootstrap 提供了内置的样式，让胶囊式导航内处于激活状态的元素所包含的徽章展示相匹配的样式。
+-->
+<a href="#">Inbox <span class="badge">42</span></a>
+<button class="btn btn-primary" type="button">
+    Messages <span class="badge">4</span>
+</button>
+<ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+</ul>
+<hr />
+<!--
+巨幕
+这是一个轻量、灵活的组件，它能延伸至整个浏览器视口来展示网站上的关键内容。
+如果需要让巨幕组件的宽度与浏览器宽度一致并且没有圆角，请把此组件放在所有 .container 元素的外面，并在组件内部添加一个 .container 元素。
+-->
+<div class="jumbotron">
+    <h1>Hello, world!</h1>
+    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+<hr />
+<!--
+页头
+页头组件能够为 h1 标签增加适当的空间，并且与页面的其他部分形成一定的分隔。它支持 h1 标签内内嵌 small 元素的默认效果，还支持大部分其他组件（需要增加一些额外的样式）。
+-->
+<div class="page-header">
+    <h1>Example page header <small>Subtext for header</small></h1>
+</div>
+<hr />
+<!--
+警告框
+警告框组件通过提供一些灵活的预定义消息，为常见的用户动作提供反馈消息。
+
+将任意文本和一个可选的关闭按钮组合在一起就能组成一个警告框，.alert 类是必须要设置的，另外我们还提供了有特殊意义的4个类（例如，.alert-success），代表不同的警告信息。
+
+警告框没有默认类，只有基类和修饰类。默认的灰色警告框并没有多少意义。所以您要使用一种有意义的警告类。目前提供了成功、消息、警告或危险。
+
+可关闭的警告框
+为警告框添加一个可选的 .alert-dismissible 类和一个关闭按钮。
+为了让警告框在关闭时表现出动画效果，请确保为其添加了 .fade 和 .in 类。
+
+警告框中的链接
+用 .alert-link 工具类，可以为链接设置与当前警告框相符的颜色。
+-->
+<div class="alert alert-success" role="alert">
+    <b>Well done!</b> You successfully <a class="alert-link" href="http://baidu.com" target="_blank">read  this important alert</a> message.
+</div>
+<div class="alert alert-info" role="alert">
+    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</div>
+<div class="alert alert-warning" role="alert">
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+<div class="alert alert-danger alert-dismissible in fade" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+</div>
+<hr />
+<!--
+进度条
+通过这些简单、灵活的进度条，为当前工作流程或动作提供实时反馈。
+
+在展示很低的百分比时，如果需要让文本提示能够清晰可见，可以为进度条设置 min-width 属性。
+
+根据情境变化效果
+进度条组件使用与按钮和警告框相同的类，根据不同情境展现相应的效果。
+
+条纹效果
+通过渐变可以为进度条创建条纹效果，IE9 及更低版本不支持。
+
+动画效果
+为 .progress-bar-striped 添加 .active 类，使其呈现出由右向左运动的动画效果。IE9 及更低版本的浏览器不支持。
+
+堆叠效果
+把多个进度条放入同一个 .progress 中，使它们呈现堆叠的效果。
+-->
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">30%
+        <!--<span class="sr-only">60% Complete</span>-->
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">30%
+        <!--<span class="sr-only">60% Complete</span>-->
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 30%">30%
+        <!--<span class="sr-only">30% Complete</span>-->
+    </div>
+</div>
+
+
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+        <span class="sr-only">40% Complete (success)</span>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+        <span class="sr-only">20% Complete</span>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+        <span class="sr-only">60% Complete (warning)</span>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+        <span class="sr-only">80% Complete (danger)</span>
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-success" style="width: 35%">
+        <span class="sr-only">35% Complete (success)</span>
+    </div>
+    <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
+        <span class="sr-only">20% Complete (warning)</span>
+    </div>
+    <div class="progress-bar progress-bar-danger" style="width: 10%">
+        <span class="sr-only">10% Complete (danger)</span>
+    </div>
+</div>
+<hr />
+
+</body>
+</html>
