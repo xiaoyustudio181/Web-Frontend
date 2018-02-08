@@ -7,9 +7,16 @@
 </head>
 <body>
 <div id='vmodel'>
-    <input type="radio" id="one" value="One" v-model="picked">
+    <input type="text" v-model="text1" />{{text1}}
+    <hr />
+
+    <textarea v-model="text2"></textarea>
+    <p style="white-space: pre-line;">{{text2}}</p>
+    <hr />
+
+    <input type="radio" id="one" value="One" v-model="picked" />
     <label for="one">One</label>
-    <input type="radio" id="two" value="Two" v-model="picked">
+    <input type="radio" id="two" value="Two" v-model="picked" />
     <label for="two">Two</label>
     {{ picked }}
     <hr />
@@ -58,11 +65,13 @@
     new Vue({
         el: '#vmodel',
         data: {
+            text1:'',
+            text2:'',
             checkedNames: [],
             picked:'',
             selected1:'',
             selected2:'',
-            selected3:'',
+            selected3:[],
             options: [
                 { text: 'One', value: 'a' },
                 { text: 'Two', value: 'b' },

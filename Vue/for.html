@@ -6,50 +6,51 @@
     <script src="vue.js"></script>
 </head>
 <body>
+<!--建议尽可能在使用 v-for 时提供 key-->
 <div id="app1">
     <ul><!--遍历JSON（Javascript对象的数组）-->
         <li v-for="subject in subjects">
             {{ subject.title }}
         </li>
     </ul>
-
+    <hr />
     <dl><!--遍历JSON（Javascript对象的数组）+v-if判断-->
         <template v-for="subject in subjects" v-if="!subject.finished">
             <dt>Subject: [ {{ subject.title }} ]</dt>
             <dd>Notes: {{subject.note}}</dd>
         </template>
     </dl>
-
+    <hr />
     <dl><!--遍历JSON（Javascript对象的数组）+index元素索引-->
         <dd v-for="(subject,index) in subjects">
             [{{index}}] {{ subject.title }}
         </dd>
     </dl>
-
+    <hr />
     <dl><!--遍历JS对象：值-键-索引-->
         <dd v-for="(value,key,index) in hpinfo">
             [{{index}}] {{key}} - {{value}}
         </dd>
     </dl>
-
+    <hr />
     <dl>
         <dd v-for="(value,index) in things">
             [{{index}}] {{value}}
         </dd>
     </dl>
-
+    <hr />
     <dl><!--遍历数字-->
         <dd v-for="n in 3">
             {{n}}
         </dd>
     </dl>
-
+    <hr />
     <dl><!--遍历数字-->
         <dd v-for="n in evens">
             {{n}}
         </dd>
     </dl>
-
+    <hr />
     <dl><!--遍历数字-->
         <dd v-for="n in odd(numbers)">
             {{n}}
@@ -89,6 +90,37 @@
             }
         }
     });
+    /*
+     由于 JavaScript 的限制，Vue 不能检测以下变动的数组：
+     1，当用索引设置项时，如vm.items[index]=newValue；
+     2，当修改数组长度时，如vm.items.length=newLength。
+
+     　　为解决问题1，可用以下两种方式：
+     Vue.set(example1.items, indexOfItem, newValue)
+     example1.items.splice(indexOfItem, 1, newValue)
+     　　为解决问题2：
+     example1.items.splice(newLength)
+
+     由于 JavaScript 的限制，Vue 不能检测对象属性的添加或删除：
+     var vm = new Vue({
+     data: {a: 1}
+     }); // `vm.a` 现在是响应式的。
+     vm.b = 2; // `vm.b` 不是响应式的。
+
+     对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。但是，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性。例如，对于：
+     var vm = new Vue({
+     data: {
+        userProfile: {name: 'Anika'}
+     }
+     })
+     你可以添加一个新的 age 属性到嵌套的 userProfile 对象：
+     Vue.set(vm.userProfile, 'age', 27)
+     this.$set(this.userProfile, 'age', 27)
+     有时你可能需要为已有对象赋予多个新属性，比如使用 Object.assign() 或 _.extend()。在这种情况下，你应该用两个对象的属性创建一个新的对象。所以，如果你想添加新的响应式属性，不要像这样：
+     Object.assign(this.userProfile, {age: 27,favoriteColor: 'Vue Green'})
+     　　你应该这样做：
+     this.userProfile = Object.assign({}, this.userProfile, {age: 27,favoriteColor: 'Vue Green'})
+    */
 </script>
 </body>
 </html>

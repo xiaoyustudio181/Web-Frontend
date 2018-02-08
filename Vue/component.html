@@ -7,6 +7,9 @@
     <script src="vue.js"></script>
 </head>
 <body>
+<!--
+第一个自定义组件
+-->
 <div id="comp1">
     <mycomponent1></mycomponent1>
 </div>
@@ -17,11 +20,41 @@
     new Vue({el:'#comp1'});
 </script>
 <hr />
-<!--=======================================================-->
+<!--
+局部注册
+-->
+<div id="comp1-2">
+    <mycomponent2></mycomponent2>
+</div>
+<script>
+    var Child={
+        template: '<p>my second component</p>'
+    };
+    new Vue({
+        el:'#comp1-2',
+        components:{
+            mycomponent2:Child
+        }
+    });
+</script>
+<hr />
+<!--
+自定义<tr>组件
+-->
 <div id="comp2">
     <table cellpadding="0" cellspacing="0" border="1">
         <tr is="myrow"></tr>
         <tr is="myrow"></tr>
+        <!--
+自定义组件 <my-row> 会被当作无效的内容，因此会导致错误的渲染结果。变通的方案是使用特殊的 is 特性：
+<table>
+  <tr is="my-row"></tr>
+</table>
+应当注意，如果使用来自以下来源之一的字符串模板，则没有这些限制：
+<script type="text/x-template">
+JavaScript 内联模板字符串
+.vue 组件
+        -->
     </table>
 </div>
 <script>
@@ -34,7 +67,9 @@
     new Vue({el:'#comp2'});
 </script>
 <hr />
-<!--=======================================================-->
+<!--
+自定义组件的数据
+-->
 <div id="comp3">
     <mycounter></mycounter>
     <mycounter></mycounter>
@@ -49,12 +84,15 @@
     new Vue({el:'#comp3'});
 </script>
 <hr />
+<!--
+自定义组件调用父级事件
+-->
 <div id="comp5">
     <mycounter2 v-on:event1="increaseSum"></mycounter2>
     <mycounter2 v-on:event1="increaseSum"></mycounter2> {{total}}<br />
 </div>
 <script>
-    Vue.component('mycounter2',{//自定义事件
+    Vue.component('mycounter2',{
         template:'<button v-on:click="increase">{{counter}}</button>',
         data:function () {
             return { counter: 0 };
@@ -62,7 +100,7 @@
         methods: {
             increase: function () {
                 this.counter += 1;
-                this.$emit('event1');//触发事件
+                this.$emit('event1');//触发父级事件
             }
         }
     });
@@ -78,8 +116,11 @@
     });
 </script>
 <hr />
-<!--=======================================================-->
-<!--=======================================================-->
+<!--
+驼峰法命名
+自定义组价属性prop
+注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。
+-->
 <div id="comp4">
     <mycomponent2 message="hello"></mycomponent2>
     <mycomponent3 my-message="world"></mycomponent3>
@@ -96,12 +137,18 @@
         template: '<span>{{ myMessage }}</span>',
         props: ['myMessage']//HTML特性是不区分大小写的。所以，当使用的不是字符串模板时，camelCase(驼峰式命名)的prop 需要转换为相对应的kebab-case (短横线分隔式命名)
     });
-    new Vue({el:'#comp4',data:{bindval:'screen'}});
+    new Vue({el:'#comp4',
+        data:{
+            bindval:'screen'
+        }
+    });
 </script>
 <hr />
-<!--=======================================================-->
+<!--
+自定义列表组件
+-->
 <div id="comp6">
-    <ul><!--自定义组件-->
+    <ul>
         <todo v-for="each in list" v-bind:item="each" v-bind:key="each.id">
             <!--key是为了使vue重用和重新排序现有元素，而不复用-->
         </todo>
@@ -123,14 +170,17 @@
         }});
 </script>
 <hr />
-<!--=======================================================-->
+<!--
+使用自定义事件的表单输入组件
+-->
 <div id="comp7">
     <currency></currency>
 </div>
 <script>
     Vue.component('currency', {
         template: '\
-    <span>$\
+    <span>\
+    $\
       <input ref="input1" aa="a1" v-bind:value="value" v-on:input="updateValue($event.target.value)" >\
       <span ref="span1"></span>\
     </span>',
@@ -150,6 +200,9 @@
 </script>
 <!--=======================================================-->
 <hr />
+<!--
+单个插槽
+-->
 <div id="comp8">
     <parent-component></parent-component>
 </div>
@@ -163,7 +216,7 @@
 </script>
 <script type="text/x-template" id="parent1">
     <div>
-        <h3>我是父组件的标题</h3>
+        <h3>单个插槽</h3>
         <child-component>
             <!--<p>这是一些初始内容</p>
             <p>这是更多的初始内容</p>-->
@@ -180,10 +233,11 @@
     new Vue({el:'#comp8'});
 </script>
 <hr />
-<!--=======================================================-->
-<!--具名插槽-->
+<!--
+具名插槽
+-->
 <div id="comp9">
-
+    <parent-component2></parent-component2>
 </div>
 <script type="text/x-template" id="child2">
     <div class="container">
@@ -199,18 +253,27 @@
     </div>
 </script>
 <script type="text/x-template" id="parent2">
-    <app-layout>
-        <h1 slot="header">这里可能是一个页面标题</h1>
+    <child-component2>
+        <h3 slot="header">具名插槽</h3>
 
         <p>主要内容的一个段落。</p>
         <p>另一个主要段落。</p>
 
         <p slot="footer">这里有一些联系信息</p>
-    </app-layout>
+    </child-component2>
 </script>
 <script>
-
-    new Vue({el:'#'})
+    Vue.component('child-component2', {
+        template: '#child2'
+    });Vue.component('parent-component2', {
+        template: '#parent2'
+    });
+    new Vue({el:'#comp9'});
 </script>
+<hr />
+<!--
+
+-->
+
 </body>
 </html>
