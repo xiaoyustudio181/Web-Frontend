@@ -86,6 +86,10 @@ JavaScript 内联模板字符串
 <hr />
 <!--
 自定义组件调用父级事件
+使用 v-on 绑定自定义事件
+每个 Vue 实例都实现了事件接口，即：
+使用 $on(eventName) 监听事件
+使用 $emit(eventName) 触发事件
 -->
 <div id="comp5">
     <mycounter2 v-on:event1="increaseSum"></mycounter2>
@@ -117,8 +121,8 @@ JavaScript 内联模板字符串
 </script>
 <hr />
 <!--
+自定义组件的属性prop
 驼峰法命名
-自定义组价属性prop
 注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。
 -->
 <div id="comp4">
@@ -143,6 +147,74 @@ JavaScript 内联模板字符串
         }
     });
 </script>
+<hr />
+<!--
+prop验证
+非prop特性：可以直接传入组件，而不需要定义相应的 prop。如下例中的noprop="temp"
+若组件的class的值来自两个方向，一个来自组件定义，一个来自父组件，
+对于多数特性来说，传递给组件的值会覆盖组件本身设定的值。即例如传递 type="large" 将会覆盖 type="date" 且有可能破坏该组件！所幸我们对待 class 和 style 特性会更聪明一些，这两个特性的值都会做合并 (merge) 操作。
+-->
+<div id="comp4-2">
+    <example :prop-a="1" prop-b="2"
+             prop-c="hi" prop-f="11" noprop="temp"></example>
+    <!--字面量语法 vs 动态语法
+    初学者常犯的一个错误是使用字面量语法传递数值：<comp some-prop="1"></comp>
+    因为它是一个字面量 prop，它的值是字符串 "1" 而不是一个数值。
+    如果想传递一个真正的 JavaScript 数值，则需要使用 v-bind，从而让它的值被当作 JavaScript 表达式计算：<comp v-bind:some-prop="1"></comp>
+    -->
+</div>
+<script>
+    Vue.component('example', {
+        template:'<div>prop验证测试 ' +
+        'A: {{propA}}, ' +
+        'B: {{propB}}, ' +
+        'C: {{propC}}, ' +
+        'D: {{propD}}, ' +
+        'E: {{propE}}, ' +
+        'F: {{propF}}' +
+        '</div>',
+        props: {
+            propA: Number,// 基础类型检测 (`null` 指允许任何类型)
+            propB: [String, Number],// 可能是多种类型
+            propC: {// 必传且是字符串
+                type: String,
+                required: true
+            },
+            propD: {// 数值且有默认值
+                type: Number,
+                default: 100
+            },
+            propE: {// 数组/对象的默认值应当由一个工厂函数返回
+                type: Object,
+                default: function () {
+                    return { message: 'hello' };
+                }
+            },
+            propF: {// 自定义验证函数
+                validator: function (value) {
+                    return value > 10;
+                }
+            }
+            //type 可以是这些原生构造器：
+            //String, Number, Boolean, Function, Object, Array, Symbol
+            //type 也可以是一个自定义构造器函数，使用 instanceof 检测。
+
+            //当 prop 验证失败，Vue 会抛出警告 (如果使用的是开发版本)。
+            //注意 prop 会在组件实例创建之前进行校验，所以在 default 或 validator 函数里，诸如 data、computed 或 methods 等实例属性还无法使用。
+        }
+    });
+    new Vue({
+        el:'#comp4-2',
+        data:{
+            temp:''
+        }
+    });
+</script>
+<hr />
+<!--
+
+-->
+
 <hr />
 <!--
 自定义列表组件
@@ -265,7 +337,8 @@ JavaScript 内联模板字符串
 <script>
     Vue.component('child-component2', {
         template: '#child2'
-    });Vue.component('parent-component2', {
+    });
+    Vue.component('parent-component2', {
         template: '#parent2'
     });
     new Vue({el:'#comp9'});
