@@ -260,5 +260,156 @@ Bootstrap 提供了内置的样式，让胶囊式导航内处于激活状态的�
         Basic panel example
     </div>
 </div>
+<!--
+带标题的面版
+通过 .panel-heading 可以很简单地为面板加入一个标题容器。你也可以通过添加设置了 .panel-title 类的 <h1>-<h6> 标签，添加一个预定义样式的标题。不过，<h1>-<h6> 标签的字体大小将被 .panel-heading 的样式所覆盖。
+
+为了给链接设置合适的颜色，务必将链接放到带有 .panel-title 类的标题标签内。
+-->
+<div class="panel panel-default">
+    <div class="panel-heading">Panel heading without title</div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">Panel title</h1>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+<!--
+带脚注的面版
+把按钮或次要的文本放入 .panel-footer 容器内。注意面版的脚注不会从情境效果中继承颜色，因为他们并不是主要内容。
+-->
+<div class="panel panel-default">
+    <div class="panel-body">
+        Panel content
+    </div>
+    <div class="panel-footer">Panel footer</div>
+</div>
+<!--
+情境效果
+像其他组件一样，可以简单地通过加入有情境效果的状态类，给特定的内容使用更针对特定情境的面版。
+-->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">Panel title</h1>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h1 class="panel-title">Panel title</h1>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h1 class="panel-title">Panel title</h1>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h1 class="panel-title">Panel title</h1>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h1 class="panel-title">Panel title</h1>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+<!--
+带表格的面版
+为面板中不需要边框的表格添加 .table 类，是整个面板看上去更像是一个整体设计。如果是带有 .panel-body 的面板，我们为表格的上方添加一个边框，看上去有分隔效果。
+
+如果没有 .panel-body ，面版标题会和表格连接起来，没有空隙。
+-->
+<div class="panel panel-default">
+    <div class="panel-heading">Panel heading</div>
+    <div class="panel-body">
+        <p>Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content </p>
+    </div>
+    <table class="table">
+        <tr>
+            <th>First Name</th><th>Last Name</th><th>Username</th>
+        </tr>
+        <tr>
+            <td>Mark</td><td>Otto</td><td>@mdo</td>
+        </tr>
+        <tr>
+            <td>Jacob</td><td>Thornton</td><td>@fat</td>
+        </tr>
+        <tr>
+            <td>Larry</td><td>the Bird</td><td>@twitter</td>
+        </tr>
+    </table>
+</div>
+<!--
+带列表组的面版
+可以简单地在任何面版中加入具有最大宽度的列表组。
+-->
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Panel heading</div>
+    <div class="panel-body">
+        <p>Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content Panel content </p>
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div>
+<hr />
+<!--
+Well
+默认效果
+把 Well 用在元素上，就能有嵌入（inset）的简单效果。
+-->
+<div class="well">Look, I'm in a well!</div>
+<!--
+可选类/样式
+通过这两种可选修饰类，可以控制此组件的内补（padding）和圆角的设置。
+-->
+<div class="well well-lg">Look, I'm in a large well!</div>
+<div class="well well-sm">Look, I'm in a small well!</div>
+<hr />
+<!--
+具有响应式特性的嵌入内容
+
+根据被嵌入内容的外部容器的宽度，自动创建一个固定的比例，从而让浏览器自动确定视频或 slideshow 的尺寸，能够在各种设备上缩放。
+
+这些规则被直接应用在 <iframe>、<embed>、<video> 和 <object> 元素上。如果你希望让最终样式与其他属性相匹配，还可以明确地使用一个派生出来的 .embed-responsive-item 类。
+
+超级提示： 不需要为 <iframe> 元素设置 frameborder="0" 属性，因为我们已经替你这样做了！
+-->
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3">
+    <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
 </body>
 </html>
