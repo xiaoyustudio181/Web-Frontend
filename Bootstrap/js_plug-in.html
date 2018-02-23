@@ -35,7 +35,7 @@ data-dismiss="modal"是关闭弹窗的标志
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch demo modal
 </button>
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -52,10 +52,15 @@ data-dismiss="modal"是关闭弹窗的标志
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<button id="b">$('#myModal').modal('toggle')</button>
 <script>
     document.getElementById('save').addEventListener('click',function () {
         alert('Saved successfully.');
     });
+    $("#b").on('click',function () {
+        $('#myModal').modal('toggle');
+    })
 </script>
 <hr />
 <!--
@@ -105,6 +110,5 @@ data-dismiss="modal"是关闭弹窗的标志
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <hr />
-
 </body>
 </html>
