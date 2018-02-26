@@ -27,11 +27,29 @@ Bootstrap 中的导航组件都依赖同一个 .nav 类，状态类也是共用�
     <li role="presentation" class="active"><a href="#">Profile</a></li>
     <li role="presentation"><a href="#">Messages</a></li>
 </ul>
+
 <ul class="nav nav-tabs">
-    <li role="presentation"><a href="#">Home</a></li>
-    <li role="presentation" class="active"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
+    <li id="homeli" role="presentation">
+        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+    </li>
+    <li role="presentation">
+        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Profile</a>
+    </li>
+    <li role="presentation">
+        <a href="#messages" aria-controls="home" role="tab" data-toggle="tab">Messages</a>
+    </li>
 </ul>
+<!--
+To make tabs fade in, add .fade to each .tab-pane. The first tab pane must also have .in to make the initial content visible.
+-->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in" id="home">home home home </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">profile profile profile </div>
+    <div role="tabpanel" class="tab-pane fade" id="messages">messages messages messages </div>
+</div>
+<script>
+    $('#homeli a').tab('show');//默认显示
+</script>
 <hr />
 <!--
 胶囊式标签页
