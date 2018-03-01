@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>net</title>
+    <script src="vis.min.js"></script>
+    <script src="../JavaScript/helper.js"></script>
+</head>
+<style>
+    @import "vis.min.css";
+    #net {
+        width: 800px;
+        height: 500px;
+        border: 2px solid;
+    }
+</style>
+<body>
+<div id="net"></div>
+</body>
+<script>
+    var nodes = new vis.DataSet([
+        {id: 1, label: '1'},
+        {id: 2, label: '2'},
+        {id: 3, label: '3'},
+        {id: 4, label: '4'},
+        {id: 5, label: '5'}
+    ]);
+    var edges = new vis.DataSet([
+        {from: 1, to: 3},
+        {from: 1, to: 2},
+        {from: 2, to: 4},
+        {from: 2, to: 5}
+    ]);
+    var data = {nodes: nodes, edges: edges};
+    var container = findID('net');
+    var options = {
+        configure: {
+            enabled: true,//显示配置面板 true/false
+            //filter: 'physics',//nodes, edges, layout, interaction, manipulation, physics, selection, renderer
+
+            container:container,
+            showButton: true
+        }
+    };
+    /*
+     enabled：boolean型参数，默认为true。
+     用于切换配置界面的开关。
+     filter：类型可为String、array、boolean、function。
+     如果为boolean型，那么所有选项会被显示，否则一个都不会显示。
+     如果是一个String类型，那么可选项为nodes, edges, layout, interaction, manipulation, physics, selection, renderer。
+     如果是一个数组，那么前面提到的字段可多选。如果是个方法，且返回true，那么选项就会被展示。
+     container：容器
+     showButton：boolean型，是否显示按钮。
+     */
+    var net = new vis.Network(container, data, options);
+</script>
+</html>
