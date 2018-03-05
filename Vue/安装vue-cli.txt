@@ -17,5 +17,6 @@ Run->Edit Configurations->×óÉÏ½ÇµÄ+ºÅ->npm->ÔÚScriptsµÄÏÂÀ­²Ëµ¥ÖĞÕÒµ½devºÍbuild£
 ¡¡¡¡ÓÃphpstorm´ò¿ª.vueºóÃ»ÓĞhtml×ÖÌåÉ«£¬Settings -> plugins -> ËÑË÷vue.js -> search in repositories ->Ñ¡ÔñVue.js²¢Install¡£Ö®ºóÖØÆôphpstorm¡£
 
 ¡¡¡¡°²×°jquery£º
-$ cnpm install jquery
+$ cnpm install jquery --save
+£¨--saveÊÇ°ÑjqueryµÄÅäÖÃ±£´æµ½¸ùÄ¿Â¼ÏÂµÄpackage.jsonÎÄ¼ş£¬°üÀ¨°æ±¾ºÅ£¬ÏÂ´ÎinstallÔò¿ÉÒÔ¸ù¾İ°æ±¾ºÅ½øĞĞ°²×°£©
 ¡¡¡¡ÔÚÒªÊ¹ÓÃjqueryµÄÎÄ¼şÄÚÊ¹ÓÃ import $ from 'jquery'
