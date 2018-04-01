@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exception</title>
+</head>
+<body>
+
+</body>
+<script>
+    try{
+        alert(parseInt(var1));
+    }catch (ex){
+        console.log('异常消息：'+ex.message);
+    }finally {
+        console.log('异常处理完毕。');
+    }
+
+    try{
+        throw new Error('Whoops!');
+    }catch (ex){
+        console.log('异常消息：'+ex.message);
+    }
+
+    throw new Error('Whoops!');//不处理异常，无法向下执行
+    console.log('程序运行完毕。');
+
+</script>
+</html>
