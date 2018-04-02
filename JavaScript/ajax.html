@@ -8,20 +8,6 @@
 
 </body>
 <script>
-    //关于回调函数
-    function callback(var1) {
-        //alert(var1);
-    }
-    //调用匿名函数
-    (function () {
-        (function () {
-            var temp=123;
-            callback(temp);//取到匿名函数中的变量（拿到函数内部值的过程就是回滚函数）
-            //回调函数就是为了解决拿到函数内部的值而产生
-        })()
-    })()
-</script>
-<script>
     // 关于 XMLHttpRequest, Ajax
     // XMLHttpRequest 是一个 API，它为客户端提供了在客户端和服务器之间传输数据的功能。
     // 它提供了一个通过 URL 来获取数据的简单方式，并且不会使整个页面刷新。

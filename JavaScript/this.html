@@ -7,7 +7,7 @@
 <body>
 
 </body>
-<!--<script>
+<script>
     // 一，全局上下文。无论是否在严格模式下，在全局执行上下文中（在任何函数体外部）this 都指代全局对象。
     // 在浏览器中, window 对象同时也是全局对象：
     console.log(this === window); // true
@@ -18,7 +18,7 @@
     function f1(){
         return this;
     }
-    console.log(f1() === window);
+    console.log(f1() === window);//true
     //在Node中：f1() === global;
 
     //2，在严格模式下，this将保持他进入执行上下文时的值，所以下面的this将会默认为undefined。
@@ -27,7 +27,8 @@
         "use strict"; // 这里是严格模式
         return this;
     }
-    console.log(f2() === undefined);
+    console.log(f2() === undefined);//true
+    console.warn('====');
 </script>
 <script>
     //如果要想把 this 的值从一个上下文传到另一个，就要用 call 或者apply 方法。
@@ -35,11 +36,11 @@
     var obj = {var2: 'Custom var2'};
     var var2 = 'Global var2';// 这个属性是在global对象定义的。
     function whatsThis() {
-        return this.var2;  // this的值取决于函数的调用方式
+        console.log(this.var2);  // this的值取决于函数的调用方式
     }
-    console.log(whatsThis());// 'Global var2'
-    console.log(whatsThis.call(obj));// 'Custom var2'
-    console.log(whatsThis.apply(obj));// 'Custom var2'
+    whatsThis();// 'Global var2'
+    whatsThis.call(obj);// 'Custom var2'
+    whatsThis.apply(obj);// 'Custom var2'
     //================================================================================
     //当一个函数在其主体中使用 this 关键字时，可以通过使用函数继承自Function.prototype 的 call 或 apply 方法将 this 值绑定到调用中的特定对象。
     function add(c, d) {
@@ -56,6 +57,7 @@
         //console.log(Object.prototype.toString.call(this));
     }
     bar.call(7); //原始值 7 被隐式转换为对象
+    console.warn('====');
 </script>
 <script>
     //bind方法，ECMAScript 5 引入了 Function.prototype.bind。
@@ -71,54 +73,55 @@
 
     var obj1 = {a:'value3', b:f3, c:func3_1, d:func3_2};
     console.log(obj1.b(), obj1.c(), obj1.d());//value3, value1, value1
-</script>-->
+    console.warn('====');
+</script>
 <script>
+    (()=>{
+        console.log('arrow function');
+    })();
+
+    var f1=()=>{
+        console.log('arrow function 2');
+    };
+    f1();
+
     //在箭头函数中，this与封闭词法上下文的this保持一致。在全局代码中，它将被设置为全局对象：
-    var globalObject = this;
+    var f2=()=>{
+        console.log(this);
+    }
+    /*var f2=function () {
+        console.log(this);
+    };*/
+    f2();
+
     var foo = (() => this);
-    console.log(foo() === globalObject); // true
-    //注意：如果将this传递给call、bind、或者apply，它将被忽略。不过你仍然可以为调用添加参数，不过第一个参数（thisArg）应该设置为null。
+    console.log(foo() === this); // true
 
-    // 接着上面的代码
-    // 作为对象的一个方法调用
-    var obj = {foo: foo};
-    console.log(obj.foo() === globalObject); // true
-
-    // 尝试使用call来设定this
-    console.log(foo.call(obj) === globalObject); // true
-
-    // 尝试使用bind来设定this
-    foo = foo.bind(obj);
-    console.log(foo() === globalObject); // true
+    //注意：如果将this传递给call、bind、或者apply，它将被忽略（对于箭头函数）。不过你仍然可以为调用添加参数，不过第一个参数（thisArg）应该设置为null。
+    var obj={};
+    f2.call(obj);//仍然是 Window
     //无论如何，foo 的 this 被设置为他被创建时的上下文（在上面的例子中，就是全局对象）。这同样适用于在其他函数内创建的箭头函数：这些箭头函数的this被设置为封闭的词法上下文的。
-
-    // 创建一个含有bar方法的obj对象，
-    // bar返回一个函数，
-    // 这个函数返回this，
-    // 这个返回的函数是以箭头函数创建的，
-    // 所以它的this被永久绑定到了它外层函数的this。
-    // bar的值可以在调用中设置，这反过来又设置了返回函数的值。
+</script>
+<script>
     var obj = {
         bar: function() {
-            var x = (() => this);
+            //*/
+            var x = (() => this);//this被永久绑定到了它外层函数的this（外层存在不是obj的情况）
+            /*/
+            var x=function () {
+                //"use strict";
+                return this;
+            }
+            //*/
             return x;
         }
     };
-
-    // 作为obj对象的一个方法来调用bar，把它的this绑定到obj。
-    // 将返回的函数的引用赋值给fn。
-    var fn = obj.bar();
-
-    // 直接调用fn而不设置this，
-    // 通常(即不使用箭头函数的情况)默认为全局对象
-    // 若在严格模式则为undefined
-    console.log(fn() === obj); // true
-
-    // 但是注意，如果你只是引用obj的方法，
-    // 而没有调用它
-    var fn2 = obj.bar;
-    // 那么调用箭头函数后，this指向window，因为它从 bar 继承了this。
-    console.log(fn2()() == window); // true
-    //在上面的例子中，一个赋值给了 obj.bar的函数（称为匿名函数 A），返回了另一个箭头函数（称为匿名函数 B）。因此，在 A 调用时，函数B的this被永久设置为obj.bar（函数A）的this。当返回的函数（函数B）被调用时，它this始终是最初设置的。在上面的代码示例中，函数B的this被设置为函数A的this，即obj，所以即使被调用的方式通常将其设置为 undefined 或全局对象（或者如前面示例中的其他全局执行上下文中的方法），它的 this 也仍然是 obj 。
+    var f = obj.bar();//此时箭头函数的外层是Window
+    //试验用非箭头函数和箭头函数两种方法得到的结果
+    console.log(f());
+    console.log(f()===obj);
+    //如果只是引用而未调用，那么调用箭头函数后，this指向window，因为它从 bar 继承了this
+    f=obj.bar;
+    console.log(f()() == window); // true
 </script>
 </html>
