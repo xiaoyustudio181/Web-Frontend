@@ -77,11 +77,11 @@
      open()
      初始化一个请求，该方法用于JavaScript代码中；如果是本地代码, 使用 openRequest()方法代替。注意：在一个已经激活的request下（已经调用open()或者openRequest()方法的request）再次调用这个方法相当于调用了abort()方法。
      void open(
-     DOMString method,
-     DOMString url,
-     optional boolean async,
-     optional DOMString user,
-     optional DOMString password
+         DOMString method,
+         DOMString url,
+         optional boolean async,
+         optional DOMString user,
+         optional DOMString password
      );
      参数
      method，请求所使用的HTTP方法; 例如 "GET", "POST", "PUT", "DELETE"等，如果下个参数是非HTTP(S)的URL,则忽略该参数；
@@ -108,8 +108,12 @@
      void setRequestHeader(DOMString header,DOMString value);
      参数：header，将要被赋值的请求头名称；value，给指定的请求头赋的值。
      */
-    rq.open("GET","demo.php?r=" + Math.random(),true);//以防从缓存载入，所以加上随机get参数
-    //rq.send();
+
+    //rq.open("GET","demo.php?r=" + Math.random(),true);//以防从缓存载入，所以加上随机get参数
+    rq.open("POST","/ajax_test.php",true);
+    rq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    rq.responseType='json';
+    //rq.send('a=123&b=qwe');
 
 </script>
 </html>
