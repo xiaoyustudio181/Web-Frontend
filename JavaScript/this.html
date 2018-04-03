@@ -63,16 +63,18 @@
     //bind方法，ECMAScript 5 引入了 Function.prototype.bind。
     //调用f.bind(someObject)会创建一个与f具有相同函数体和作用域的函数，但是在这个新函数中，this将永久地被绑定到了bind的第一个参数，无论这个函数是如何被调用的。
     function f3(){
-        return this.a;
+        console.log(this.a);
     }
     var func3_1 = f3.bind({a:"value1"});
-    console.log(func3_1());//value1
+    func3_1();//value1
 
     var func3_2 = func3_1.bind({a:'value2'}); // bind只生效一次！
-    console.log(func3_2());//value1
+    func3_2();//value1
 
     var obj1 = {a:'value3', b:f3, c:func3_1, d:func3_2};
-    console.log(obj1.b(), obj1.c(), obj1.d());//value3, value1, value1
+    obj1.b();//value3
+    obj1.c();//value1
+    obj1.d();//value1
     console.warn('====');
 </script>
 <script>
