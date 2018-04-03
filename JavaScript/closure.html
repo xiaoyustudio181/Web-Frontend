@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>closure</title>
+</head>
+<body>
+
+</body>
+<script>
+    function f1() {
+        var name = "Mozilla";
+        function f1_1() {
+            console.log(name);//Mozilla
+        }
+        f1_1();
+    }
+    f1();
+
+    function f2() {
+        var name = "Mozilla";
+        function f2_1() {
+            var name='Chrome';
+            console.log(name);//Chrome
+        }
+        f2_1();
+    }
+    f2();
+
+
+
+</script>
+</html>
