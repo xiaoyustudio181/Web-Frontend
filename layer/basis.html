@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layer basis</title>
+    <script src="../JavaScript/helper.js"></script>
+    <script src="../jQuery/jquery-3.0.0.min.js"></script>
+    <script src="layer/layer.js"></script>
+</head>
+<body>
+<button id="1">layer.msg('')</button>
+<button id="1-2">layer.msg('',{icon:1})</button>
+<button id="1-3">layer.msg('',{time:500})</button>
+<button id="1-4">layer.msg('',{btn:[]})</button>
+<hr />
+<button id="2">layer.alert('')</button>
+<button id="2-2">layer.alert('',{icon:1,skin:''})</button>
+<hr />
+<button id="3">layer.confirm('')</button>
+
+</body>
+<script>
+bindClick(1,function () {
+    layer.msg('hello world');
+})
+bindClick('1-2',function () {
+    layer.msg('hello world',{icon:1});//1-绿勾，2-红叉，3-黄问号，4-灰锁，5-红垮脸，6-绿笑脸，default-黄叹号
+})
+bindClick('1-3',function () {
+    layer.msg('hello world',{icon:4,time:500});
+})
+bindClick('1-4',function () {
+    layer.msg('hello world',{icon:4,btn:['ok','no','??']},function () {
+        layer.msg('common response');
+    });
+})
+bindClick(2,function () {
+    layer.alert('hello world');
+})
+bindClick('2-2',function () {
+    layer.alert('内容', {
+        icon: 1,//1-绿勾，2-红叉，3-黄问号，4-灰锁，5-红垮脸，6-绿笑脸，default-黄叹号
+        skin: 'layer-ext-moon'//该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+
+    })
+})
+bindClick(3,function () {
+    layer.confirm('how are you?', {btn:['good', 'not good', 'cancel']},
+            function () {layer.msg('good?')},
+            function () {layer.msg('not good?')});
+})
+</script>
+</html>
