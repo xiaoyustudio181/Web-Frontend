@@ -2,30 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>js object</title>
+    <title></title>
+    <script src="helper.js"></script>
 </head>
-<body>
+<body>对象类型的变量
 </body>
 <script>
-    console.dir(Object);
-    var obj={name:'peter',age:24,gender:true,中文:1.1,12:'十二'};
-    console.log(obj);
-    console.log(obj.name);
-    console.log(obj['name']);
-    obj['hobby']='singing';
-    console.log(obj);
-    console.log(Object.keys(obj));
+    msg(Object,'d');
+    var person={
+        name:'peter',
+        age:24,
+        gender:true,
+        籍贯:'成都',
+        100:'数字键名'
+    };
+    msg(person);
+    msg(person.name);//访问字段
+    msg(person['name']);//访问字段
+    person['hobby']='singing';//新增字段
+    msg(person);
+    msg(Object.keys(person));//所有键名
 
-    console.warn('for');
-    for(key in obj){
-        console.log(key,'-',obj[key]);
+    for(key in person){//遍历对象
+        var each=person[key];
+        msg(key,'-',each);
     }
-//引用类型测试
-    console.warn('引用类型测试');
-    console.log(obj);
-    var obj2=obj;
-    obj2.name='jim';
-    console.log(obj);
+    delete person.hobby;
 
+    //引用类型测试
+    msg('引用测试','w');
+    msg(person);
+    var person2=person;
+    person2.name='jim';
+    msg(person);
 </script>
 </html>

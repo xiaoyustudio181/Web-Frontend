@@ -2,54 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>js string function</title>
+    <title></title>
+    <script src="helper.js"></script>
 </head>
-<body>
+<body>字符串
 </body>
 <script>
-    console.dir(String);
+    msg(String,'d');
     var str='abc-dea-';
-    console.log(str);
-    console.log(typeof str);//string
-    console.log(str.length);//8
-    console.log(str+'fg');//abc-dea-fg
-    console.log(str.concat('fg'));//abc-dea-fg
-    console.log(str.charAt(0));//a
-    console.log(str.indexOf('a'));//0
-    console.log(str.lastIndexOf('a'));//6
-    console.log(str.startsWith('ab'));//true
-    console.log(str.padStart(10,'1'));//11abc-dea-
-    console.log(str.toUpperCase());//ABC-DEA-
-    console.log('ABC'.toLowerCase());//abc
-    console.log(str.padEnd(10,'1'));//abc-dea-11
-    console.log(str.repeat(2));//abc-dea-abc-dea-
-    console.log(str.replace('abc','123'));//123-dea-
-    console.log(str.split('-'));//["abc", "dea", ""]
-    console.log(str.split('-',2));//["abc", "dea"]
-    console.log(String.valueOf(str));//ƒ String() { [native code] }
+    msg(str);
+    msg(typeof str);//string
+    msg(str.length);//8
+    msg(str+'fg');//abc-dea-fg
+    msg(str.concat('fg'));//abc-dea-fg
+    msg(str.charAt(0));//a
+    msg(str.indexOf('a'));//0
+    msg(str.lastIndexOf('a'));//6
+    msg(str.startsWith('ab'));//true
+    msg(str.padStart(10,'1'));//11abc-dea-
+    msg(str.toUpperCase());//ABC-DEA-
+    msg('ABC'.toLowerCase());//abc
+    msg(str.padEnd(10,'1'));//abc-dea-11
+    msg(str.repeat(2));//abc-dea-abc-dea-
+    msg(str.replace('abc','123'));//123-dea-
+    msg(str.split('-'));//["abc", "dea", ""]
+    msg(str.split('-',2));//["abc", "dea"]
+    msg(String.valueOf(str));//ƒ String() { [native code] }
 
-    console.log(str.slice(1));//bc-dea-
-    console.log(str.slice(1,2));//b [start,end)
-    console.log(str.slice(-3));//ea-
+    msg(str.slice(1));//bc-dea-
+    msg(str.slice(1,2));//b [start,end)
+    msg(str.slice(-3));//ea-
 
-    console.log(str.substr(1));//bc-dea-
-    console.log(str.substr(1,2));//bc [start,end]
-    console.log(str.substr(-3));//ea-
+    msg(str.substr(1));//bc-dea-
+    msg(str.substr(1,2));//bc [start,end]
+    msg(str.substr(-3));//ea-
 
-    console.log(str.substring(1));//bc-dea-
-    console.log(str.substring(1,2));//b [start,end)
-    console.log(str.substring(-3));//ea-
+    msg(str.substring(1));//bc-dea-
+    msg(str.substring(1,2));//b [start,end)
+    msg(str.substring(-3));//ea-
 
-    console.log(str.search(/bc-d/));//1 返回与正则表达式查找内容匹配的第一个子字符串的位置
-    console.log(str.match(/^abc-dea-$/));//[...] 有匹配
-    console.log(str.match(/abc-df/));//null 无匹配
+    msg(str.search(/bc-d/));//1 返回与正则表达式查找内容匹配的第一个子字符串的位置
+    msg(str.match(/^abc-dea-$/));//[...] 有匹配
+    msg(str.match(/abc-df/));//null 无匹配
 
     str='  abc-dea- ';
-    console.log(str);//  abc-dea-
-    console.log(str.length);//11
-    console.log(str.trimLeft().length);//9
-    console.log(str.trimRight().length);//10
-    console.log(str.trim().length);//8
+    msg(str);//  abc-dea-
+    msg(str.length);//11
+    msg(str.trimLeft().length);//9
+    msg(str.trimRight().length);//10
+    msg(str.trim().length);//8
 
 </script>
 </html>

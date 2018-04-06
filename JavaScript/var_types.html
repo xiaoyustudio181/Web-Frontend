@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="helper.js"></script>
+</head>
+<body>变量类型
+</body>
+<script>
+    msg(Number,'d');
+    msg(String,'d');
+    msg(Boolean,'d');
+    msg(Array,'d');
+    msg(Date,'d');
+    msg(Object,'d');
+    msg(Function,'d');
+
+    msg('','w');
+
+    msg(typeof 12.3);//number
+    msg(typeof 'abc');//string
+    msg(typeof true);//boolean
+    msg(typeof [12,'ab']);//object
+    msg(typeof {a:12,b:'ab'});//object
+    msg(typeof function (){});//function
+    msg(typeof null);//object //null显示为Object类型而非null类型是为了向下兼容。
+    msg(typeof a);//undefined
+
+    msg('类型的转化与判断','w');
+
+    msg(1=='1');//true,转换类型后判断值
+    msg(1==true);//true
+    msg(0==false);//true
+    msg(''==false);//true
+    msg([]==false);//true
+    msg(function(){}==false);//false
+
+    msg(1==='1');//false,判断类型和值
+    msg(1===true);//false
+    msg(0===false);//false
+    msg(''===false);//false
+    msg([]===false);//false
+    msg(function(){}===false);//false
+
+    msg('','w');
+
+    //变量的作用域
+    //非var定义的变量都是【全局变量】，不论是在方法外还是方法内定义。
+    //在方法内用var定义的变量是【局部变量】（包括参数），局部变量只在方法内有效。
+</script>
+</html>

@@ -1,4 +1,4 @@
-//== Helper version 180301.1444
+//== version 180301.1444
 function findID(id) {return document.getElementById(id);}
 function findClass(className) {return document.getElementsByClassName(className);}
 function findTag(tag) {return document.getElementsByTagName(tag);}

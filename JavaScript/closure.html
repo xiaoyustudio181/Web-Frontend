@@ -2,32 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>closure</title>
+    <title></title>
+    <script src="helper.js"></script>
 </head>
 <body>
-
+闭包：闭包是函数和声明该函数的词法环境的组合。
 </body>
 <script>
     function f1() {
         var name = "Mozilla";
         function f1_1() {
-            console.log(name);//Mozilla
+            msg(name);
         }
         f1_1();
     }
     f1();
-
     function f2() {
         var name = "Mozilla";
         function f2_1() {
             var name='Chrome';
-            console.log(name);//Chrome
+            msg(name);//Chrome
         }
         f2_1();
     }
     f2();
+    //==================================================================
+    function makeFunc() {
+        var name = "Mozilla";
+        function displayName() {//被外部函数返回
+            msg(name);//Mozilla
+        }
+        return displayName;
+    }
 
+    var myFunc = makeFunc();
+    myFunc();
+    //==================================================================
+    function makeAdder(x) {
+        return function(y) {
+            msg(x + y);
+        };
+    }
 
+    var add5 = makeAdder(5);//生成新函数
+    var add10 = makeAdder(10);//生成新函数
 
+    add5(2);  // 7
+    add10(2); // 12
+    //==================================================================
+    //使用闭包来定义公共函数，并令其可以访问私有函数和变量。这个方式也称为模块模式（module pattern）
+    var Counter = (function() {
+        var privateCounter = 0;
+        function changeBy(val) {
+            privateCounter += val;
+        }
+        return {
+            increment: function() {
+                changeBy(1);
+            },
+            decrement: function() {
+                changeBy(-1);
+            },
+            value: function() {
+                return privateCounter;
+            }
+        }
+    })();
+
+    msg(Counter.value());//0
+    Counter.increment();
+    Counter.increment();
+    msg(Counter.value());//2
+    Counter.decrement();
+    msg(Counter.value());//1
+    //==================================================================
 </script>
 </html>

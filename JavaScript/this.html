@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>this</title>
+    <title></title>
+    <script src="helper.js"></script>
 </head>
 <body>
-
+this
 </body>
 <script>
     // 一，全局上下文。无论是否在严格模式下，在全局执行上下文中（在任何函数体外部）this 都指代全局对象。
     // 在浏览器中, window 对象同时也是全局对象：
-    console.log(this === window); // true
+    msg(this === window); // true
     var var1 = 11;
-    console.log(window.var1 === this.var1); // true
+    msg(window.var1 === this.var1); // true
     // 二，函数上下文。在函数内部，this的值取决于函数被调用的方式。
     //1，在非严格模式下，且 this 的值不是由该调用设置的，所以 this 的值默认指向全局对象。
     function f1(){
         return this;
     }
-    console.log(f1() === window);//true
+    msg(f1() === window);//true
     //在Node中：f1() === global;
 
     //2，在严格模式下，this将保持他进入执行上下文时的值，所以下面的this将会默认为undefined。
@@ -27,8 +28,8 @@
         "use strict"; // 这里是严格模式
         return this;
     }
-    console.log(f2() === undefined);//true
-    console.warn('====');
+    msg(f2() === undefined);//true
+    msg('','w');
 </script>
 <script>
     //如果要想把 this 的值从一个上下文传到另一个，就要用 call 或者apply 方法。
@@ -36,7 +37,7 @@
     var obj = {var2: 'Custom var2'};
     var var2 = 'Global var2';// 这个属性是在global对象定义的。
     function whatsThis() {
-        console.log(this.var2);  // this的值取决于函数的调用方式
+        msg(this.var2);  // this的值取决于函数的调用方式
     }
     whatsThis();// 'Global var2'
     whatsThis.call(obj);// 'Custom var2'
@@ -44,7 +45,7 @@
     //================================================================================
     //当一个函数在其主体中使用 this 关键字时，可以通过使用函数继承自Function.prototype 的 call 或 apply 方法将 this 值绑定到调用中的特定对象。
     function add(c, d) {
-        console.log(this.a + this.b + c + d);
+        msg(this.a + this.b + c + d);
     }
     var var3 = {a: 1, b: 2};
     add.call(var3, 3, 4);//第一个参数是作为‘this’使用的对象，后续参数作为参数传递给函数调用
@@ -53,17 +54,17 @@
     //使用 call 和 apply 函数的时候要注意，如果传递给 this 的值不是一个对象，JavaScript 会尝试使用内部 ToObject 操作将其转换为对象。
     //因此，如果传递的值是一个原始值比如 7 或 'foo'，那么就会使用相关构造函数将它转换为对象，所以原始值 7 会被转换为对象，像 new Number(7) 这样，而字符串 'foo' 转化成 new String('foo') 这样，例如：
     function bar() {
-        console.log(this);
-        //console.log(Object.prototype.toString.call(this));
+        msg(this);
+        //msg(Object.prototype.toString.call(this));
     }
     bar.call(7); //原始值 7 被隐式转换为对象
-    console.warn('====');
+    msg('','w');
 </script>
 <script>
     //bind方法，ECMAScript 5 引入了 Function.prototype.bind。
     //调用f.bind(someObject)会创建一个与f具有相同函数体和作用域的函数，但是在这个新函数中，this将永久地被绑定到了bind的第一个参数，无论这个函数是如何被调用的。
     function f3(){
-        console.log(this.a);
+        msg(this.a);
     }
     var func3_1 = f3.bind({a:"value1"});
     func3_1();//value1
@@ -75,29 +76,29 @@
     obj1.b();//value3
     obj1.c();//value1
     obj1.d();//value1
-    console.warn('====');
+    msg('','w');
 </script>
 <script>
     (()=>{
-        console.log('arrow function');
+        msg('arrow function');
     })();
 
     var f1=()=>{
-        console.log('arrow function 2');
+        msg('arrow function 2');
     };
     f1();
 
     //在箭头函数中，this与封闭词法上下文的this保持一致。在全局代码中，它将被设置为全局对象：
     var f2=()=>{
-        console.log(this);
+        msg(this);
     }
     /*var f2=function () {
-        console.log(this);
+        msg(this);
     };*/
     f2();
 
     var foo = (() => this);
-    console.log(foo() === this); // true
+    msg(foo() === this); // true
 
     //注意：如果将this传递给call、bind、或者apply，它将被忽略（对于箭头函数）。不过你仍然可以为调用添加参数，不过第一个参数（thisArg）应该设置为null。
     var obj={};
@@ -120,10 +121,10 @@
     };
     var f = obj.bar();//此时箭头函数的外层是Window
     //试验用非箭头函数和箭头函数两种方法得到的结果
-    console.log(f());
-    console.log(f()===obj);
+    msg(f());
+    msg(f()===obj);
     //如果只是引用而未调用，那么调用箭头函数后，this指向window，因为它从 bar 继承了this
     f=obj.bar;
-    console.log(f()() == window); // true
+    msg(f()() == window); // true
 </script>
 </html>

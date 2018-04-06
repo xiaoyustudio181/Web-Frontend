@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="helper.js"></script>
+</head>
+<body>
+prototype原型
+</body>
+<script>
+    function Person(name,age) {//构造函数
+        this.name=name;
+        this.age=age;
+    }
+    Person.prototype.eat=function () {//类方法
+        msg(this.name+' is eating.');
+    };
+    msg(Person);
+    msg(typeof Person);
+
+    msg(Person.prototype);
+    msg(typeof Person.prototype);
+
+    var p1=new Person('Tom',11);
+    msg(p1);
+    p1.eat();
+
+    msg('','w');
+
+    function Student(name,age,school) {
+        Person.call(this,name,age);//调用父类构造函数
+        this.school='no.1 primary school';
+    }
+    Student.prototype=new Person();//继承
+    Student.prototype.eat=function () {
+        Person.prototype.eat.call(this);//调用父类方法
+        msg('... in '+this.school);
+    };
+
+    msg(Student);
+    msg(typeof Student);
+
+    msg(Student.prototype);
+    msg(typeof Student.prototype);
+
+    var s1=new Student('Jim',10);
+    msg(s1);
+    s1.eat();
+
+</script>
+</html>

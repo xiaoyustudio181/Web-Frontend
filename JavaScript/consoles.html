@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+控制台，对话框
+</body>
+<script>
+    console.log('console.log(%d)',1,2);//向标准输出流打印字符并以换行符结束。该方法接收若干 个参数，如果只有一个参数，则输出这个参数的字符串形式。如果有多个参数，则 以类似于C 语言 printf() 命令的格式输出。
+    console.log('output: %d, %s, %f', 1991,'hi',1.23);
+    console.info('console.info(%d)',1,2);//该命令的作用是返回信息性消息，这个命令与console.log差别并不大，除了在chrome中只会输出文字外，其余的会显示一个蓝色的惊叹号。
+    console.error('console.error(%d)',1,2);//输出错误消息的。控制台在出现错误时会显示是红色的叉子。
+    console.warn('console.warn(%d)',1,2);//输出警告消息。控制台出现有黄色的惊叹号。
+    console.dir('console.dir()');//用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。
+
+    console.time("timer1");//输出时间，表示计时开始。
+    console.trace('hi');//向标准错误流输出当前的调用栈。
+    console.assert(1==2,'no.');//用于判断某个表达式或变量是否为真，接收两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。
+    console.timeEnd('timer1');//结束时间，表示计时结束。
+
+    /*if(confirm('are you sure?')){
+        alert('yes');
+    }else {
+        alert('no');
+    }
+    alert(prompt('input something...'));*/
+</script>
+</html>

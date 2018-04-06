@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>JavaScript正则表达式</title>
-    <script src="MyJS.js"></script>
+    <script src="helper.js"></script>
 </head>
 <body>
+<h3>正则表达式</h3>
 <input id="regex" type="text" />
-<button id="test">Test</button>
 <span id="result"></span><br />
 <span id="regexstr"></span>
 <script>
     //正则表达式
-    bindClick('test',function () {
+    findID('regex').addEventListener('blur',function () {
         var text=findID('regex').value;
         var regex=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
         var result=findID('result');
         /*if(regex.test(text))
-            result.innerHTML='right';
-        else result.innerHTML='wrong';*/
+         result.innerHTML='right';
+         else result.innerHTML='wrong';*/
         msg(text.match(regex));//返回匹配信息
         if(text.match(regex))
             result.innerHTML='right';

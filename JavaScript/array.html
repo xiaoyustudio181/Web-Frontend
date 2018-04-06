@@ -2,101 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>js array function</title>
+    <title></title>
+    <script src="helper.js"></script>
 </head>
-<body>
+<body>数组
 </body>
 <script>
-    console.dir(Array);
+    msg(Array,'d');
     var arr=[1,2,'a','b',{p:10}];
-    console.log(Array.isArray(arr));//true
-    console.log(arr);//(5) [1, 2, "a", "b", {…}]
-    console.log(arr.length);//5
-    console.log(arr.concat(3,'c'));//(7) [1, 2, "a", "b", {…}, 3, "c"]
-    //console.log(arr.pop(9,0));//5
-    console.log(arr.every(function (value) {
-        return typeof value=='number' ||
-                typeof value=='string' ||
-                typeof value=='object';
-    }));//true
-    console.log(arr.every(function (value) {
-        return typeof value=='number' ||
-                typeof value=='string';
-    }));//false
-    console.log(arr.fill(0));//[0, 0, 0, 0, 0] 以指定元素填充
-    console.log(arr.fill(1,1,3));//[0, 1, 1, 0, 0]
-    arr=[1,2,'a','b',{p:10}];
-    console.log(arr.filter(function (value) {
-        return typeof value=='string';
-    }));//["a", "b"] 过滤掉不符合条件的元素
-    console.log(arr.find(function (value) {
-        return typeof value=='object';
-    }));//{p: 10} 寻找数组中第一个符合条件的元素
-    console.log(arr.findIndex(function (value) {
-        return typeof value=='object';
-    }));//{p: 10} 寻找数组中第一个符合条件的元素索引
-    arr.forEach(function (each) {
-        console.warn(each);
-    });//对数组中每个元素执行
-    console.log(arr.includes(2));//true 检测数组中是否包含指定元素
-    console.log(arr.indexOf(2));//1
-    console.log(arr.lastIndexOf(2));//1
-    console.log(arr.join());//1,2,a,b,[object Object]
-    console.log(arr.join('-'));//1-2-a-b-[object Object]
+    msg(Array.isArray(arr));//true
+    msg(arr);//(5) [1, 2, "a", "b", {…}]
+    msg('Length: '+arr.length);//5
+    msg(arr.concat(3,'c'));//返回添加元素后的数组，原数组并未改变。(7) [1, 2, "a", "b", {…}, 3, "c"]
+    msg(arr);
 
-    /*var iterator=arr.keys();//获取数组中所有键名的迭代器
+    msg('','w');
+
+    msg(arr.every(function (value) {//判断是否每个元素都满足函数中的条件
+        return typeof value=='number' ||
+                //typeof value=='string' ||
+                typeof value=='object';
+    }));
+
+    msg('','w');
+
+    msg(arr.fill(0));//[0, 0, 0, 0, 0] 以指定元素填充
+    msg(arr.fill(1,1,4));//[0, 1, 1, 0, 0] [startIndex,endIndex)
+
+    arr=[1,2,'a','b',{p:10}];
+    msg(arr.filter(function (value) {//过滤掉不符合条件的元素
+        return typeof value=='string';
+    }));//["a", "b"]
+    msg(arr.find(function (value) {//寻找数组中第一个符合条件的元素
+        return typeof value=='object';
+    }));//{p: 10}
+    msg(arr.findIndex(function (value) {//寻找数组中第一个符合条件的元素索引
+        return typeof value=='object';
+    }));//{p: 10}
+
+    msg('','w');
+
+    arr.forEach(function (each) {//对数组中每个元素执行，遍历数组
+        console.log(each);
+    });
+
+    msg('','w');
+
+    msg(arr.includes(2));//true 检测数组中是否包含指定元素
+    msg(arr.indexOf(2));//1
+    msg(arr.lastIndexOf(2));//1
+    msg(arr.join());//1,2,a,b,[object Object]
+    msg(arr.join('-'));//1-2-a-b-[object Object]
+
+    msg('','w');
+
+    var iterator=arr.keys();//获取数组中所有键名的迭代器
     while (1){
         var each=iterator.next();
         if(each.done)break;
-        else console.log(each.value);
-    }*/
-    console.log(arr.map(function (value) {
+        else msg(each.value);
+    }
+
+    msg('','w');
+
+    msg(arr.map(function (value) {//对数组中每个元素执行后返回新数组
         return value+2;
-    }));//[3, 4, "a2", "b2", "[object Object]2"] 对数组中每个元素执行后返回新数组
+    }));//[3, 4, "a2", "b2", "[object Object]2"]
+
+    msg('','w');
 
     arr.push(98,99);//向数组尾部添加元素
-    console.log(arr);//[1, 2, "a", "b", {…}, 98, 99]
-    arr.pop();//从数组尾部移除元素
-    arr.pop();//从数组尾部移除元素
-    console.log(arr);//[1, 2, "a", "b", {…}, 98]
+    msg(arr);//[1, 2, "a", "b", {…}, 98, 99]
+    arr.pop();////从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度。
+    arr.pop();
+    msg(arr);//[1, 2, "a", "b", {…}]
 
     arr.unshift(90,91);//向数组头部添加元素
-    console.log(arr);//[1, 2, "a", "b", {…}, 98, 99]
+    msg(arr);//[1, 2, "a", "b", {…}, 98, 99]
     arr.shift();//从数组头部移除元素
     arr.shift();//从数组头部移除元素
-    console.log(arr);//[1, 2, "a", "b", {…}, 98, 99]
+    msg(arr);//[1, 2, "a", "b", {…}, 98, 99]
+
+    msg('','w');
 
     var arr2=['z','x','y'];
-    console.log(arr2.reduce(function (accumulator, each) {//累加器（从左到右），缩小用
+    msg(arr2.reduce(function (accumulator, each) {//累加器（从左到右），缩小用
         return accumulator+each;
     }));//zxy
     arr2=['z','x','y'];
-    console.log(arr2.reduceRight(function (accumulator, each) {//累加器（从右到左），缩小用
+    msg(arr2.reduceRight(function (accumulator, each) {//累加器（从右到左），缩小用
         return accumulator+each;
     }));//yxz
-    console.log(arr.reverse());//[{…}, "b", "a", 2, 1]
+
+    msg('','w');
+
+    msg(arr);
+    msg(arr.reverse());//[{…}, "b", "a", 2, 1]
     arr=[1,2,'a','b',{p:10}];
 
-    console.log(arr.slice(2));//["a", "b", {…}]
-    console.log(arr.slice(0,2));//[1,2] [start,end)
-    console.log(arr.slice(-2));//["b", {…}]
+    msg('','w');
 
+    //返回截取的部分
+    msg(arr.slice(2));//["a", "b", {…}]
+    msg(arr.slice(0,2));//[1,2] [start,end)
+    msg(arr.slice(-2));//["b", {…}]
+
+    //删除元素并插入
     arr.splice(1,0,'z');//在索引1处插入元素
-    console.log(arr);//[1, "z", 2, "a", "b", {…}]
+    msg(arr);//[1, "z", 2, "a", "b", {…}]
     arr.splice(1,1,'x');//在索引1处开始向后删除1个元素并插入元素
-    console.log(arr);//[1, "x", 2, "a", "b", {…}]
+    msg(arr);//[1, "x", 2, "a", "b", {…}]
 
+    //排序
     arr2=[3,1,2];
-    console.log(arr2.sort());//[1, 2, 3]
+    msg(arr2.sort());//[1, 2, 3]
 
-    console.log(arr2.some(function (value) {
+    msg(arr2.some(function (value) {//检测数组中是否至少有一个元素符合条件
         return value>2;
-    }));//true 检测数组中是否至少有一个元素符合条件
+    }));//true
 
-    console.warn('引用类型测试');
-    console.log(arr);
+    msg('引用测试','w');
+    msg(arr);
     arr1=arr;
     arr1[0]=111;
-    console.log(arr);
+    msg(arr);
 </script>
 </html>

@@ -13,42 +13,6 @@
 <div id="container" style="position: relative"></div>
 <script>
     //面向对象
-    /*/
-     function Square(x,y){
-     this.x=x;
-     this.y=y;
-     this.step=25;
-     this.view = document.createElement('square');
-     this.view.style.width = '50px';
-     this.view.style.height = '50px';
-     this.view.style.backgroundColor= 'skyblue';
-     this.view.style.position='absolute';
-     this.view.style.left=(this.x*this.step)+'px';
-     this.view.style.top=(this.y*this.step)+'px';
-     findID('container').appendChild(this.view);
-     //以上相当于构造函数
-     this.showPosition = function () {
-     console.log('('+this.x+','+this.y+')');
-     };
-     this.moveUp = function(y) {
-     this.y-=y;
-     this.view.style.top=(this.y*this.step)+'px';
-     };
-     this.moveDown = function(y) {
-     this.y+=y;
-     this.view.style.top=(this.y*this.step)+'px';
-     };
-     this.moveLeft = function(x) {
-     this.x-=x;
-     this.view.style.left=(this.x*this.step)+'px';
-     };
-     this.moveRight = function(x) {
-     this.x+=x;
-     this.view.style.left=(this.x*this.step)+'px';
-     };
-     this.showPosition();
-     }
-     /*/
     //数据与显示分层思想
     function Square(x,y) {//数据层
         this.x = x;
@@ -89,8 +53,6 @@
         Square.prototype.moveRight.call(this,x);
         this.view.style.left=(this.x*this.step)+'px';
     };
-    //*/
-    //var squ = new Square(8,-2);
     var squ = new HtmlSquare(8,-2);
     bindClick(60,function () {squ.moveLeft(1);});
     bindClick(61,function () {squ.moveRight(1);});

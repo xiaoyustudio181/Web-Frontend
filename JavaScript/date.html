@@ -2,34 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>js date function</title>
+    <title></title>
+    <script src="helper.js"></script>
 </head>
-<body>
+<body>日期
 </body>
 <script>
-    console.dir(Date);
+    msg(Date,'d');
     var t=new Date();
     var b=new Date(1993,3,19,10,30,15,100);//月份从0开始计数
-    console.dir(t);
-    console.dir(b);
-    console.log(t.getFullYear());//年
-    console.log(t.getMonth()+1);//月
-    console.log(t.getDate());//日
-    console.log(t.getHours());//时
-    console.log(t.getMinutes());//分
-    console.log(t.getSeconds());//秒
-    console.log(t.getMilliseconds());//毫秒
-    console.log(t.getTime());//
+    msg(t,'d');
+    msg(b,'d');
+    msg(t.getFullYear());//年
+    msg(t.getMonth()+1);//月
+    msg(t.getDate());//日
+    msg(t.getHours());//时
+    msg(t.getMinutes());//分
+    msg(t.getSeconds());//秒
+    msg(t.getMilliseconds());//毫秒
+    msg(t.getTime());//
 
     var timer=setInterval(function () {//每隔一定时间发生
-        console.log(new Date().getSeconds());
+        msg(new Date().getSeconds());
     },1000);
     clearInterval(timer);
 
     var timeout;
     function timeoutf() {
-        console.log('time is up');
-        timeout=setTimeout(timeoutf,2000);//倒计时发生
+        msg('time is up');
+        timeout=setTimeout(timeoutf,2000);//倒计时发生，调用自身
     }
     timeoutf();
     clearTimeout(timeout);
