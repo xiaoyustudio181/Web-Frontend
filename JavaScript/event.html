@@ -6,15 +6,15 @@
     <script src="helper.js"></script>
 </head>
 <body>事件
-<input type="text"/>
+<input type="text" />
 </body>
 <script>
     var textbox = document.getElementsByTagName('input')[0];
-    textbox.addEventListener('blur', function () {
+    textbox.addEventListener('change', function () {
         // click,dblclick
         // mousedown,mouseup
         // mouseover,mouseout,mouseenter,mouseleave
-        // blur
+        // blur,change
         alert(1)
     });
 
