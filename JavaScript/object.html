@@ -8,32 +8,39 @@
 <body>对象类型的变量
 </body>
 <script>
-    msg(Object,'d');
-    var person={
-        name:'peter',
-        age:24,
-        gender:true,
-        籍贯:'成都',
-        100:'数字键名'
+    msg(Object, 'd');
+    var person = {
+        name: 'peter',
+        age: 24,
+        gender: true,
+        籍贯: '成都',
+        100: '数字键名'
     };
     msg(person);
     msg(person.name);//访问字段
     msg(person['name']);//访问字段
-    person['hobby']='singing';//新增字段
+    person['hobby'] = 'singing';//新增字段
     msg(person);
     msg(Object.keys(person));//所有键名
 
-    for(key in person){//遍历对象
-        var each=person[key];
-        msg(key,'-',each);
+    for (key in person) {//遍历对象
+        var each = person[key];
+        msg(key, '-', each);
     }
     delete person.hobby;
 
-    //引用类型测试
-    msg('引用测试','w');
+    msg('引用测试', 'w');
     msg(person);
-    var person2=person;
-    person2.name='jim';
+    var person2 = person;
+    person2.name = 'jim';
     msg(person);
+
+    msg('JSON与字符串之间的转化', 'w');
+    msg(JSON.parse('{}'));
+    msg(JSON.parse('{"a":1,"b":[1,2]}'));
+
+    var person_obj_str=JSON.stringify(person);//JSON转化为JSON字符串
+    msg(person_obj_str);
+    msg(JSON.parse(person_obj_str));//JSON字符串转化为JSON
 </script>
 </html>
