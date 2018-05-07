@@ -53,7 +53,9 @@
     msg(str.trim().length);//8
 
     var url='http://www.baidu.com/';
+    url=encodeURIComponent(url);
     msg(url);
-    msg(encodeURIComponent(url));
+    url=decodeURIComponent(url);
+    msg(url);
 </script>
 </html>
