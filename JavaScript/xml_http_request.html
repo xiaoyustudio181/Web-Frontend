@@ -20,8 +20,8 @@
     // 此接口继承了 XMLHttpRequestEventTarget 和 EventTarget 的属性。
 
     console.dir(XMLHttpRequest);
-    var rq=new XMLHttpRequest();
-    console.dir(rq);
+    var xhr=new XMLHttpRequest();
+    console.dir(xhr);
     /*
      属性，类型，描述。
      =====================================
@@ -109,17 +109,17 @@
      */
 
     //rq.open("GET","demo.php?r=" + Math.random(),true);//以防从缓存载入，所以加上随机get参数
-    rq.open("POST","/ajax_test.php",true);
-    rq.onreadystatechange=function()//只有在异步模式才能使用
+    xhr.open("POST","/ajax_test.php",true);
+    xhr.onreadystatechange=function()//只有在异步模式才能使用
     {
-        if (rq.readyState==4 && rq.status==200)//请求成功
+        if (xhr.readyState==4 && xhr.status==200)//请求成功
         {
-            //console.log(rq.response);
+            //console.log(xhr.response);
         }
     };
-    rq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    rq.responseType='json';
-    //rq.send('a=123&b=qwe');
-    //console.log(rq);//内部response字段即返回结果
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.responseType='json';
+    //xhr.send('a=123&b=qwe');
+    //console.log(xhr);//内部response字段即返回结果
 </script>
 </html>
