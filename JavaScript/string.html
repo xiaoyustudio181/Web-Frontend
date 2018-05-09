@@ -5,57 +5,232 @@
     <title></title>
     <script src="helper.js"></script>
 </head>
-<body>字符串
+<body>
+<ol>
+    <li>
+        获取字符串的类型。typeof str
+        <script>
+            msg(String, 'd');
+            var str = 'abc';
+            write(str);
+            var result = typeof str;
+            write(result);
+        </script>
+    </li>
+    <li>
+        获取字符串的长度。str.length
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.length;
+            write(result);
+        </script>
+    </li>
+    <li>
+        字符串连接(+)。str.concat(str1,str2...)
+        <script>
+            result = str + '-de';
+            write(result);
+            result = str.concat('-de');
+            write(result);
+            result = str.concat('-de', '-fg');
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回指定索引处的字符。str.charAt(index)
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.charAt(1);
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回指定子串首次出现的索引。str.indexOf(str)
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.indexOf('b');
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回指定子串最后一次出现的索引。str.indexOf(str)
+        <script>
+            str = 'abcb';
+            write(str);
+            result = str.lastIndexOf('b');
+            write(result);
+        </script>
+    </li>
+    <li>
+        检查字符串是否以指定子串开始。str.startsWith(str)
+        <script>
+        </script>
+    </li>
+    <li>
+        从开头处插入字符串到指定长度。str.padStart(num,str)
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.padStart(10, 'p');
+            write(result);
+        </script>
+    </li>
+    <li>
+        从结尾处插入字符串到指定长度。str.padEnd(num,str)
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.padEnd(10, 'p');
+            write(result);
+        </script>
+    </li>
+    <li>
+        将字符串转为大写字母。str.toUpperCase()
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.toUpperCase();
+            write(result);
+        </script>
+    </li>
+    <li>
+        将字符串转为小写字母。str.toLowerCase()
+        <script>
+            str = 'ABC';
+            write(str);
+            result = str.toLowerCase();
+            write(result);
+        </script>
+    </li>
+    <li>
+        重复连接自身指定次数。str.repeat(num)
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.repeat(2);
+            write(result);
+        </script>
+    </li>
+    <li>
+        替换指定子串为新字符串。str.replace(old,new)
+        <script>
+            str = 'abc';
+            write(str);
+            result = str.replace('c', '-ufo');
+            write(result);
+        </script>
+    </li>
+    <li>
+        以指定字符串分隔成数组。str.split(separator,[max_length])
+        <script>
+            str = 'a,b,c';
+            write(str);
+            result = str.split(',');
+            write(result);
+            result=Array.isArray(result);
+            write(result);
+            result = str.split(',', 2);
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回截取的字符串。str.slice(start,[end]) [start,end)
+        <script>
+            str='abc';
+            write(str);
+            result=str.slice(1);
+            write(result);
+
+            result=str.slice(1,2);
+            write(result);
+
+            result=str.slice(-1);
+            write(result);
+
+            result=str.slice(-2,-1);
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回截取的字符串。str.substr(start,[length])
+        <script>
+            str='abc';
+            write(str);
+            result=str.substr(1);
+            write(result);
+
+            result=str.substr(1,2);
+            write(result);
+
+            result=str.substr(-1);
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回截取的字符串（不支持负数索引）。str.substr(start,[end])
+        <script>
+            str='abc';
+            write(str);
+            result=str.substring(1);
+            write(result);
+
+            result=str.substring(1,2);
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回与正则表达式查找内容匹配的第一个子字符串的位置。str.search(regex)
+        <script>
+            str='abc';
+            write(str);
+            result=str.search(/c/);
+            write(result);
+        </script>
+    </li>
+    <li>
+        返回正则表达式与字符串匹配的信息，没有返回null。str.match(/.../)
+        <script>
+            str='abcde';
+            write(str);
+            result=str.match(/de$/);
+            msg(result);
+            write(result);
+        </script>
+    </li>
+    <li>
+        移除字符串左右的空白符。str.trim()
+        <script>
+            str=' abcde ';
+            write(str.length);
+            result=str.trim();
+            write(result.length);
+
+            result=str.trimRight();
+            write(result.length);
+
+            result=str.trimLeft();
+            write(result.length);
+        </script>
+    </li>
+    <li>
+        将字符串作为URL组件进行编码。encodeURIComponent(str)
+        <script>
+            var str = 'http://www.baidu.com/';
+            result = encodeURIComponent(str);
+            write(result);
+        </script>
+    </li>
+    <li>
+        将字符串作为URL组件进行解码。decodeURIComponent(str)
+        <script>
+            var url = 'http%3A%2F%2Fwww.baidu.com%2F';
+            result = decodeURIComponent(str);
+            write(result);
+        </script>
+    </li>
+</ol>
 </body>
-<script>
-    msg(String,'d');
-    var str='abc-dea-';
-    msg(str);
-    msg(typeof str);//string
-    msg(str.length);//8
-    msg(str+'fg');//abc-dea-fg
-    msg(str.concat('fg'));//abc-dea-fg
-    msg(str.charAt(0));//a
-    msg(str.indexOf('a'));//0
-    msg(str.lastIndexOf('a'));//6
-    msg(str.startsWith('ab'));//true
-    msg(str.padStart(10,'1'));//11abc-dea-
-    msg(str.toUpperCase());//ABC-DEA-
-    msg('ABC'.toLowerCase());//abc
-    msg(str.padEnd(10,'1'));//abc-dea-11
-    msg(str.repeat(2));//abc-dea-abc-dea-
-    msg(str.replace('abc','123'));//123-dea-
-    msg(str.split('-'));//["abc", "dea", ""]
-    msg(str.split('-',2));//["abc", "dea"]
-    msg(String.valueOf(str));//ƒ String() { [native code] }
-
-    msg(str.slice(1));//bc-dea-
-    msg(str.slice(1,2));//b [start,end)
-    msg(str.slice(-3));//ea-
-
-    msg(str.substr(1));//bc-dea-
-    msg(str.substr(1,2));//bc [start,end]
-    msg(str.substr(-3));//ea-
-
-    msg(str.substring(1));//bc-dea-
-    msg(str.substring(1,2));//b [start,end)
-    msg(str.substring(-3));//ea-
-
-    msg(str.search(/bc-d/));//1 返回与正则表达式查找内容匹配的第一个子字符串的位置
-    msg(str.match(/^abc-dea-$/));//[...] 有匹配
-    msg(str.match(/abc-df/));//null 无匹配
-
-    str='  abc-dea- ';
-    msg(str);//  abc-dea-
-    msg(str.length);//11
-    msg(str.trimLeft().length);//9
-    msg(str.trimRight().length);//10
-    msg(str.trim().length);//8
-
-    var url='http://www.baidu.com/';
-    url=encodeURIComponent(url);
-    msg(url);
-    url=decodeURIComponent(url);
-    msg(url);
-</script>
 </html>
