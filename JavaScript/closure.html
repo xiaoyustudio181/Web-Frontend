@@ -6,75 +6,87 @@
     <script src="helper.js"></script>
 </head>
 <body>
-闭包：闭包是函数和声明该函数的词法环境的组合。
-</body>
-<script>
-    function f1() {
-        var name = "Mozilla";
-        function f1_1() {
-            msg(name);
-        }
-        f1_1();
-    }
-    f1();
-    function f2() {
-        var name = "Mozilla";
-        function f2_1() {
-            var name='Chrome';
-            msg(name);//Chrome
-        }
-        f2_1();
-    }
-    f2();
-    //==================================================================
-    function makeFunc() {
-        var name = "Mozilla";
-        function displayName() {//被外部函数返回
-            msg(name);//Mozilla
-        }
-        return displayName;
-    }
-
-    var myFunc = makeFunc();
-    myFunc();
-    //==================================================================
-    function makeAdder(x) {
-        return function(y) {
-            msg(x + y);
-        };
-    }
-
-    var add5 = makeAdder(5);//生成新函数
-    var add10 = makeAdder(10);//生成新函数
-
-    add5(2);  // 7
-    add10(2); // 12
-    //==================================================================
-    //使用闭包来定义公共函数，并令其可以访问私有函数和变量。这个方式也称为模块模式（module pattern）
-    var Counter = (function() {
-        var privateCounter = 0;
-        function changeBy(val) {
-            privateCounter += val;
-        }
-        return {
-            increment: function() {
-                changeBy(1);
-            },
-            decrement: function() {
-                changeBy(-1);
-            },
-            value: function() {
-                return privateCounter;
+<ol>
+    <li>
+        闭包是函数和声明该函数的词法环境的组合。
+        <script>
+            function tell_name() {
+                var name='peter';
+                function tell() {
+                    write(name);
+                }
+                tell();
             }
-        }
-    })();
+            tell_name();
+        </script>
+        <script>
+            function tell_name2() {
+                var name='peter';
+                function tell() {
+                    var name='jerry';
+                    write(name);
+                }
+                tell();
+            }
+            tell_name2();
+        </script>
+    </li>
+    <li>
+        方法造方法。
+        <script>
+            function makeFunc() {
+                var name = "tom";
+                function displayName() {//被外部函数返回
+                    write(name);//Mozilla
+                }
+                return displayName;
+            }
 
-    msg(Counter.value());//0
-    Counter.increment();
-    Counter.increment();
-    msg(Counter.value());//2
-    Counter.decrement();
-    msg(Counter.value());//1
-    //==================================================================
-</script>
+            var myFunc1 = makeFunc();
+            myFunc1();
+        </script>
+        <script>
+            function makeAdder(x) {
+                return function(y) {
+                    write(x + y);
+                };
+            }
+            var add5 = makeAdder(5);//生成新方法
+            var add10 = makeAdder(10);//生成新方法
+
+            add5(2);  // 7
+            add10(2); // 12
+        </script>
+    </li>
+    <li>
+        使用闭包来定义公共函数，并令其可以访问私有函数和变量。这个方式也称为模块模式（module pattern）
+        <script>
+            var counter = (function() {
+                var privateCounter = 0;
+                function changeBy(val) {
+                    privateCounter += val;
+                }
+                return {
+                    increment: function() {//加1
+                        changeBy(1);
+                    },
+                    decrement: function() {//减1
+                        changeBy(-1);
+                    },
+                    value: function() {//获取值
+                        return privateCounter;
+                    }
+                }
+            })();
+
+            write(counter.value());//0
+            counter.increment();
+            counter.increment();
+            write(counter.value());//2
+            counter.decrement();
+            write(counter.value());//1
+        </script>
+    </li>
+</ol>
+</body>
 </html>

@@ -67,8 +67,8 @@ function msg(content,mode) {
 * @describe 输出消息到页面
 * @param content 输出的内容
 * */
-function write(Content) {
-    document.write('<br/>'+Content);
+function write(content) {
+    document.write('<br/>'+content);
 }
 /*
 * @describe 获取当前时间的字符串
