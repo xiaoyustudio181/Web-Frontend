@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script src="pi.js"></script>
+    <script src="config.js"></script>
+    <script src="../../jQuery/jquery-3.0.0.min.js"></script>
+</head>
+
+<body>
+<input id="input_text"/>
+<br/>
+<input id="input_chk" type="checkbox">check test</input>
+<br/>
+<input id="input_date" type="date"/>
+<br/>
+
+<button onclick="save()">save form</button>
+
+</body>
+<script>
+    config = createConfig("test_path", ["input_text", "input_chk", "input_date"]);
+
+    function save() {
+        config.saveCtrls();
+    }
+</script>
+</html>
