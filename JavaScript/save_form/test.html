@@ -6,21 +6,38 @@
 </head>
 
 <body>
-<input id="input_text"/>
-<br/>
-<input id="input_chk" type="checkbox">check test</input>
-<br/>
-<input id="input_date" type="date"/>
-<br/>
+<form>
+    <h3>form</h3>
+    <dl>
+        <dt>name</dt>
+        <dd>
+            <input id="txt1" type="text"/>
+        </dd>
+        <dt>select</dt>
+        <dd>
+            <label>
+                <input id="chk1" type="checkbox"/>
+                check test
+            </label>
+        </dd>
+        <dt>date</dt>
+        <dd>
+            <input id="dat1" type="date"/>
+        </dd>
+    </dl>
+</form>
+<button id="save">save form</button>
 
-<button onclick="save()">save form</button>
 
 </body>
 <script>
-    config = createConfig("test_path", ["input_text", "input_chk", "input_date"]);
+    var ids = ['txt1', 'chk1', 'dat1'];//目标控件的id
 
-    function save() {
+    var config = createConfig("myform", ids);//还原表单
+    //若表单控件是通过ajax生成，则用settimeout等待一会儿执行此句
+
+    $('#save').on('click',function () {//保存表单
         config.saveCtrls();
-    }
+    })
 </script>
 </html>
