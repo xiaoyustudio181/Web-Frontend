@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="helper.js"></script>
+    <script src="../jQuery/jquery-3.0.0.min.js"></script>
 </head>
 <body>事件
 <input type="text" />
@@ -20,9 +21,20 @@
 
 
     document.onkeydown=function (e) {
-        msg(event.key);
+        //msg(event.key);
         msg(e.key);
-        msg(e,'d');
+        //msg(e,'d');
     }
+
+    $("body").delegate("", "keydown", function () {
+        if ((event.key == 'd' || event.key == 'Enter') && event.ctrlKey) {
+            alert(1);
+            event.preventDefault();//防止触发默认的热键
+        }
+        if (event.key == 'e' && event.ctrlKey) {
+            alert(2);
+            event.preventDefault();//防止触发默认的热键
+        }
+    });
 </script>
 </html>
