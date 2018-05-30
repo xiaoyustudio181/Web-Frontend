@@ -17,7 +17,6 @@
                 var regex_text = findID('regex').value;
                 var text = this.value;
                 var regex=new RegExp(regex_text);//匹配是正则表达式的字符串
-                console.log(text,regex);
                 if(regex.test(text)){//关键字是正则表达式
                     alert('ok');
                 }else{//关键字不是正则表达式
