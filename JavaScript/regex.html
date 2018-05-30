@@ -6,25 +6,44 @@
     <script src="helper.js"></script>
 </head>
 <body>
-<h3>正则表达式</h3>
-<input id="regex" type="text" />
-<span id="result"></span><br />
-<span id="regexstr"></span>
-<script>
-    //正则表达式
-    findID('regex').addEventListener('blur',function () {
-        var text=findID('regex').value;
-        var regex=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-        var result=findID('result');
-        /*if(regex.test(text))
-         result.innerHTML='right';
-         else result.innerHTML='wrong';*/
-        msg(text.match(regex));//返回匹配信息
-        if(text.match(regex))
-            result.innerHTML='right';
-        else result.innerHTML='wrong';
-        findID('regexstr').innerHTML=regex;
-    });
-</script>
+<ol>
+    <li>
+        定义正则表达式。regex= // or regex= new RegExp(str)
+        <script>
+            var regex1 = /^[0-9]*[1-9][0-9]*$/;
+            var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$');
+            write(regex1);
+            write(regex2);
+        </script>
+    </li>
+    <li>
+        测试字符串。regex.test(str) or text.match(regex)
+        <script>
+            var regex1 = /^[0-9]*[1-9][0-9]*$/;
+            var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$');
+            var text1 = '123';
+            var text2 = '-123';
+            result = regex1.test(text1);
+            write(result); //true
+            result = regex1.test(text2);
+            write(result); //false
+
+            result = regex2.test(text1);
+            write(result); //true
+            result = regex2.test(text2);
+            write(result); //false
+
+            result = text1.match(regex1);
+            msg(result);// ["123", index: 0, input: "123", groups: undefined]
+            result = text2.match(regex1);
+            msg(result);// null
+
+            result = text1.match(regex2);
+            msg(result);// ["123", index: 0, input: "123", groups: undefined]
+            result = text2.match(regex2);
+            msg(result);// null
+        </script>
+    </li>
+</ol>
 </body>
 </html>
