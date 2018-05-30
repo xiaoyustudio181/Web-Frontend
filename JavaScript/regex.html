@@ -8,7 +8,7 @@
 <body>
 <ol>
     <li>
-        定义正则表达式。regex= // or regex= new RegExp(str)
+        定义正则表达式。regex= /regex/ or regex= new RegExp(regex)
         <script>
             var regex1 = /^[0-9]*[1-9][0-9]*$/;
             var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$');
@@ -21,6 +21,7 @@
         <script>
             var regex1 = /^[0-9]*[1-9][0-9]*$/;
             var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$');
+
             var text1 = '123';
             var text2 = '-123';
             result = regex1.test(text1);
@@ -42,6 +43,28 @@
             msg(result);// ["123", index: 0, input: "123", groups: undefined]
             result = text2.match(regex2);
             msg(result);// null
+        </script>
+    </li>
+    <li>
+        定义正则表达式（匹配所有子串）。regex= /regex/g or regex= new RegExp(regex,'g')
+        <script>
+            //var regex3 = /ab/g;
+            var regex = new RegExp('ab', 'g');
+            var text = 'abcde_abcde_abc';
+            result = text.match(regex);
+            write(result); //["ab", "ab", "ab"]
+        </script>
+    </li>
+    <li>
+        根据正则表达式替换字符串内容。str.replace(regex,function(){})
+        <script>
+            var regex = new RegExp('ab', 'g');
+            var text = 'abcde_abcde_abc';
+            var replaced = text.replace(regex, function (target, index, original) {
+                console.log(target, index, original);
+                return "<span style='color:red;'>" + target + "</span>";
+            });
+            write(replaced);
         </script>
     </li>
 </ol>
