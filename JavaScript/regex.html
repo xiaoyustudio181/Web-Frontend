@@ -8,6 +8,25 @@
 <body>
 <ol>
     <li>
+        测试用。
+        <input id="regex" type="text" placeholder="regex" value="^\/{1}.*\/{1}$"/>
+        <br/>
+        <input id="text" type="text" placeholder="string"/>
+        <script>
+            findID('text').addEventListener('blur', function () {
+                var regex_text = findID('regex').value;
+                var text = this.value;
+                var regex=new RegExp(regex_text);//匹配是正则表达式的字符串
+                console.log(text,regex);
+                if(regex.test(text)){//关键字是正则表达式
+                    alert('ok');
+                }else{//关键字不是正则表达式
+                    alert('not ok');
+                }
+            });
+        </script>
+    </li>
+    <li>
         定义正则表达式。regex= /regex/ or regex= new RegExp(regex)
         <script>
             var regex1 = /^[0-9]*[1-9][0-9]*$/;
