@@ -66,7 +66,7 @@
     <li>
         定义正则表达式（匹配所有子串）。regex= /regex/g or regex= new RegExp(regex,'g')
         <script>
-            //var regex3 = /ab/g;
+            //var regex = /ab/g;
             var regex = new RegExp('ab', 'g');
             var text = 'abcde_abcde_abc';
             result = text.match(regex);
@@ -76,13 +76,32 @@
     <li>
         根据正则表达式替换字符串内容。str.replace(regex,function(){})
         <script>
-            var regex = new RegExp('ab', 'g');
+            var regex = new RegExp('ab');
+            var regex2 = new RegExp('ab', 'g');
             var text = 'abcde_abcde_abc';
             var replaced = text.replace(regex, function (target, index, original) {
                 console.log(target, index, original);
                 return "<span style='color:red;'>" + target + "</span>";
             });
             write(replaced);
+            replaced = text.replace(regex2, function (target, index, original) {
+                console.log(target, index, original);
+                return "<span style='color:red;'>" + target + "</span>";
+            });
+            write(replaced);
+        </script>
+    </li>
+    <li>
+        根据有首尾匹配的正则表达式，对字符串的每一行内容进行判断。
+        <script>
+            var regex = new RegExp("^a(.|\n)*b$", 'g');//使.包含\n
+            //var regex2 = /^a.*b$/gm;
+            var regex2 = new RegExp('^a.*b$', 'gm');
+            var text = "aaaab\nabbbc\nacccb";
+            result = text.match(regex);
+            write(result);
+            result = text.match(regex2);
+            write(result);
         </script>
     </li>
 </ol>
