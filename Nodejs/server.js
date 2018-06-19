@@ -1,20 +1,9 @@
-var http = require("http");
-var url = require("url");
+var http = require('http');//使用require指令载入http模块
+//console.log(http);
 
-function start(route) {
-    function onRequest(request, response) {
-        var pathname = url.parse(request.url).pathname;
-        //url.parse(string).pathname //url从根目录到问号前面的部分
-        //url.parse(string).query //url问号后面的部分
-        //querystring.parse(queryString)["foo"] //url问号后面foo的值
-        console.log("Request for " + pathname + " received.");
-        route(pathname);
-        response.writeHead(200, {"Content-Type": "text/plain"});
-        response.write("Hello World");
-        response.end();
-    }
-    http.createServer(onRequest).listen(8888);
-    console.log("Server has started.");
-}
-
-exports.start = start;
+http.createServer(function (request, response) {//创建服务器
+    response.writeHead(200, {'Content-Type': 'text/plain'});//发送HTTP头部 (HTTP状态值，内容类型)
+    response.end('Hello World\n');//发送响应数据
+}).listen(8888);
+//此时可以用浏览器访问 localhost:8888 查看效果
+console.log('Server is running at http://127.0.0.1:8888/');
