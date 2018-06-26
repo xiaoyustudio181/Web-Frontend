@@ -92,11 +92,24 @@
         </script>
     </li>
     <li>
-        根据有首尾匹配的正则表达式，对字符串的每一行内容进行判断。
+        根据有首尾匹配的正则表达式，对字符串的每一行内容进行判断。regex= /regex/gm or regex= new RegExp(regex,'gm')
         <script>
             var regex = new RegExp("^a(.|\n)*b$", 'g');//使.包含\n
             //var regex2 = /^a.*b$/gm;
             var regex2 = new RegExp('^a.*b$', 'gm');
+            var text = "aaaab\nabbbc\nacccb";
+            result = text.match(regex);
+            write(result);
+            result = text.match(regex2);
+            write(result);
+        </script>
+    </li>
+    <li>
+        忽略正则表达式中字母的大小写（大小写均匹配）。regex= /regex/i or regex= new RegExp(regex,'i')
+        <script>
+            var regex = new RegExp("^A.*b$", 'gm');//使.包含\n
+            //var regex2 = /a.*b/gmi;
+            var regex2 = new RegExp('^A.*b$', 'gmi');
             var text = "aaaab\nabbbc\nacccb";
             result = text.match(regex);
             write(result);

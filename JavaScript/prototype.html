@@ -39,7 +39,7 @@ prototype原型
     };
 
     msg(Student);
-    msg(typeof Student);
+    msg(typeof Student);//function
 
     msg(Student.prototype);
     msg(typeof Student.prototype);
@@ -47,6 +47,11 @@ prototype原型
     var s1=new Student('Jim',10);
     msg(s1);
     s1.eat();
+    msg(s1 instanceof Student);//true
+    msg(s1 instanceof Person);//true
+    msg(s1 instanceof Object);//true
+    msg(s1 instanceof Function);//false
+    msg(s1 instanceof Array);//false
 
 </script>
 </html>

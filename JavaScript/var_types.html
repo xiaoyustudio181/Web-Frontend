@@ -44,7 +44,17 @@
     msg(function(){}===false);//false
 
     msg('','w');
-
+    msg((-1)==true);//false
+    msg((-1)==false);//false
+    if(-1){
+        msg('-1 算 true');
+    }
+    if(0){
+        msg('0 算 true');
+    }
+    if(1){
+        msg('1 算 true');
+    }
     //变量的作用域
     //非var定义的变量都是【全局变量】，不论是在方法外还是方法内定义。
     //在方法内用var定义的变量是【局部变量】（包括参数），局部变量只在方法内有效。

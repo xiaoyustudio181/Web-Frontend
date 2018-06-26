@@ -8,6 +8,12 @@
 </head>
 <body>事件
 <input type="text" />
+<button class="stop" id="b1">Button</button>
+<a class="stop" href="">Link</a>
+<p id="p_c1">
+    <input id="c1" type="checkbox"/>
+</p>
+
 </body>
 <script>
     var textbox = document.getElementsByTagName('input')[0];
@@ -20,12 +26,11 @@
         alert(1)
     });
 
-
     document.onkeydown=function (e) {
         //msg(event.key);
         msg(e.key);
         //msg(e,'d');
-    }
+    };
 
     $("body").delegate("", "keydown", function () {
         if ((event.key == 'd' || event.key == 'Enter') && event.ctrlKey) {
@@ -36,6 +41,13 @@
             alert(2);
             event.preventDefault();//防止触发默认的热键
         }
+    });
+
+    bindClick('p_c1',function (e) {
+        $('#c1').trigger('click');
+    });
+    bindClick('c1',function (e) {
+        e.stopPropagation();//当点击父元素要触发子元素事件时，用此句可避免点击子元素本身时双重触发
     });
 </script>
 </html>
