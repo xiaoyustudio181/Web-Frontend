@@ -1,3 +1,5 @@
+//npm install ... --save 中的 --save 是将安装的包信息存入 package.json。
+//如果有package.json且当中已包含下面四个包，则可以直接执行cnpm install。
 var express = require('express');//cnpm install express --save
 var bodyParser = require('body-parser');//cnpm install body-parser --save
 var multer  = require('multer');//cnpm install multer --save
