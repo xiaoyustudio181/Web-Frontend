@@ -1,9 +1,8 @@
-//$ cnpm install express --save
-var express = require('express');
-var bodyParser = require('body-parser');
-var multer  = require('multer');
+var express = require('express');//cnpm install express --save
+var bodyParser = require('body-parser');//cnpm install body-parser --save
+var multer  = require('multer');//cnpm install multer --save
+var cookieParser = require('cookie-parser');//cnpm install cookie-parser --save
 var fs  = require('fs');
-var cookieParser = require('cookie-parser');
 var util = require('util');
 
 var app = express();
@@ -125,7 +124,7 @@ app.get('/:id', function (req, res) {
 
 
 
-var server = app.listen(8081, function () {
+var server = app.listen(8080, function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log("应用实例，访问地址为 http://%s:%s", host, port);
