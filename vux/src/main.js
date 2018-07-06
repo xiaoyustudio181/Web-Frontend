@@ -13,6 +13,25 @@ import XButtons from './components/XButtons'
 import FlexBoxes from './components/FlexBoxes'
 import Grids from './components/Grids'
 import Stickies from './components/Stickies'
+import Calendars from './components/Calendars'
+import CellBoxes from './components/CellBoxes'
+import CellFormPreviews from './components/CellFormPreviews'
+import Cells from './components/Cells'
+import CheckIcons from './components/CheckIcons'
+import Checkers from './components/Checkers'
+import CheckLists from './components/CheckLists'
+import DatetimeViews from './components/DatetimeViews'
+import DatetimeRanges from './components/DatetimeRanges'
+import Datetimes from './components/Datetimes'
+import FormPreviews from './components/FormPreviews'
+import Groups from './components/Groups'
+import Switches from './components/Switches'
+import Numbers from './components/Numbers'
+import InlineCalendars from './components/InlineCalendars'
+import PopupPickers from './components/PopupPickers'
+import PopupRadios from './components/PopupRadios'
+import Pickers from './components/Pickers'
+import Raters from './components/Raters'
 
 //import router from './router' //使用index.js作为router，同时注释掉后面的const router=...
 
@@ -54,6 +73,63 @@ const routes = [{
 },{
   path:'/stickies',
   component:Stickies
+},{
+  path:'/calendars',
+  component:Calendars
+},{
+  path:'/cellboxes',
+  component:CellBoxes
+},{
+  path:'/cellformpreviews',
+  component:CellFormPreviews
+},{
+  path:'/cells',
+  component:Cells
+},{
+  path:'/checkicons',
+  component:CheckIcons
+},{
+  path:'/checkers',
+  component:Checkers
+},{
+  path:'/checklists',
+  component:CheckLists
+},{
+  path:'/datetimeviews',
+  component:DatetimeViews
+},{
+  path:'/datetimeranges',
+  component:DatetimeRanges
+},{
+  path:'/datetimes',
+  component:Datetimes
+},{
+  path:'/formpreviews',
+  component:FormPreviews
+},{
+  path:'/groups',
+  component:Groups
+},{
+  path:'/switches',
+  component:Switches
+},{
+  path:'/numbers',
+  component:Numbers
+},{
+  path:'/inlinecalendars',
+  component:InlineCalendars
+},{
+  path:'/popuppickers',
+  component:PopupPickers
+},{
+  path:'/popupradios',
+  component:PopupRadios
+},{
+  path:'/pickers',
+  component:Pickers
+},{
+  path:'/raters',
+  component:Raters
 }]
 
 const router = new VueRouter({
