@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="padding:15px;">
-      <x-button type="primary" plain @click.native="showPlugin">Used as a plugin</x-button><!--??-->
+      <x-button type="primary" plain @click.native="showPlugin">Used as a plugin</x-button>
     </div>
 
     <group title="Default format: YYYY-MM-DD">
