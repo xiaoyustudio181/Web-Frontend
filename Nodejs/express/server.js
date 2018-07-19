@@ -9,7 +9,7 @@ var util = require('util');
 
 var app = express();
 
-app.use(express.static('public'));//???使用此句后仍无法访问目录内的图片http://127.0.0.1:8081/public/cat.jpg
+app.use(express.static('public'));//使用此句后可直接访问目录public的图片，http://127.0.0.1:8081/cat.jpg
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });// 创建 application/x-www-form-urlencoded 编码解析
 app.use(multer({ dest: '/tmp/'}).array('uploadfile1'));
