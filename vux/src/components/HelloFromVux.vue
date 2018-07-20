@@ -1,3 +1,4 @@
+<script src="../../build/webpack.prod.conf.js"></script>
 <template>
   <div>
     <div class="vux-demo">
@@ -5,7 +6,7 @@
       <h1>Vux</h1>
     </div>
     <group title="Menu">
-      <!--<cell title="**************** 基本"></cell>
+      <cell title="**************** 基本"></cell>
       <cell title="Icon" value="Go"  is-link :link="{path: '/icons'}"></cell>
       <cell title="X-Icon" is-link :link="{path: '/xicons'}">Go</cell>
       <cell title="X-Button" is-link :link="{path: '/xbuttons'}"></cell>
@@ -71,7 +72,7 @@
       <cell title="Popup" is-link :link="{path: '/popups'}"></cell>
       <cell title="PopupHeader" is-link :link="{path: '/popupheaders'}"></cell>
       <cell title="PopOver" is-link :link="{path: '/popovers'}"></cell>
-      <cell title="Spinner" is-link :link="{path: '/spinners'}"></cell>-->
+      <cell title="Spinner" is-link :link="{path: '/spinners'}"></cell>
       <cell title="Toast" is-link :link="{path: '/toasts'}"></cell>
       <cell title="XDialog" is-link :link="{path: '/xdialogs'}"></cell>
     </group>

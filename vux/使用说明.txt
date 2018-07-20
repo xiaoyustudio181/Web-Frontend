@@ -1,0 +1,19 @@
+测试运行前，
+先在命令窗口执行 cnpm install 安装 node_modules 目录，
+然后执行 npm run dev ，可到指定的地址运行项目，
+最后调试完成后运行 npm run build 打包项目，
+打包结果在根目录的 dist 目录。
+
+为了使打包后生成的 index.html 的资源路径都正确，
+应先到 config 目录的 index.js 找到 build:{ ... assetsPublicPath: '/', ...
+注意不是 dev:{ ... assetsPublicPath: '/', ...
+将 '/' 改为 './' 。
+
+打包若不想压缩 js 代码，可注释掉 build 目录下 webpack.prod.conf.js 文件中的
+new webpack.optimize.UglifyJsPlugin({
+      compress: {
+          warnings: false
+        },
+        sourceMap: config.build.productionSourceMap,
+        parallel: true
+    }),
