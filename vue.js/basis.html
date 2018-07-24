@@ -6,17 +6,160 @@
     <script src="vue.js"></script>
 </head>
 <body>
-<a id="a1"></a>
-<script>//引用关系
-var data1 = { v1: 1 };
-var vm = new Vue({
-    el: '#a1',
-    data: data1
-});
-//msg( vm.v1 === data1.v1 ); //true
-//msg( vm.$data === data1 ); //true
-//msg( vm.$el === document.getElementById('a1') ); //true
-</script>
+<ol>
+    <li>
+        引用关系。<br/>
+        app.value1 === data1.value1 <br/>
+        app.value1 === app.$data.value1 <br/>
+        app.$data === data1 <br/>
+        app.$el === document.getElementById('app')
+        <div id="app"></div>
+        <script>
+        let data1 = { value1: 100 };
+        let app = new Vue({
+          el: '#app',
+          data: data1
+        });
+        </script>
+    </li>
+    <li>
+        <kbd>v-if</kbd> 控制是否存在。<br/>
+        <div id="app1" v-if="on">app1.on = false</div>
+        <script>
+            let app1=new Vue({
+              el:'#app1',
+              data:{
+                on:true
+              }
+            });
+        </script>
+    </li>
+    <li>
+        <kbd>v-show</kbd> 控制是否显示。<br/>
+        <div id="app2" v-show="on">app2.on = false</div>
+        <script>
+          let app2=new Vue({
+            el:'#app2',
+            data:{
+              on:true
+            }
+          });
+        </script>
+    </li>
+    <li>
+        <kbd>v-bind:title</kbd> 绑定属性值。<br/>
+        <div id="app3" v-bind:title="text">app3.text = 'Alice'</div>
+        <script>
+          let app3=new Vue({
+            el:'#app3',
+            data:{
+              text:'Helen'
+            }
+          });
+        </script>
+    </li>
+    <li>
+        <kbd>:title</kbd> 绑定属性值，:property 等价于 v-bind:property。<br/>
+        <div id="app4" :title="text">app4.text = 'Alice'</div>
+        <script>
+          let app4=new Vue({
+            el:'#app4',
+            data:{
+              text:'Helen'
+            }
+          });
+        </script>
+    </li>
+    <li>
+        <kbd>:class</kbd> 用对象绑定类。<br/>
+        <div id="app5" class="default_class" :class="classes">app5.classes.blue = true</div>
+        <script>
+          let app5=new Vue({
+            el:'#app5',
+            data:{
+              classes:{
+                red:true,
+                blue:false
+              }
+            }
+          });
+        </script>
+    </li>
+    <li>
+        <kbd>:style</kbd> 用对象绑定样式。<br/>
+        <div id="app6" :style="styles">app6.styles = {color:'red', border:'1px dotted'}</div>
+        <script>
+          let app6=new Vue({
+            el:'#app6',
+            data:{
+              styles:null
+            }
+          });
+        </script>
+    </li>
+    <li>
+        数据绑定到文本节点。<br/>
+        app7.sentence = 'Hey UFO'
+        <div id="app7">{{sentence}}</div>
+        <script>
+          let app7=new Vue({
+            el:'#app7',
+            data:{
+              sentence:'Hello world'
+            }
+          });
+        </script>
+    </li>
+    <li>
+        <kbd>v-html</kbd> 绑定数据为HTML的格式。<br/>
+        app8.sentence = '&lt;em&gt;Hello UFO&lt;/em&gt;'
+        <div id="app8">
+            <p>{{sentence}}</p>
+            <p v-html="sentence">{{sentence}}</p>
+        </div>
+        <script>
+          let app8=new Vue({
+            el:'#app8',
+            data:{
+              sentence:'<strong>Hello world</strong>'
+            }
+          });
+        </script>
+    </li>
+    <li>
+        在绑定区使用方法。<br/>
+        <div id="app9">
+            <p>{{name}}</p>
+            <p>{{name.split(' ')}}</p>
+            <p>{{name.split(' ').reverse()}}</p>
+            <p>{{name.split(' ').reverse().join(' ')}}</p>
+        </div>
+        <script>
+          let app9=new Vue({
+            el:'#app9',
+            data:{
+              name:'Resident Evil'
+            }
+          });
+        </script>
+    </li>
+    <li>
+        计算属性。
+        <div id="app10">
+            <p>{{name}}</p>
+        </div>
+        <script>
+          let app10=new Vue({
+            el:'#app10',
+            data:{
+              name:'Resident Evil'
+            }
+          });
+        </script>
+
+    </li>
+</ol>
+
 <!--
 v-bind:class="[activeClass,errorClass]"
 v-bind:class="[false?activeClass:'',errorClass]"
@@ -25,7 +168,7 @@ v-bind:class="[false?activeClass:'',errorClass]"
 <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 这样写只会渲染数组中最后一个被浏览器支持的值。
 -->
-<div id="app1" class="default1" v-bind:class="classObj" v-bind:style="styleObj"
+<div id="app11" class="default1" v-bind:class="classObj" v-bind:style="styleObj"
      v-bind:title="title" v-if="exist" v-show="seen">
 
     <span v-html="bTag">{{bTag}}</span>
@@ -84,8 +227,8 @@ v-bind:class="[false?activeClass:'',errorClass]"
 
 </div>
 <script>
-    var app = new Vue({
-        el: '#app1',
+    var app11 = new Vue({
+        el: '#app11',
         data: {
             title: "v-bind:title "+new Date().toLocaleString(),
             exist:1,//试执行app.seen1=false
