@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vue basis</title>
+    <title>Vue Basis</title>
     <script src="vue.js"></script>
 </head>
 <body>
@@ -15,33 +15,33 @@
         app.$el === document.getElementById('app')
         <div id="app"></div>
         <script>
-        let data1 = { value1: 100 };
-        let app = new Vue({
-          el: '#app',
-          data: data1
-        });
+          let data1 = {value1: 100};
+          let app = new Vue({
+            el: '#app',
+            data: data1
+          });
         </script>
     </li>
     <li>
         <kbd>v-if</kbd> 控制是否存在。<br/>
         <div id="app1" v-if="on">app1.on = false</div>
         <script>
-            let app1=new Vue({
-              el:'#app1',
-              data:{
-                on:true
-              }
-            });
+          let app1 = new Vue({
+            el: '#app1',
+            data: {
+              on: true
+            }
+          });
         </script>
     </li>
     <li>
         <kbd>v-show</kbd> 控制是否显示。<br/>
         <div id="app2" v-show="on">app2.on = false</div>
         <script>
-          let app2=new Vue({
-            el:'#app2',
-            data:{
-              on:true
+          let app2 = new Vue({
+            el: '#app2',
+            data: {
+              on: true
             }
           });
         </script>
@@ -50,10 +50,10 @@
         <kbd>v-bind:title</kbd> 绑定属性值。<br/>
         <div id="app3" v-bind:title="text">app3.text = 'Alice'</div>
         <script>
-          let app3=new Vue({
-            el:'#app3',
-            data:{
-              text:'Helen'
+          let app3 = new Vue({
+            el: '#app3',
+            data: {
+              text: 'Helen'
             }
           });
         </script>
@@ -62,10 +62,10 @@
         <kbd>:title</kbd> 绑定属性值，:property 等价于 v-bind:property。<br/>
         <div id="app4" :title="text">app4.text = 'Alice'</div>
         <script>
-          let app4=new Vue({
-            el:'#app4',
-            data:{
-              text:'Helen'
+          let app4 = new Vue({
+            el: '#app4',
+            data: {
+              text: 'Helen'
             }
           });
         </script>
@@ -74,12 +74,12 @@
         <kbd>:class</kbd> 用对象绑定类。<br/>
         <div id="app5" class="default_class" :class="classes">app5.classes.blue = true</div>
         <script>
-          let app5=new Vue({
-            el:'#app5',
-            data:{
-              classes:{
-                red:true,
-                blue:false
+          let app5 = new Vue({
+            el: '#app5',
+            data: {
+              classes: {
+                red: true,
+                blue: false
               }
             }
           });
@@ -89,10 +89,10 @@
         <kbd>:style</kbd> 用对象绑定样式。<br/>
         <div id="app6" :style="styles">app6.styles = {color:'red', border:'1px dotted'}</div>
         <script>
-          let app6=new Vue({
-            el:'#app6',
-            data:{
-              styles:null
+          let app6 = new Vue({
+            el: '#app6',
+            data: {
+              styles: null
             }
           });
         </script>
@@ -102,10 +102,10 @@
         app7.sentence = 'Hey UFO'
         <div id="app7">{{sentence}}</div>
         <script>
-          let app7=new Vue({
-            el:'#app7',
-            data:{
-              sentence:'Hello world'
+          let app7 = new Vue({
+            el: '#app7',
+            data: {
+              sentence: 'Hello world'
             }
           });
         </script>
@@ -118,10 +118,10 @@
             <p v-html="sentence">{{sentence}}</p>
         </div>
         <script>
-          let app8=new Vue({
-            el:'#app8',
-            data:{
-              sentence:'<strong>Hello world</strong>'
+          let app8 = new Vue({
+            el: '#app8',
+            data: {
+              sentence: '<strong>Hello world</strong>'
             }
           });
         </script>
@@ -130,33 +130,113 @@
         在绑定区使用方法。<br/>
         <div id="app9">
             <p>{{name}}</p>
+            <p>{{name + ' ' + 10}}</p>
+            <p>{{name?'it has name':'it has no name'}}</p>
             <p>{{name.split(' ')}}</p>
             <p>{{name.split(' ').reverse()}}</p>
             <p>{{name.split(' ').reverse().join(' ')}}</p>
         </div>
         <script>
-          let app9=new Vue({
-            el:'#app9',
-            data:{
-              name:'Resident Evil'
+          let app9 = new Vue({
+            el: '#app9',
+            data: {
+              name: 'Resident Evil'
             }
           });
         </script>
     </li>
     <li>
-        计算属性。
+        计算属性。<br/>
+        app10.name = 'hello world'
         <div id="app10">
-            <p>{{name}}</p>
+            <p>{{name2}}</p>
         </div>
         <script>
-          let app10=new Vue({
-            el:'#app10',
-            data:{
-              name:'Resident Evil'
+          let app10 = new Vue({
+            el: '#app10',
+            data: {
+              name: 'Resident Evil'
+            },
+            computed: {
+              name2: function () {
+                return this.name.split(' ').reverse().join(' ');
+              }
             }
           });
         </script>
+    </li>
+    <li>
+        <kbd>v-on</kbd> 绑定点击事件。
+        <div id="app10_1">
+            <button v-on:click="say">Button</button>
+            <button @click="say">Button</button>
+        </div>
 
+        <script>
+          let app10_1 = new Vue({
+            el: '#app10_1',
+            methods:{
+              say:function (e) {
+                alert(e.target.tagName);
+              }
+            }
+          });
+        </script>
+    </li>
+    <li>
+        绑定表单控件。<br/>
+        app11.name = 'hello world'
+        <div id="app11">
+            <input type="text" v-model="name"/> {{name}} <br/>
+            <textarea v-model="text"></textarea> {{text}} <br/>
+            <label><input name="color" type="radio" v-model="on" value="male"/>男</label>
+            <label><input name="color" type="radio" v-model="on" value="female"/>女</label> {{on}} <br/>
+
+            <label><input name="hobbies" type="checkbox" v-model="hobbies" value="swimming"/>游泳</label>
+            <label><input name="hobbies" type="checkbox" v-model="hobbies" value="running"/>跑步</label> {{hobbies}} <br/>
+
+            <label><input type="checkbox" v-model="married" true-value="yes" false-value="no"/>已婚</label> {{married}} <br/>
+
+            <input type="date" v-model="date"/> <input type="text" v-model="date"/> {{date}} <br/>
+
+            <select v-model="city">
+                <option disabled value="">选择</option>
+                <option value="cheng'du">成都</option>
+                <option value="xi'an">西安</option>
+            </select> {{city}} <br/>
+
+            <select v-model="city2" multiple="multiple">
+                <option disabled value="">多选</option>
+                <option value="cheng'du">成都</option>
+                <option value="xi'an">西安</option>
+            </select> {{city2}} <br/>
+
+            <select v-model="next">
+                <option v-for="each in todo" v-bind:value="each.value">
+                    {{ each.text }}
+                </option>
+            </select> {{next}}
+        </div>
+        <script>
+          let app11 = new Vue({
+            el: '#app11',
+            data: {
+              name: 'Resident Evil',
+              text: '',
+              on: null,
+              hobbies: [],
+              married:null,
+              date: '',
+              city: '',
+              city2: [],
+              todo: [
+                {text: 'JavaScript', value: 'js'},
+                {text: 'C#.NET', value: 'c#'},
+              ],
+              next:null
+            }
+          });
+        </script>
     </li>
 </ol>
 
@@ -168,179 +248,179 @@ v-bind:class="[false?activeClass:'',errorClass]"
 <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 这样写只会渲染数组中最后一个被浏览器支持的值。
 -->
-<div id="app11" class="default1" v-bind:class="classObj" v-bind:style="styleObj"
+<div id="app111" class="default1" v-bind:class="classObj" v-bind:style="styleObj"
      v-bind:title="title" v-if="exist" v-show="seen">
 
     <span v-html="bTag">{{bTag}}</span>
-    <hr />
+    <hr/>
     {{bTag}}
-    <hr />
+    <hr/>
     {{bTag.split('').reverse().join('')}}
-    <hr />
+    <hr/>
     {{reversebTag}}
-    <hr />
+    <hr/>
     {{num+1}}
-    <hr />
+    <hr/>
     {{ok?'ok':'not ok'}}
-    <hr />
+    <hr/>
 
-    <input type="text" v-model="msg" />
+    <input type="text" v-model="msg"/>
     {{msg}}
     <button v-on:click="reverseMsg">Reverse</button>
-    <hr />
+    <hr/>
 
     <span v-once>{{once}}</span>
-    <hr />
+    <hr/>
     {{fullName}}
-    <hr />
+    <hr/>
     <span v-if="ok">yes</span><span v-else>no</span>
-    <hr />
+    <hr/>
     <span v-if="msg == 'A'">A</span>
     <span v-else-if="msg == 'B'">B</span>
     <span v-else-if="msg == 'C'">C</span>
     <span v-else>no</span>
-    <hr />
+    <hr/>
 
     <button v-on:click="toggleType">toggle</button>
     <template v-if="loginType == 'username'">
         <label>Username</label>
-        <input placeholder="Enter username" key="1" />
+        <input placeholder="Enter username" key="1"/>
         <!--用key作区分以免被复用(复用不会清除input已输入的内容)-->
     </template>
     <template v-else>
         <label>Email</label>
-        <input placeholder="Enter email address" key="2" />
+        <input placeholder="Enter email address" key="2"/>
     </template>
-    <hr />
+    <hr/>
 
     <button
             @keyup.enter="functioned"
             @keyup.page-down="functioned"
             @keyup.c="functioned"
             @keyup.alt.v="functioned">
-        focus and press<br />
-        Enter<br />
-        or PageDown<br />
-        or C<br />
+        focus and press<br/>
+        Enter<br/>
+        or PageDown<br/>
+        or C<br/>
         or Alt+V
     </button>
 
 </div>
 <script>
-    var app11 = new Vue({
-        el: '#app11',
-        data: {
-            title: "v-bind:title "+new Date().toLocaleString(),
-            exist:1,//试执行app.seen1=false
-            seen:true,//v-show只是切换CSS属性display，比起v-if更适用于频繁地切换，不支持<template>元素，不支持v-else
-            classObj:{default2: true, 'default-3': true},//试执行app.classObj.default2=false
-            activeClass:'active',
-            errorClass:'text-danger',
-            styleObj:{fontSize:'18px', border:'1px dotted'},
-            bTag:'<b>Hello</b>',//在控制台执行：app.message1='hi'，查看响应式结果
-            msg:'hello world',
-            num:5,
-            ok:true,//试执行app.ok=false
-            once:'once value',
-            loginType:'username',
-            firstName:'Harry',
-            lastName:'Potter'
+  var app111 = new Vue({
+    el: '#app111',
+    data: {
+      title: "v-bind:title " + new Date().toLocaleString(),
+      exist: 1,//试执行app.seen1=false
+      seen: true,//v-show只是切换CSS属性display，比起v-if更适用于频繁地切换，不支持<template>元素，不支持v-else
+      classObj: {default2: true, 'default-3': true},//试执行app.classObj.default2=false
+      activeClass: 'active',
+      errorClass: 'text-danger',
+      styleObj: {fontSize: '18px', border: '1px dotted'},
+      bTag: '<b>Hello</b>',//在控制台执行：app.message1='hi'，查看响应式结果
+      msg: 'hello world',
+      num: 5,
+      ok: true,//试执行app.ok=false
+      once: 'once value',
+      loginType: 'username',
+      firstName: 'Harry',
+      lastName: 'Potter'
 
+    },
+    mounted() {//加载后执行
+      console.log('mounted.');
+    },
+    methods: {
+      reverseMsg: function (event) {
+        this.msg = this.msg.split('').reverse().join('');
+        console.log(event.target.tagName);
+      },
+      toggleType: function () {
+        if (this.loginType == 'username') this.loginType = 'email';
+        else this.loginType = 'username';
+      },
+      functioned: function () {
+        alert('functioned');
+      }
+    },
+    computed: {//计算属性，基于它们的依赖进行缓存
+      reversebTag: function () {
+        return this.bTag.split('').reverse().join('');
+      },
+      /*fullName:function () {//侦听属性的介绍，试改变firstName的值，查看结果
+       return this.firstName+' '+this.lastName;
+       }*/
+      fullName: {
+        get: function () {
+          return this.firstName + ' ' + this.lastName;
         },
-        mounted(){//加载后执行
-            console.log('mounted.');
-        },
-        methods: {
-            reverseMsg: function (event) {
-                this.msg = this.msg.split('').reverse().join('');
-                console.log(event.target.tagName);
-            },
-            toggleType:function () {
-                if(this.loginType=='username')this.loginType='email';
-                else this.loginType='username';
-            },
-            functioned:function () {
-                alert('functioned');
-            }
-        },
-        computed:{//计算属性，基于它们的依赖进行缓存
-            reversebTag: function () {
-                return this.bTag.split('').reverse().join('');
-            },
-            /*fullName:function () {//侦听属性的介绍，试改变firstName的值，查看结果
-             return this.firstName+' '+this.lastName;
-             }*/
-            fullName:{
-                get:function () {
-                    return this.firstName+' '+this.lastName;
-                },
-                set:function (newValue) {//试执行app.fullName='aa bb'
-                    var names = newValue.split(' ');
-                    this.firstName = names[0];
-                    this.lastName = names[names.length - 1];
-                }
-            }
-        },
-        watch:{
-            firstName:function (newValue,oldValue) {//回调将在 firstName 改变后调用
-                console.log('firstName: '+oldValue+" => "+newValue);
-            }
+        set: function (newValue) {//试执行app.fullName='aa bb'
+          var names = newValue.split(' ');
+          this.firstName = names[0];
+          this.lastName = names[names.length - 1];
         }
-    });
-    /*
-     v-bind: 绑定值，缩写 :
-     v-if= 插入/移除
-     v-html= 输出真HTML
-     v-model= 双向绑定
-     v-on:click= 点击事件，缩写 @click
-     v-once 绑定不可改值
-     v-for= 遍历
-     */
-    /*【事件修饰符】
-     .stop .prevent. capture .self .once
-     <a v-on:click.stop="doThis"></a> 阻止单击事件继续传播
-     <form v-on:submit.prevent="onSubmit"></form> 提交事件不再重载页面
-     <a v-on:click.stop.prevent="doThat"></a> 修饰符可以串联
-     <form v-on:submit.prevent></form> 只有修饰符
+      }
+    },
+    watch: {
+      firstName: function (newValue, oldValue) {//回调将在 firstName 改变后调用
+        console.log('firstName: ' + oldValue + " => " + newValue);
+      }
+    }
+  });
+  /*
+   v-bind: 绑定值，缩写 :
+   v-if= 插入/移除
+   v-html= 输出真HTML
+   v-model= 双向绑定
+   v-on:click= 点击事件，缩写 @click
+   v-once 绑定不可改值
+   v-for= 遍历
+   */
+  /*【事件修饰符】
+   .stop .prevent. capture .self .once
+   <a v-on:click.stop="doThis"></a> 阻止单击事件继续传播
+   <form v-on:submit.prevent="onSubmit"></form> 提交事件不再重载页面
+   <a v-on:click.stop.prevent="doThat"></a> 修饰符可以串联
+   <form v-on:submit.prevent></form> 只有修饰符
 
-     <div v-on:click.capture="doThis">...</div>
-     添加事件监听器时使用事件捕获模式 -->
-     即内部元素触发的事件先在此处处理，然后才交由内部元素自身进行处理
+   <div v-on:click.capture="doThis">...</div>
+   添加事件监听器时使用事件捕获模式 -->
+   即内部元素触发的事件先在此处处理，然后才交由内部元素自身进行处理
 
-     <div v-on:click.self="doThat">...</div>
-     只当在 event.target 是当前元素自身时触发处理函数
-     即事件不是从内部元素触发的
+   <div v-on:click.self="doThat">...</div>
+   只当在 event.target 是当前元素自身时触发处理函数
+   即事件不是从内部元素触发的
 
-     <a v-on:click.once="doThis"></a> 点击事件将只会触发一次
-     使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 @click.prevent.self 会阻止所有的点击，而 @click.self.prevent 只会阻止对元素自身的点击。
-     */
-    /*【修饰符】
-     .lazy .number .trim
-     修饰符 lazy ，变为在 change 事件中同步：(在 "change" 而不是 "input" 事件中更新 )
-     <input v-model.lazy="msg" >
-     如果想自动将用户的输入值转为 Number 类型 (如果原值的转换结果为 NaN 则返回原值)，可以添加一个修饰符 number 给 v-model 来处理输入值：
-     <input v-model.number="age" type="number">
-     如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入：
-     <input v-model.trim="msg">
-     */
-    /*【按键别名】
-     .enter
-     .tab
-     .delete (捕获“删除”和“退格”键)
-     .esc
-     .space
-     .up
-     .down
-     .left
-     .right
-     可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
-     Vue.config.keyCodes.f1 = 112
+   <a v-on:click.once="doThis"></a> 点击事件将只会触发一次
+   使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 @click.prevent.self 会阻止所有的点击，而 @click.self.prevent 只会阻止对元素自身的点击。
+   */
+  /*【修饰符】
+   .lazy .number .trim
+   修饰符 lazy ，变为在 change 事件中同步：(在 "change" 而不是 "input" 事件中更新 )
+   <input v-model.lazy="msg" >
+   如果想自动将用户的输入值转为 Number 类型 (如果原值的转换结果为 NaN 则返回原值)，可以添加一个修饰符 number 给 v-model 来处理输入值：
+   <input v-model.number="age" type="number">
+   如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入：
+   <input v-model.trim="msg">
+   */
+  /*【按键别名】
+   .enter
+   .tab
+   .delete (捕获“删除”和“退格”键)
+   .esc
+   .space
+   .up
+   .down
+   .left
+   .right
+   可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
+   Vue.config.keyCodes.f1 = 112
 
-     .ctrl
-     .alt
-     .shift
-     .meta
-     */
+   .ctrl
+   .alt
+   .shift
+   .meta
+   */
 </script>
 </body>
 </html>
