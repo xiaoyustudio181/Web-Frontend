@@ -9,12 +9,12 @@
 <ol>
   <li>
     <kbd>@click.stop</kbd> 修饰符：阻止单击事件继续传播。
-    <div id="app17" @click="app_say">
+    <div id="app1" @click="app_say">
       <span @click.stop="span_say">click me inside or outside</span>
     </div>
     <script>
-      let app17 = new Vue({
-        el: '#app17',
+      let app1 = new Vue({
+        el: '#app1',
         data:{
           value1:1
         },
@@ -31,21 +31,21 @@
   </li>
   <li>
     <kbd>@submit.prevent</kbd> 修饰符：阻止默认的事件。
-    <div id="app18">
+    <div id="app2">
       <form @submit.prevent="say">
         <input type="submit"/>
         <input type="submit" @click.prevent/><!--只有修饰符的情况-->
       </form>
     </div>
     <script>
-      let app18 = new Vue({
-        el: '#app18',
+      let app2 = new Vue({
+        el: '#app2',
         data:{
           value1:1
         },
         methods:{
           say:function () {
-            alert('submit!')
+            alert('submit')
           }
         }
       });
@@ -53,14 +53,14 @@
   </li>
   <li>
     <kbd>click.stop.prevent</kbd> 修饰符串联使用。
-    <div id="app19" @click="say">
+    <div id="app3" @click="say">
       <form>
         <input @click.stop.prevent="say" type="submit"/>
       </form>
     </div>
     <script>
-      let app19 = new Vue({
-        el: '#app19',
+      let app3 = new Vue({
+        el: '#app3',
         data:{
           value1:1
         },
@@ -73,31 +73,122 @@
     </script>
   </li>
   <li>
-
+    <kbd>click.capture</kbd> 先处理内部元素触发的事件，再由内部元素处理。
+    <div id="app4" @click.capture="app_say">
+      <button @click="button_say">Button</button>
+    </div>
+    <script>
+      let app4 = new Vue({
+        el: '#app4',
+        methods:{
+          app_say:function () {
+            alert('app_say')
+          },
+          button_say:function () {
+            alert('button_say')
+          }
+        }
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>click.self</kbd> 只当在 event.target 是元素自身时触发，即事件不是从内部元素触发的。
+    <div id="app5" @click.self="app_say">
+      <button @click="button_say">Button</button>
+    </div>
+    <script>
+      let app5 = new Vue({
+        el: '#app5',
+        methods:{
+          app_say:function (e) {
+            alert(e.target.tagName)
+          },
+          button_say:function (e) {
+            alert(e.target.tagName)
+          }
+        }
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>click.once</kbd> 只触发一次。
+    <div id="app6">
+      <button @click.once="say">Button</button>
+    </div>
+    <script>
+      let app6 = new Vue({
+        el: '#app6',
+        methods:{
+          say:function (e) {
+            alert(1)
+          }
+        }
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>v-model.lazy</kbd> 不立即同步，等待change事件触发后同步，而非input事件。
+    <div id="app7">
+      <input type="text" v-model="val" placeholder="no lazy"/> {{val}} <br/>
+      <input type="text" v-model.lazy="val" placeholder="lazy"/> {{val}}
+    </div>
+    <script>
+      let app7 = new Vue({
+        el: '#app7',
+        data:{
+          val:''
+        }
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>v-model.number</kbd> 尽量将输入的值转化为 Number 类型。
+    <div id="app8">
+      <input type="text" v-model="val" @change="check" placeholder="no number"/> {{val}} <br/>
+      <input type="text" v-model.number="val" @change="check" placeholder="number"/> {{val}} <br/>
+    </div>
+    <script>
+      let app8 = new Vue({
+        el: '#app8',
+        data:{
+          val:''
+        },
+        methods:{
+          check:function () {
+            alert(typeof this.val);
+          }
+        }
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>v-model.trim</kbd> 过滤输入的首尾空格。<br/>
+    <kbd>app9.val.length</kbd>
+    <div id="app9">
+      <input type="text" v-model="val" @change="check" placeholder="no trim"/> {{val}} <br/>
+      <input type="text" v-model.trim="val" @change="check" placeholder="trim"/> {{val}} <br/>
+    </div>
+    <script>
+      let app9 = new Vue({
+        el: '#app9',
+        data:{
+          val:''
+        },
+        methods:{
+          check:function () {
+            alert(this.val.length);
+          }
+        }
+      });
+    </script>
   </li>
 </ol>
 </body>
 <script>
   /*事件修饰符
-<div v-on:click.capture="doThis">...</div>
-事件捕获模式，即内部元素触发的事件先在此处处理，然后交由内部元素自身处理
-
-<div v-on:click.self="doThat">...</div>
-只当在 event.target 是当前元素自身时触发处理函数
-即事件不是从内部元素触发的
-
-<a v-on:click.once="doThis"></a> 点击事件将只会触发一次
-使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 @click.prevent.self 会阻止所有的点击，而 @click.self.prevent 只会阻止对元素自身的点击。
+使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，
+用 @click.prevent.self 会阻止所有的点击，
+而 @click.self.prevent 只会阻止对元素自身的点击。
 */
-  /*修饰符
-   .lazy .number .trim
-   修饰符 lazy ，变为在 change 事件中同步：(在 "change" 而不是 "input" 事件中更新 )
-   <input v-model.lazy="msg" >
-   如果想自动将用户的输入值转为 Number 类型 (如果原值的转换结果为 NaN 则返回原值)，可以添加一个修饰符 number 给 v-model 来处理输入值：
-   <input v-model.number="age" type="number">
-   如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入：
-   <input v-model.trim="msg">
-   */
-
 </script>
 </html>
