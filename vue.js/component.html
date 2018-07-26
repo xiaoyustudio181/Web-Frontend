@@ -7,37 +7,39 @@
     <script src="vue.js"></script>
 </head>
 <body>
-<!--
-第一个自定义组件
--->
-<div id="comp1">
-    <mycomponent1></mycomponent1>
-</div>
-<script>
-    Vue.component('mycomponent1',{
-        template:'<p style="color:blue;">my first component</p>'
-    });
-    new Vue({el:'#comp1'});
-</script>
-<hr />
-<!--
-局部注册
--->
-<div id="comp1-2">
-    <mycomponent2></mycomponent2>
-</div>
-<script>
-    var Child={
-        template: '<p>my second component</p>'
-    };
-    new Vue({
-        el:'#comp1-2',
-        components:{
-            mycomponent2:Child
-        }
-    });
-</script>
-<hr />
+<ol>
+    <li>
+        <kbd>Vue.component</kbd> 注册自定义组件。
+        <div id="app1">
+            <pen></pen>
+        </div>
+        <script>
+          Vue.component('pen',{
+            template:'<span style="color:blue;">my pen</span>'
+          });
+          new Vue({
+            el:'#app1'
+          });
+        </script>
+    </li>
+    <li>
+        局部注册。
+        <div id="app2">
+            <pen></pen>
+        </div>
+        <script>
+            let pen1={
+              template:'<span style="color:blue;">my pen</span>'
+            };
+            new Vue({
+              el:'#app2',
+              components:{
+                pen:pen1
+              }
+            });
+        </script>
+    </li>
+</ol>
 <!--
 自定义<tr>组件
 -->

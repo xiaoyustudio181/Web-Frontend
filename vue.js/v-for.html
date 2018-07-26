@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue v-for</title>
+    <script src="vue.js"></script>
+</head>
+<body><!--建议尽可能在使用 v-for 时提供 key-->
+<ol>
+    <li>
+        <kbd>v-for</kbd> 遍历数字。
+        <div id="app6">
+            <ul>
+                <li v-for="i in 3">{{i}}</li>
+            </ul>
+            <hr/>
+            <ul>
+                <li v-for="i in oddNums(nums)">{{i}}</li>
+            </ul>
+            <hr/>
+            <ul>
+                <li v-for="i in evenNums">{{i}}</li>
+            </ul>
+        </div>
+        <script>
+          let app6 = new Vue({
+            el: '#app6',
+            data: {
+              nums: [1, 2, 3, 4]
+            },
+            methods:{
+              oddNums:function () {
+                return this.nums.filter(function (num) {
+                  return num % 2 != 0;
+                });
+              }
+            },
+            computed: {
+              evenNums: function () {
+                return this.nums.filter(function (num) {
+                  return num % 2 === 0;
+                });
+              }
+            }
+          })
+        </script>
+    </li>
+    <li>
+        <kbd>v-for</kbd> 使用 <kbd>(value,index)</kbd> 遍历数组。
+        <div id="app5">
+            <ul>
+                <li v-for="(value,index) in persons">
+                    {{index+1}}. {{value}}
+                </li>
+            </ul>
+        </div>
+        <script>
+          let app5 = new Vue({
+            el: '#app5',
+            data: {
+              persons: [
+                'Harry',
+                'Peter',
+                'Leon'
+              ]
+            }
+          })
+        </script>
+    </li>
+    <li>
+        <kbd>v-for</kbd> 使用 <kbd>(value,key,index)</kbd> 遍历对象。
+        <div id="app4">
+            <ul>
+                <li v-for="(value,key,index) in person">
+                    {{index+1}}. {{key}}: {{value}}
+                </li>
+            </ul>
+        </div>
+        <script>
+          let app4 = new Vue({
+            el: '#app4',
+            data: {
+              person: {
+                id: 20,
+                name: 'Peter',
+                gender: 'Male'
+              }
+            }
+          });
+        </script>
+    </li>
+    <li>
+        <kbd>v-for</kbd> 遍历对象数组。
+        <div id="app1">
+            <ul>
+                <li v-for="each in list">{{each.name}}</li>
+            </ul>
+        </div>
+        <script>
+          let app1 = new Vue({
+            el: '#app1',
+            data: {
+              list: [
+                {name: 'item1'},
+                {name: 'item2'}
+              ]
+            }
+          })
+        </script>
+    </li>
+    <li>
+        <kbd>v-for</kbd> 使用 <kbd>template</kbd> 遍历对象数组。
+        <div id="app2">
+            <dl>
+                <template v-for="each in list" v-if="!each.deleted">
+                    <dt>{{each.name}}</dt>
+                    <dd>{{each.detail}}</dd>
+                </template>
+            </dl>
+        </div>
+        <script>
+          let app2 = new Vue({
+            el: '#app2',
+            data: {
+              list: [
+                {name: 'item1', detail: 'item1 detail...', deleted: 0},
+                {name: 'item2', detail: 'item2 detail...', deleted: 1},
+                {name: 'item3', detail: 'item3 detail...', deleted: 0}
+              ]
+            }
+          })
+        </script>
+    </li>
+    <li>
+        <kbd>v-for</kbd> 使用 <kbd>(each,index)</kbd> 遍历对象数组。
+        <div id="app3">
+            <dl>
+                <template v-for="(each,index) in list" v-if="!each.deleted" :key="index">
+                    <dt>{{index+1}}. {{each.name}}</dt>
+                    <dd>{{each.detail}}</dd>
+                </template>
+            </dl>
+        </div>
+        <script>
+          let app3 = new Vue({
+            el: '#app3',
+            data: {
+              list: [
+                {name: 'item1', detail: 'item1 detail...', deleted: 0},
+                {name: 'item2', detail: 'item2 detail...', deleted: 1},
+                {name: 'item3', detail: 'item3 detail...', deleted: 0}
+              ]
+            }
+          })
+        </script>
+    </li>
+</ol>
+</body>
+</html>
