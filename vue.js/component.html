@@ -1,360 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>vue component</title>
-    <!--<script src="https://unpkg.com/vue"></script>-->
-    <script src="vue.js"></script>
+  <meta charset="UTF-8">
+  <title>Vue Component</title>
+  <!--<script src="https://unpkg.com/vue"></script>-->
+  <script src="vue.js"></script>
 </head>
 <body>
 <ol>
-    <li>
-        <kbd>Vue.component</kbd> 注册自定义组件。
-        <div id="app1">
-            <pen></pen>
-        </div>
-        <script>
-          Vue.component('pen',{
-            template:'<span style="color:blue;">my pen</span>'
-          });
-          new Vue({
-            el:'#app1'
-          });
-        </script>
-    </li>
-    <li>
-        局部注册。
-        <div id="app2">
-            <pen></pen>
-        </div>
-        <script>
-            let pen1={
-              template:'<span style="color:blue;">my pen</span>'
-            };
-            new Vue({
-              el:'#app2',
-              components:{
-                pen:pen1
-              }
-            });
-        </script>
-    </li>
-</ol>
-<!--
-自定义<tr>组件
--->
-<div id="comp2">
-    <table cellpadding="0" cellspacing="0" border="1">
-        <tr is="myrow"></tr>
-        <tr is="myrow"></tr>
-        <!--
-自定义组件 <my-row> 会被当作无效的内容，因此会导致错误的渲染结果。变通的方案是使用特殊的 is 特性：
-<table>
-  <tr is="my-row"></tr>
-</table>
-应当注意，如果使用来自以下来源之一的字符串模板，则没有这些限制：
-<script type="text/x-template">
-JavaScript 内联模板字符串
-.vue 组件
-        -->
-    </table>
-</div>
-<script>
-    Vue.component('myrow',{//tr is用法
-        template:'<tr style="height: 35px;"><mytd></mytd><mytd></mytd></tr>'
-    });
-    Vue.component('mytd',{
-        template:'<td>content</td>'
-    });
-    new Vue({el:'#comp2'});
-</script>
-<hr />
-<!--
-自定义组件的数据
--->
-<div id="comp3">
-    <mycounter></mycounter>
-    <mycounter></mycounter>
-</div>
-<script>
-    Vue.component('mycounter',{//普通事件
-        template:'<button @click="counter++">{{counter}}</button>',
-        data:function () {
-            return { counter: 0 };
+  <li>
+    <kbd>Vue.component</kbd> 注册自定义组件。
+    <div id="app1">
+      <pen></pen>
+    </div>
+    <script>
+      Vue.component('pen', {
+        template: '<div class="pen"><span style="color:blue;">my pen</span></div>'
+      });
+      new Vue({
+        el: '#app1'
+      });
+    </script>
+  </li>
+  <li>
+    局部注册。
+    <div id="app2">
+      <pen></pen>
+    </div>
+    <script>
+      let pen1 = {
+        template: '<div class="pen"><span style="color:blue;">my pen</span></div>'
+      };
+      new Vue({
+        el: '#app2',
+        components: {
+          pen: pen1
         }
-    });
-    new Vue({el:'#comp3'});
-</script>
-<hr />
-<!--
-自定义组件调用父级事件
-使用 v-on 绑定自定义事件
-每个 Vue 实例都实现了事件接口，即：
-使用 $on(eventName) 监听事件
-使用 $emit(eventName) 触发事件
--->
-<div id="comp5">
-    <mycounter2 v-on:event1="increaseSum"></mycounter2>
-    <mycounter2 v-on:event1="increaseSum"></mycounter2> {{total}}<br />
-</div>
-<script>
-    Vue.component('mycounter2',{
-        template:'<button v-on:click="increase">{{counter}}</button>',
-        data:function () {
-            return { counter: 0 };
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>text/x-template</kbd> 注册。
+    <div id="app2_1">
+      <pen></pen>
+    </div>
+    <script type="text/x-template" id="pen">
+      <div class="pen">
+        <span style="color:blue;">my pen</span>
+      </div>
+    </script>
+    <script>
+      Vue.component('pen', {
+        template: '#pen'
+      });
+      new Vue({
+        el: '#app2_1'
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>is</kbd> 特性。
+    <div id="app3">
+      <table border="1">
+        <tr is="tr2"></tr>
+        <tr is="tr2"></tr>
+      </table>
+    </div>
+    <!--直接使用自定义组件 <tr2> 会被当作无效的内容，会导致错误的渲染结果。
+    变通的方案是使用特殊的 is 特性。
+    如果使用来自以下来源之一的字符串模板，则没有这些限制：
+    <script type="text/x-template">
+    JavaScript 内联模板字符串
+    .vue 组件-->
+    <script>
+      Vue.component('tr2', {//tr is用法
+        template: '<tr style="height: 35px;"><td2></td2><td2></td2></tr>'
+      });
+      Vue.component('td2', {
+        template: '<td>Hello</td>'
+      });
+      new Vue({
+        el: '#app3'
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>data</kbd> 组件数据。
+    <div id="app4">
+      <counter></counter>
+      <counter></counter>
+    </div>
+    <script type="text/x-template" id="counter">
+      <button @click="count++">{{count}}</button>
+    </script>
+    <script>
+      Vue.component('counter', {
+        template: '#counter',
+        data: function () {
+          return {count: 0};
+        }
+      });
+      new Vue({
+        el: '#app4'
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>methods</kbd> 组件方法；触发父级自定义事件以调用父级方法。
+    <div id="app5">
+      <counter2 v-on:event1="sum"></counter2>
+      +
+      <counter2 v-on:event1="sum"></counter2>
+      = {{total}}<br/>
+    </div>
+    <script type="text/x-template" id="counter2">
+      <button v-on:click="add">{{count}}</button>
+    </script>
+    <script>
+      Vue.component('counter2', {
+        template: '#counter2',
+        data: function () {
+          return {count: 0};
         },
         methods: {
-            increase: function () {
-                this.counter += 1;
-                this.$emit('event1');//触发父级事件
-            }
+          add: function () {
+            this.count++;
+            this.$emit('event1');//触发父级事件
+          }
         }
-    });
-    new Vue({el:'#comp5',
-        data:{
-            total:0
+      });
+      new Vue({
+        el: '#app5',
+        data: {
+          total: 0
         },
-        methods:{
-            increaseSum: function () {
-                this.total ++;
-            }
+        methods: {
+          sum: function () {
+            this.total++;
+          }
         }
-    });
-</script>
-<hr />
-<!--
-自定义组件的属性prop
-驼峰法命名
-注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。
--->
-<div id="comp4">
-    <mycomponent2 message="hello"></mycomponent2>
-    <mycomponent3 my-message="world"></mycomponent3>
-    <hr />
-    <input v-model="bindval" />
-    <mycomponent2 :message="bindval"></mycomponent2>
-</div>
-<script>
-    Vue.component('mycomponent2', {//props用法
-        props: ['message'],//像data一样，prop也可以在模板中使用，同样可在vm实例中通过this.message来使用
-        template: '<span>{{ message }}</span>'
-    });
-    Vue.component('mycomponent3', {//props驼峰命名法用法
-        template: '<span>{{ myMessage }}</span>',
-        props: ['myMessage']//HTML特性是不区分大小写的。所以，当使用的不是字符串模板时，camelCase(驼峰式命名)的prop 需要转换为相对应的kebab-case (短横线分隔式命名)
-    });
-    new Vue({el:'#comp4',
-        data:{
-            bindval:'screen'
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>props</kbd> 组件属性。
+    <div id="app6">
+      <person name="Helen" the-gender="female" :info="{id:11,age:22}"></person>
+      <person :name="name2" :the-gender="theGender2" :info="info2"></person><!--绑定父组件的数据-->
+    </div><!--标签属性的驼峰名变为以短横线分隔-->
+    <script type="text/x-template" id="person">
+      <p>{{name}} - {{theGender}} - id: {{info.id}}, age: <input type="text" :value="info.age"/></p>
+    </script>
+    <script>
+      Vue.component('person', {
+        template: '#person',
+        props: ['name', 'theGender', 'info']
+      });
+      let app6 = new Vue({
+        el: "#app6",
+        data: {
+          name2: 'Leon',
+          theGender2: 'male',
+          info2: {
+            id: 12,
+            age: 24
+          }
         }
-    });
-</script>
-<hr />
-<!--
-prop验证
-非prop特性：可以直接传入组件，而不需要定义相应的 prop。如下例中的noprop="temp"
-若组件的class的值来自两个方向，一个来自组件定义，一个来自父组件，
-对于多数特性来说，传递给组件的值会覆盖组件本身设定的值。即例如传递 type="large" 将会覆盖 type="date" 且有可能破坏该组件！所幸我们对待 class 和 style 特性会更聪明一些，这两个特性的值都会做合并 (merge) 操作。
--->
-<div id="comp4-2">
-    <example :prop-a="1" prop-b="2"
-             prop-c="hi" prop-f="11" noprop="temp"></example>
-    <!--字面量语法 vs 动态语法
-    初学者常犯的一个错误是使用字面量语法传递数值：<comp some-prop="1"></comp>
-    因为它是一个字面量 prop，它的值是字符串 "1" 而不是一个数值。
-    如果想传递一个真正的 JavaScript 数值，则需要使用 v-bind，从而让它的值被当作 JavaScript 表达式计算：<comp v-bind:some-prop="1"></comp>
-    -->
-</div>
-<script>
-    Vue.component('example', {
-        template:'<div>prop验证测试 ' +
-        'A: {{propA}}, ' +
-        'B: {{propB}}, ' +
-        'C: {{propC}}, ' +
-        'D: {{propD}}, ' +
-        'E: {{propE}}, ' +
-        'F: {{propF}}' +
-        '</div>',
+      });
+    </script>
+  </li>
+  <li>
+    属性验证。
+    <div id="app7">
+      <validate :prop1="123" prop2="abc" prop3="required" :prop6="11" not_prop="example"></validate>
+    </div>
+    <script type="text/x-template" id="validate">
+      <ol>
+        <li>{{prop1}}</li>
+        <li>{{prop2}}</li>
+        <li>{{prop3}}</li>
+        <li>{{prop4}}</li>
+        <li>{{prop5}}</li>
+        <li>{{prop6}}</li>
+      </ol>
+    </script>
+    <script>
+      Vue.component('validate', {
+        template: '#validate',
+        /*type 可以是这些原生构造器：
+        String, Number, Boolean, Function, Object, Array, Symbol
+        type 也可以是一个自定义构造器函数，使用 instanceof 检测。*/
+        /*当 prop 验证失败，Vue 会抛出警告 (如果使用的是开发版本)。
+        注意 prop 会在组件实例创建之前进行校验，所以在 default 或 validator 函数里，诸如 data、computed 或 methods 等实例属性还无法使用。*/
         props: {
-            propA: Number,// 基础类型检测 (`null` 指允许任何类型)
-            propB: [String, Number],// 可能是多种类型
-            propC: {// 必传且是字符串
-                type: String,
-                required: true
-            },
-            propD: {// 数值且有默认值
-                type: Number,
-                default: 100
-            },
-            propE: {// 数组/对象的默认值应当由一个工厂函数返回
-                type: Object,
-                default: function () {
-                    return { message: 'hello' };
-                }
-            },
-            propF: {// 自定义验证函数
-                validator: function (value) {
-                    return value > 10;
-                }
+          prop1: Number,//类型检测 (null指允许任何类型)
+          prop2: [String, Number],//多种类型
+          prop3: {// 必传 且 是字符串
+            type: String,
+            required: true
+          },
+          prop4: {// 数值 且 有默认值
+            type: Number,
+            default: 100
+          },
+          prop5: {// 数组/对象的默认值 应当由一个工厂函数返回
+            type: Object,
+            default: function () {
+              return {message: 'world'};
             }
-            //type 可以是这些原生构造器：
-            //String, Number, Boolean, Function, Object, Array, Symbol
-            //type 也可以是一个自定义构造器函数，使用 instanceof 检测。
-
-            //当 prop 验证失败，Vue 会抛出警告 (如果使用的是开发版本)。
-            //注意 prop 会在组件实例创建之前进行校验，所以在 default 或 validator 函数里，诸如 data、computed 或 methods 等实例属性还无法使用。
+          },
+          prop6: {// 自定义验证函数
+            validator: function (value) {
+              return value > 10;
+            }
+          }
         }
-    });
-    new Vue({
-        el:'#comp4-2',
-        data:{
-            temp:''
+      });
+      let app7 = new Vue({
+        el: '#app7'
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>v-for</kbd> 生成自定义控件。
+    <div id="app8">
+      <ul>
+        <list_item v-for="each in list" :item="each" :key="each.id"></list_item>
+      </ul>
+    </div>
+    <script type="text/x-tempalte" id="list_item">
+      <li>{{item.txt}} - {{item.finished?'已完成':'未完成'}}</li>
+    </script>
+    <script>
+      Vue.component('list_item', {
+        template: '#list_item',
+        props: ['item']
+      });
+      let app8 = new Vue({
+        el: '#app8',
+        data: {
+          list: [
+            {id: 1, txt: '任务1', finished: false},
+            {id: 2, txt: '任务2', finished: true},
+            {id: 3, txt: '任务3', finished: false}
+          ]
         }
-    });
-</script>
-<hr />
-<!--
-非父子组件的通信
-用一个空的 Vue 实例作为事件总线
--->
-<script>
-    var bus=new Vue();
-    bus.$on('event',function (id) {// 在组件 B 创建的钩子中监听事件
-        console.log('id: '+id);
-    });
-    bus.$emit('event',13);// 触发组件 A 中的事件
-</script>
-<hr />
-<!--
-自定义列表组件
--->
-<div id="comp6">
-    <ul>
-        <todo v-for="each in list" v-bind:item="each" v-bind:key="each.id">
-            <!--key是为了使vue重用和重新排序现有元素，而不复用-->
-        </todo>
-    </ul>
-</div>
-<script>
-    Vue.component('todo', {//props直接绑定对象属性
-        props: ['item'],
-        template: '<li>{{ item.txt }}</li>'
-    });
-    new Vue({
-        el:'#comp6',
-        data:{
-            list: [
-                { id: 1, txt: 'java' },
-                { id: 2, txt: 'c#' },
-                { id: 3, txt: 'php' }
-            ]
-        }});
-</script>
-<hr />
-<!--
-使用自定义事件的表单输入组件
-
-子组件引用：尽管有 prop 和事件，但是有时仍然需要在 JavaScript 中直接访问子组件。为此可以使用 ref 为子组件指定一个引用 ID。$refs 只在组件渲染完成后才填充，并且它是非响应式的。它仅仅是一个直接操作子组件的应急方案——应当避免在模板或计算属性中使用 $refs。
--->
-<div id="comp7">
-    <currency></currency>
-</div>
-<script>
-    Vue.component('currency', {
-        template: '\
-    <span>\
-    $\
-      <input ref="input1" aa="a1" v-bind:value="value" v-on:input="updateValue($event.target.value)" >\
-      <span ref="span1"></span>\
-    </span>',
+      })
+    </script>
+  </li>
+  <li>
+    <kbd>this.$refs, $event.target.value</kbd>
+    <div id="app9">
+      <currency></currency>
+    </div>
+    <script type="text/x-template" id="currency">
+      <div class="currency">
+        $ <input ref="input1" :value="value" @input="updateValue($event.target.value)"/>
+        <span ref="span1"></span>
+      </div>
+    </script>
+    <script>
+      Vue.component('currency', {
+        template: '#currency',
         props: ['value'],
         methods: {
-            updateValue: function (value) {//不直接更新值，而用此方法来对输入值进行格式化和位数限制
-                var formattedValue = value.trim().slice(0, value.indexOf('.') === -1 ? value.length : value.indexOf('.') + 3);//保留2位小数
-                if (formattedValue !== value) {// 如果值尚不合规，则覆盖为合规的值
-                    this.$refs.input1.value = formattedValue;
-                    this.$refs.span1.innerHTML='functioned';
-                }
-                //this.$emit('input', Number(formattedValue));//通过input事件带出数值
+          updateValue: function (value) {//不直接更新值，而用此方法来对输入值进行格式化和位数限制
+            let formattedValue = value.trim().slice(0,
+                value.indexOf('.') === -1 ?
+                    value.length :
+                    value.indexOf('.') + 3);//保留2位小数
+            if (formattedValue !== value) {// 如果值尚不合规，则覆盖为合规的值
+              /*子组件引用：尽管有 prop 和事件，但是有时仍然需要在 JavaScript 中直接访问子组件。
+              为此可以使用 ref 为子组件指定一个引用 ID。
+              $refs 只在组件渲染完成后才填充，并且它是非响应式的。
+              它仅仅是一个直接操作子组件的应急方案——应当避免在模板或计算属性中使用 $refs。*/
+              console.log(this.$refs.input1.value);
+              this.$refs.input1.value = formattedValue;
+              this.$refs.span1.innerHTML = 'limited';
             }
+            //this.$emit('input', Number(formattedValue));//通过input事件带出数值
+          }
         }
-    });
-    new Vue({el:'#comp7'});
-</script>
-<!--=======================================================-->
-<hr />
-<!--
-单个插槽
--->
-<div id="comp8">
-    <parent-component></parent-component>
-</div>
-<script type="text/x-template" id="child1">
-    <div>
-        <h4>我是子组件的标题</h4>
-        <slot>
-            只有在没有要分发的内容时才会显示。
-        </slot>
+      });
+      let app9 = new Vue({
+        el: "#app9"
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>slot</kbd> 单个插槽。
+    <div id="app10">
+      <parent></parent>
+      <parent22></parent22>
     </div>
-</script>
-<script type="text/x-template" id="parent1">
-    <div>
-        <h3>单个插槽</h3>
-        <child-component>
-            <!--<p>这是一些初始内容</p>
-            <p>这是更多的初始内容</p>-->
-        </child-component>
-    </div>
-</script>
-<script>
-    Vue.component('child-component', {
-        template: '#child1'
-    });
-    Vue.component('parent-component', {
-        template: '#parent1'
-    });
-    new Vue({el:'#comp8'});
-</script>
-<hr />
+    <script type="text/x-template" id="child">
+      <div>
+        <h4>子组件标题</h4>
+        <slot>空插槽的默认值。</slot>
+      </div>
+    </script>
+    <script type="text/x-template" id="parent">
+      <div>
+        <child></child>
+      </div>
+    </script>
+    <script type="text/x-template" id="parent22">
+      <div>
+        <child>
+          <p>插入插槽的内容。</p>
+        </child>
+      </div>
+    </script>
+    <script>
+      Vue.component('child', {
+        template: '#child'
+      });
+      Vue.component('parent', {
+        template: '#parent'
+      });
+      Vue.component('parent22', {
+        template: '#parent22'
+      });
+      let app10 = new Vue({
+        el: '#app10'
+      });
+    </script>
+  </li>
+</ol>
+<!--若组件的 class 的值来自两个方向，一个来自组件定义，一个来自父组件，
+对于多数特性来说，传递给组件的值会覆盖组件本身设定的值。
+即例如传递 type="large" 将会覆盖 type="date" 且有可能破坏该组件！
+所幸我们对待 class 和 style 特性会更聪明一些，这两个特性的值都会做合并 (merge) 操作。-->
+
 <!--
 具名插槽
 -->
 <div id="comp9">
-    <parent-component2></parent-component2>
+  <parent-component2></parent-component2>
 </div>
 <script type="text/x-template" id="child2">
-    <div class="container">
-        <header>
-            <slot name="header"></slot>
-        </header>
-        <main>
-            <slot></slot>
-        </main>
-        <footer>
-            <slot name="footer"></slot>
-        </footer>
-    </div>
+  <div class="container">
+    <header>
+      <slot name="header"></slot>
+    </header>
+    <main>
+      <slot></slot>
+    </main>
+    <footer>
+      <slot name="footer"></slot>
+    </footer>
+  </div>
 </script>
 <script type="text/x-template" id="parent2">
-    <child-component2>
-        <h3 slot="header">具名插槽</h3>
+  <child-component2>
+    <h3 slot="header">具名插槽</h3>
 
-        <p>主要内容的一个段落。</p>
-        <p>另一个主要段落。</p>
+    <p>主要内容的一个段落。</p>
+    <p>另一个主要段落。</p>
 
-        <p slot="footer">这里有一些联系信息</p>
-    </child-component2>
+    <p slot="footer">这里有一些联系信息</p>
+  </child-component2>
 </script>
 <script>
-    Vue.component('child-component2', {
-        template: '#child2'
-    });
-    Vue.component('parent-component2', {
-        template: '#parent2'
-    });
-    new Vue({el:'#comp9'});
+  Vue.component('child-component2', {
+    template: '#child2'
+  });
+  Vue.component('parent-component2', {
+    template: '#parent2'
+  });
+  new Vue({el: '#comp9'});
 </script>
-<hr />
+<hr/>
 <!--
 作用域插槽
 作用域插槽是一种特殊类型的插槽，用作一个 (能被传递数据的) 可重用模板，来代替已经渲染好的元素。
@@ -362,33 +378,33 @@ prop验证
 在父级中，具有特殊特性 slot-scope 的 <template> 元素必须存在，表示它是作用域插槽的模板。slot-scope 的值将被用作一个临时变量名，此变量接收从子组件传递过来的 prop 对象
 -->
 <div id="comp10">
-    <parent3></parent3>
+  <parent3></parent3>
 </div>
 <script type="text/x-template" id="child3">
-    <div>
-        <slot text="插槽内的text值"></slot>
-    </div>
+  <div>
+    <slot text="插槽内的text值"></slot>
+  </div>
 </script>
 <script type="text/x-template" id="parent3">
-    <div>
-        <child3>
-            <template slot-scope="props">
-                <h3>作用域插槽</h3>
-                <p>{{ props.text }}</p>
-            </template>
-        </child3>
-    </div>
+  <div>
+    <child3>
+      <template slot-scope="props">
+        <h3>作用域插槽</h3>
+        <p>{{ props.text }}</p>
+      </template>
+    </child3>
+  </div>
 </script>
 <script>
-    Vue.component('child3',{
-        template:'#child3'
-    });
-    Vue.component('parent3',{
-        template:'#parent3'
-    });
-    new Vue({el:'#comp10'});
+  Vue.component('child3', {
+    template: '#child3'
+  });
+  Vue.component('parent3', {
+    template: '#parent3'
+  });
+  new Vue({el: '#comp10'});
 </script>
-<hr />
+<hr/>
 <!--
 动态组件
 通过使用保留的 <component> 元素，并对其 is 特性进行动态绑定，你可以在同一个挂载点动态切换多个组件
@@ -396,23 +412,23 @@ prop验证
 如果把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染。为此可以添加一个 keep-alive 指令参数，用<keep-alive>包裹组件
 -->
 <div id="comp11">
-    <component is="red"></component>
-    <component is="blue"></component>
+  <component is="red"></component>
+  <component is="blue"></component>
 </div>
 <script>
-    new Vue({
-        el:'#comp11',
-        components:{
-            red:{
-                template:'<span style="color: red;">red</span>'
-            },
-            blue:{
-                template:'<span style="color: blue;">blue</span>'
-            }
-        }
-    });
+  new Vue({
+    el: '#comp11',
+    components: {
+      red: {
+        template: '<span style="color: red;">red</span>'
+      },
+      blue: {
+        template: '<span style="color: blue;">blue</span>'
+      }
+    }
+  });
 </script>
-<hr />
+<hr/>
 <!--
 递归组件
 组件在它的模板内可以递归地调用自己。不过，只有当它有 name 选项时才可以这么做
