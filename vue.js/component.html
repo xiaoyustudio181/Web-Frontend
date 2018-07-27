@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Vue Component</title>
-  <!--<script src="https://unpkg.com/vue"></script>-->
   <script src="vue.js"></script>
 </head>
 <body>
@@ -81,6 +80,37 @@
       });
       new Vue({
         el: '#app3'
+      });
+    </script>
+  </li>
+  <li>
+    <kbd>is</kbd> 特性2。动态组件。<br/>
+    <kbd>app13.tag = 'em2'</kbd>
+    <div id="app13">
+      <component :is="tag"></component>
+    </div>
+    <script type="text/x-template" id="strong2">
+      <p>
+        <strong>i am strong2</strong>
+      </p>
+    </script>
+    <script type="text/x-template" id="em2">
+      <p>
+        <em>i am em2</em>
+      </p>
+    </script>
+    <script>
+      Vue.component('strong2',{
+        template:'#strong2'
+      });
+      Vue.component('em2',{
+        template:'#em2'
+      });
+      let app13=new Vue({
+        el:"#app13",
+        data:{
+          tag:'strong2'
+        }
       });
     </script>
   </li>
@@ -291,12 +321,14 @@
     <kbd>slot</kbd> 单个插槽。
     <div id="app10">
       <parent></parent>
+      <hr/>
       <parent22></parent22>
     </div>
     <script type="text/x-template" id="child">
       <div>
         <h4>子组件标题</h4>
-        <slot>空插槽的默认值。</slot>
+        <slot>空插槽默认的内容。</slot>
+        <!--<slot>空插槽默认的内容。</slot>-->
       </div>
     </script>
     <script type="text/x-template" id="parent">
@@ -307,7 +339,7 @@
     <script type="text/x-template" id="parent22">
       <div>
         <child>
-          <p>插入插槽的内容。</p>
+          <p>我是插入插槽的内容。</p>
         </child>
       </div>
     </script>
@@ -321,8 +353,90 @@
       Vue.component('parent22', {
         template: '#parent22'
       });
-      let app10 = new Vue({
+      new Vue({
         el: '#app10'
+      });
+    </script>
+  </li>
+  <li>
+    具名插槽。根据slot的值查找name的值，并插入对应插槽。
+    <div id="app11">
+      <parent33></parent33>
+      <hr/>
+      <parent44></parent44>
+    </div>
+    <script type="text/x-template" id="child22">
+      <div>
+        <h4>子组件标题</h4>
+        <slot name="header">header 空插槽的默认值。</slot>
+        <slot>main 空插槽的默认值。</slot>
+        <slot name="footer">footer 空插槽的默认值。</slot>
+        <!--</footer>-->
+      </div>
+    </script>
+    <script type="text/x-template" id="parent33">
+      <child22>
+        <h5 slot="header">header 的内容</h5>
+
+        <p>一个段落。</p>
+        <p>另一个段落。</p>
+
+        <p slot="footer">footer 的内容</p>
+      </child22>
+    </script>
+    <script type="text/x-template" id="parent44">
+      <child22>
+      </child22>
+    </script>
+    <script>
+      Vue.component('child22',{
+        template:'#child22'
+      });
+      Vue.component('parent33',{
+        template:'#parent33'
+      });
+      Vue.component('parent44',{
+        template:'#parent44'
+      });
+      new Vue({
+        el:'#app11'
+      });
+    </script>
+  </li>
+  <li>
+    作用域插槽。
+    <!--作用域插槽
+    作用域插槽是一种特殊类型的插槽，用作一个 (能被传递数据的) 可重用模板，来代替已经渲染好的元素。
+    在子组件中，只需将数据传递到插槽，就像你将 prop 传递给组件一样
+    在父级中，具有特殊特性 slot-scope 的 <template> 元素必须存在，表示它是作用域插槽的模板。
+    slot-scope 的值将被用作一个临时变量名，此变量接收从子组件传递过来的 prop 对象。-->
+    <div id="app12">
+      <parent3></parent3>
+    </div>
+    <script type="text/x-template" id="child3">
+      <div>
+        <h4>子组件标题</h4>
+        <slot text="我是插槽的 text 属性值"></slot>
+      </div>
+    </script>
+    <script type="text/x-template" id="parent3">
+      <div>
+        <child3>
+          <template slot-scope="props">
+            <p><em>{{ props.text }}</em></p>
+          </template>
+        </child3>
+      </div>
+    </script>
+    <script>
+      Vue.component('child3', {
+        template: '#child3'
+      });
+      Vue.component('parent3', {
+        template: '#parent3'
+      });
+      new Vue({
+        el: '#app12'
       });
     </script>
   </li>
@@ -331,111 +445,5 @@
 对于多数特性来说，传递给组件的值会覆盖组件本身设定的值。
 即例如传递 type="large" 将会覆盖 type="date" 且有可能破坏该组件！
 所幸我们对待 class 和 style 特性会更聪明一些，这两个特性的值都会做合并 (merge) 操作。-->
-
-<!--
-具名插槽
--->
-<div id="comp9">
-  <parent-component2></parent-component2>
-</div>
-<script type="text/x-template" id="child2">
-  <div class="container">
-    <header>
-      <slot name="header"></slot>
-    </header>
-    <main>
-      <slot></slot>
-    </main>
-    <footer>
-      <slot name="footer"></slot>
-    </footer>
-  </div>
-</script>
-<script type="text/x-template" id="parent2">
-  <child-component2>
-    <h3 slot="header">具名插槽</h3>
-
-    <p>主要内容的一个段落。</p>
-    <p>另一个主要段落。</p>
-
-    <p slot="footer">这里有一些联系信息</p>
-  </child-component2>
-</script>
-<script>
-  Vue.component('child-component2', {
-    template: '#child2'
-  });
-  Vue.component('parent-component2', {
-    template: '#parent2'
-  });
-  new Vue({el: '#comp9'});
-</script>
-<hr/>
-<!--
-作用域插槽
-作用域插槽是一种特殊类型的插槽，用作一个 (能被传递数据的) 可重用模板，来代替已经渲染好的元素。
-在子组件中，只需将数据传递到插槽，就像你将 prop 传递给组件一样
-在父级中，具有特殊特性 slot-scope 的 <template> 元素必须存在，表示它是作用域插槽的模板。slot-scope 的值将被用作一个临时变量名，此变量接收从子组件传递过来的 prop 对象
--->
-<div id="comp10">
-  <parent3></parent3>
-</div>
-<script type="text/x-template" id="child3">
-  <div>
-    <slot text="插槽内的text值"></slot>
-  </div>
-</script>
-<script type="text/x-template" id="parent3">
-  <div>
-    <child3>
-      <template slot-scope="props">
-        <h3>作用域插槽</h3>
-        <p>{{ props.text }}</p>
-      </template>
-    </child3>
-  </div>
-</script>
-<script>
-  Vue.component('child3', {
-    template: '#child3'
-  });
-  Vue.component('parent3', {
-    template: '#parent3'
-  });
-  new Vue({el: '#comp10'});
-</script>
-<hr/>
-<!--
-动态组件
-通过使用保留的 <component> 元素，并对其 is 特性进行动态绑定，你可以在同一个挂载点动态切换多个组件
-
-如果把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染。为此可以添加一个 keep-alive 指令参数，用<keep-alive>包裹组件
--->
-<div id="comp11">
-  <component is="red"></component>
-  <component is="blue"></component>
-</div>
-<script>
-  new Vue({
-    el: '#comp11',
-    components: {
-      red: {
-        template: '<span style="color: red;">red</span>'
-      },
-      blue: {
-        template: '<span style="color: blue;">blue</span>'
-      }
-    }
-  });
-</script>
-<hr/>
-<!--
-递归组件
-组件在它的模板内可以递归地调用自己。不过，只有当它有 name 选项时才可以这么做
-当你利用 Vue.component 全局注册了一个组件，全局的 ID 会被自动设置为组件的 name
-如果稍有不慎，递归组件可能导致死循环，这会导致一个“max stack size exceeded”错误，所以要确保递归调用有终止条件 (比如递归调用时使用 v-if 并最终解析为 false)
-
-
--->
 </body>
 </html>
