@@ -2,43 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>jq css</title>
-    <style>
-        button{font-size: large;font-family:"Calibri";}
-    </style>
-    <script src="../JavaScript/helper.js"></script>
+    <title>JQuery Css</title>
     <script src="jquery-3.0.0.min.js"></script>
 </head>
 <body>
-<p id="p1">this is a paragraph</p>
-<button id="b1">.css('background-color')</button>
-<button id="b1-2">.css('background-color','skyblue')</button>
-<button id="b1-3">.css('background-color')=='rgb(135, 206, 235)'</button>
-<button id="b1-4">.css({border:'2px solid',fontSize:'20px'})</button>
-<script>
-    $p1=$('#p1');
-    bindClick('b1',function () {
-        alert($p1.css('background-color'));
-    })
-    bindClick('b1-2',function () {
-        $p1.css('background-color','skyblue');
-    })
-    bindClick('b1-3',function () {
-        alert($p1.css('background-color')=='rgb(135, 206, 235)');
-    })
-    bindClick('b1-4',function () {
-        $p1.css({border:'2px solid',fontSize:'20px'});
-    })
-    /*
-     .width()，设置或返回元素的宽度（不包括内边距、边框或外边距）。
-     .height()，设置或返回元素的高度（不包括内边距、边框或外边距）。
-     .innerWidth()，返回元素的宽度（包括内边距）。
-     .innerHeight()，返回元素的高度（包括内边距）。
-     .outerWidth()，返回元素的宽度（包括内边距和边框），加上参数true则包括外边距。
-     .outerHeight()，返回元素的高度（包括内边距和边框），加上参数true则包括外边距。
-     .offset().left(.top)，获得匹配的元素集合中的第一个元素的相对于document的当前坐标。
-     .position().left(.top)，获得匹配的元素集合中第一个元素的当前坐标，相对于最接近的有定位的祖先元素。
-     */
-</script>
+<ul>
+    <li>
+        <kbd>.css()</kbd> 获取或设置样式。<br/>
+        <kbd>
+            $('#app1').css('color')<br/>
+            $('#app1').css('border')<br/>
+            $('#app1').css('color','blue')<br/>
+            $('#app1').css('border','3px solid pink')<br/>
+            $('#app1').css({fontSize:'25px',border:'4px dotted green'})<br/>
+        </kbd>
+        <div id="app1" style="color:red;border:1px dashed gray;font-size: 20px;">This is an area.</div>
+    </li>
+    <li>
+        <kbd>.width(), .height()</kbd> 获取或设置宽高。（不包括内边距、边框、外边距）<br/>
+        <kbd>
+            $('#app2').width()<br/>
+            $('#app2').height()<br/>
+            $('#app2').width('200px')<br/>
+            $('#app2').height('25px')<br/>
+        </kbd>
+        <div id="app2" style="width: 100px;height: 50px;background-color: skyblue;margin: 10px;padding: 20px;border: 5px solid;"></div>
+    </li>
+    <li>
+        <kbd>.innerWidth(), .innerHeight()</kbd> 获取或设置宽高。（包括内边距）<br/>
+        <kbd>
+            $('#app3').innerWidth()<br/>
+            $('#app3').innerHeight()<br/>
+            $('#app3').innerWidth('200px')<br/>
+            $('#app3').width()<br/>
+            $('#app3').innerHeight('50px')<br/>
+            $('#app3').height()<br/>
+        </kbd>
+        <div id="app3" style="width: 100px;height: 50px;background-color: skyblue;margin: 10px;padding: 20px;border: 5px solid;"></div>
+    </li>
+    <li>
+        <kbd>.outerWidth(), .outerHeight()</kbd> 获取或设置宽高。（包括内边距、边框，加上参数true则包括外边距）<br/>
+        <kbd>
+            $('#app4').outerWidth()<br/>
+            $('#app4').outerHeight()<br/>
+            $('#app4').outerWidth('200px')<br/>
+            $('#app4').width()<br/>
+            $('#app4').outerHeight('60px')<br/>
+            $('#app4').height()<hr/>
+            $('#app4').outerWidth(true)<br/>
+            $('#app4').outerHeight(true)<br/>
+            $('#app4').outerWidth('200px',true)<br/>
+            $('#app4').width()<br/>
+            $('#app4').outerHeight('80px',true)<br/>
+            $('#app4').height()<br/>
+        </kbd>
+        <div id="app4" style="width: 100px;height: 50px;background-color: skyblue;margin: 10px;padding: 20px;border: 5px solid;"></div>
+    </li>
+    <li>
+        <kbd>.offset()</kbd> 获取相对于 document 的坐标。<br/>
+        <kbd>
+            $('#app5').offset()<br/>
+        </kbd>
+        <div id="app5"></div>
+    </li>
+    <li style="position: relative;">
+        <kbd>.position()</kbd> 获得相对于最近的有定位的祖先元素的坐标。<br/>
+        <kbd>$('#app6').position()</kbd><br/>
+        <div id="app6"></div>
+    </li>
+</ul>
 </body>
 </html>

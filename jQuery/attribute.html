@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Attribute</title>
+    <script src="jquery-3.0.0.min.js"></script>
+    <script>
+      //$(document).ready(function(){});
+      //等待HTML加载完毕后执行function的内容。否则JS代码不能操控出现在它之后的HTML。
+      //$(function () {});//简写
+      console.log('JQuery版本：'+$.fn.jquery);
+    </script>
+</head>
+<body>
+<ul>
+    <li>
+        <kbd>.attr(), removeAttr()</kbd> 获取、设置、删除元素属性值。<br/>
+        <kbd>
+            $('#app').attr('id')<br/>
+            $('#app').attr('class')<br/>
+            $('#app').attr('prop1')<br/>
+            $('#app').attr('prop1',666)<br/>
+            $('#app').removeAttr('prop1')<br/>
+        </kbd>
+        <div id="app" class="default" prop1="100"></div>
+    </li>
+    <li>
+        <kbd>.prop(), removeProp()</kbd> 获取、设置、删除元素属性值。它所做的改变不基于HTML标签。<br/>
+        <kbd>
+            $('#app2').prop('id')<br/>
+            $('#app2').prop('class')<br/>
+            $('#app2').prop('class','default purple')<hr/>
+            $('#app2').prop('prop1')<br/>
+            $('#app2').prop('prop1',666)<br/>
+            $('#app2').removeProp('prop1')
+        </kbd>
+        <div id="app2" class="default" prop1="100"></div>
+    </li>
+    <li>
+        <kbd>.prop(), removeProp()</kbd> 控制表单控件。<br/>
+        <kbd>
+            $('#txt1').prop('disabled')<br/>
+            $('#txt1').prop('disabled',true)<br/>
+            $('#txt1').prop('disabled',false)<hr/>
+            $('#txt1').prop('checked')<br/>
+            $('#ch1').prop('checked',true)<br/>
+            $('#ch1').prop('checked',false)<br/>
+        </kbd>
+        <input type="text" id="txt1"/>
+        <input type="checkbox" id="ch1"/>
+    </li>
+    <li>
+        <kbd>.addClass(), .removeClass(), hasClass(), toggleClass()</kbd> 给元素增加类。<br/>
+        <kbd>
+            $('#app1').attr('class')<br/>
+            $('#app1').hasClass('red')<br/>
+            $('#app1').addClass('red')<br/>
+            $('#app1').toggleClass('red')<br/>
+            $('#app1').addClass('blue green')<br/>
+            $('#app1').removeClass('red green')<br/>
+        </kbd>
+        <div id="app1" class="default"></div>
+    </li>
+    <li>
+        <kbd>.text(), .html(), .val()</kbd> 获取或设置值。<br/>
+        <kbd>
+            $('#app3').text()<br/>
+            $('#app3').html()<hr/>
+            $('#app3').text('&lt;strong&gt;hello world&lt;/strong&gt;')<br/>
+            $('#app3').html('&lt;strong&gt;hello world&lt;/strong&gt;')
+        </kbd>
+    </li>
+    <li>
+        <kbd>.val() </kbd> 获取或设置值。<br/>
+        <kbd>
+            $('#app4').val()<br/>
+            $('#app4').val('hello world')<br/>
+        </kbd>
+        <input id="app4" type="text" value="good morning"/>
+    </li>
+</ul>
+</body>
+</html>
