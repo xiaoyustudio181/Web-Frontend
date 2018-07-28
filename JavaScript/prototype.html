@@ -2,56 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>JavaScript Prototype</title>
     <script src="helper.js"></script>
 </head>
 <body>
-prototype原型
+<ol>
+    <li>
+        定义类。<br/>
+        <kbd>
+            <pre>function Person(name,age) { //构造函数
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.eat = function () { //类方法
+    console.log(this.name + ' is eating.');
+};</pre>
+            Person<br/>
+            typeof Person //function<br/>
+            Person.prototype<br/>
+            typeof Person.prototype //object<br/>
+            var person1 = new Person('Tom', 11); //实例化对象<br/>
+            person1<br/>
+            person1.eat()
+        </kbd>
+    </li>
+    <li>
+        类的继承。<br/>
+        <kbd>
+            <pre>function Student(name, age, school) {
+    Person.call(this, name, age); //调用父类构造函数
+    this.school = 'no.1 primary school';
+}
+Student.prototype = new Person(); //继承
+Student.prototype.eat = function () {
+    Person.prototype.eat.call(this);//调用父类方法
+    console.log('... in ' + this.school);
+};</pre>
+            Student<br/>
+            typeof Student //function<br/>
+            Student.prototype<br/>
+            typeof Student.prototype //object<br/>
+            var student1 = new Student('Jim', 10); //实例化对象<br/>
+            student1.eat();<br/>
+            student1 instanceof Student //true<br/>
+            student1 instanceof Person //true<br/>
+            student1 instanceof Object //true<br/>
+            student1 instanceof Function //false<br/>
+        </kbd>
+    </li>
+</ol>
 </body>
-<script>
-    function Person(name,age) {//构造函数
-        this.name=name;
-        this.age=age;
-    }
-    Person.prototype.eat=function () {//类方法
-        msg(this.name+' is eating.');
-    };
-    msg(Person);
-    msg(typeof Person);
-
-    msg(Person.prototype);
-    msg(typeof Person.prototype);
-
-    var p1=new Person('Tom',11);
-    msg(p1);
-    p1.eat();
-
-    msg('','w');
-
-    function Student(name,age,school) {
-        Person.call(this,name,age);//调用父类构造函数
-        this.school='no.1 primary school';
-    }
-    Student.prototype=new Person();//继承
-    Student.prototype.eat=function () {
-        Person.prototype.eat.call(this);//调用父类方法
-        msg('... in '+this.school);
-    };
-
-    msg(Student);
-    msg(typeof Student);//function
-
-    msg(Student.prototype);
-    msg(typeof Student.prototype);
-
-    var s1=new Student('Jim',10);
-    msg(s1);
-    s1.eat();
-    msg(s1 instanceof Student);//true
-    msg(s1 instanceof Person);//true
-    msg(s1 instanceof Object);//true
-    msg(s1 instanceof Function);//false
-    msg(s1 instanceof Array);//false
-
-</script>
 </html>

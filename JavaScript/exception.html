@@ -2,29 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>JavaScript Exception</title>
     <script src="helper.js"></script>
 </head>
 <body>
-异常处理
+<ol>
+    <li>
+        普通异常处理。<br/>
+        <kbd>
+            <pre>try{
+    alert(parseInt(age));
+}catch (ex){
+    alert('异常消息：' + ex.message);
+}finally {
+    alert('异常处理完毕。');
+}</pre>
+        </kbd>
+    </li>
+    <li>
+        抛出异常并处理。<br/>
+        <kbd>
+            <pre>try{
+    throw new Error('Whoops!');
+}catch (ex){
+    alert('异常消息：'+ex.message);
+}</pre>
+        </kbd>
+    </li>
+    <li>
+        不处理抛出的异常，程序无法继续执行。<br/>
+        <kbd>
+            throw new Error('Whoops...');<br/>
+            console.log('程序运行完毕。'); //连续运行这两句
+        </kbd>
+    </li>
+</ol>
 </body>
-<script>
-    try{
-        alert(parseInt(var1));
-    }catch (ex){
-        msg('异常消息：'+ex.message);
-    }finally {
-        msg('异常处理完毕。');
-    }
-
-    try{
-        throw new Error('Whoops!');
-    }catch (ex){
-        msg('异常消息：'+ex.message);
-    }
-
-    throw new Error('Whoops!');//不处理异常，无法向下执行
-    msg('程序运行完毕。');
-
-</script>
 </html>

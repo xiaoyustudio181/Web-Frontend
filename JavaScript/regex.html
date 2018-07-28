@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JavaScript正则表达式</title>
+    <title>JavaScript Regex</title>
     <script src="helper.js"></script>
 </head>
 <body>
 <ol>
     <li>
-        测试用。
+        测试。
         <input id="regex" type="text" placeholder="regex" value="^\/{1}.*\/{1}$"/>
         <br/>
         <input id="text" type="text" placeholder="string"/>
@@ -26,55 +26,36 @@
         </script>
     </li>
     <li>
-        定义正则表达式。regex= /regex/ or regex= new RegExp(regex)
-        <script>
-            var regex1 = /^[0-9]*[1-9][0-9]*$/;
-            var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$');
-            write(regex1);
-            write(regex2);
-        </script>
+        测试字符串。<br/>
+        <kbd>
+            var regex1 = /^[0-9]*[1-9][0-9]*$/; //正整数<br/>
+            var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$'); //正整数<br/>
+
+            var text1 = '123';<br/>
+            var text2 = '-123';<br/>
+            regex1.test(text1); //true<br/>
+            regex1.test(text2); //false<br/>
+            regex2.test(text1); //true<br/>
+            regex2.test(text2); //false<br/>
+
+            text1.match(regex1); //["123", index: 0, input: "123", groups: undefined]<br/>
+            text2.match(regex1); // null<br/>
+
+            text1.match(regex2); //["123", index: 0, input: "123", groups: undefined]<br/>
+            text2.match(regex2); //null<br/>
+        </kbd>
     </li>
     <li>
-        测试字符串。regex.test(str) or text.match(regex)
-        <script>
-            var regex1 = /^[0-9]*[1-9][0-9]*$/;
-            var regex2 = new RegExp('^[0-9]*[1-9][0-9]*$');
-
-            var text1 = '123';
-            var text2 = '-123';
-            result = regex1.test(text1);
-            write(result); //true
-            result = regex1.test(text2);
-            write(result); //false
-
-            result = regex2.test(text1);
-            write(result); //true
-            result = regex2.test(text2);
-            write(result); //false
-
-            result = text1.match(regex1);
-            msg(result);// ["123", index: 0, input: "123", groups: undefined]
-            result = text2.match(regex1);
-            msg(result);// null
-
-            result = text1.match(regex2);
-            msg(result);// ["123", index: 0, input: "123", groups: undefined]
-            result = text2.match(regex2);
-            msg(result);// null
-        </script>
+        定义正则表达式（匹配所有子串）。<br/>
+        <kbd>
+            //var regex = /ab/g;<br/>
+            var regex = new RegExp('ab', 'g');<br/>
+            var text = 'abcde_abcde_abc';<br/>
+            text.match(regex); //["ab", "ab", "ab"]<br/>
+        </kbd>
     </li>
     <li>
-        定义正则表达式（匹配所有子串）。regex= /regex/g or regex= new RegExp(regex,'g')
-        <script>
-            //var regex = /ab/g;
-            var regex = new RegExp('ab', 'g');
-            var text = 'abcde_abcde_abc';
-            result = text.match(regex);
-            write(result); //["ab", "ab", "ab"]
-        </script>
-    </li>
-    <li>
-        根据正则表达式替换字符串内容。str.replace(regex,function(){})
+        根据正则表达式替换字符串内容。<kbd>.replace(regex, function (target, index, original) {return '...';}</kbd>
         <script>
             var regex = new RegExp('ab');
             var regex2 = new RegExp('ab', 'g');
@@ -92,7 +73,7 @@
         </script>
     </li>
     <li>
-        根据有首尾匹配的正则表达式，对字符串的每一行内容进行判断。regex= /regex/gm or regex= new RegExp(regex,'gm')
+        根据有首尾匹配的正则表达式，对字符串的每一行内容进行判断。<kbd>regex= /regex/gm or regex= new RegExp(regex,'gm')</kbd>
         <script>
             var regex = new RegExp("^a(.|\n)*b$", 'g');//使.包含\n
             //var regex2 = /^a.*b$/gm;
@@ -105,7 +86,7 @@
         </script>
     </li>
     <li>
-        忽略正则表达式中字母的大小写（大小写均匹配）。regex= /regex/i or regex= new RegExp(regex,'i')
+        忽略正则表达式中字母的大小写（大小写均匹配）。<kbd>regex= /regex/i or regex= new RegExp(regex,'i')</kbd>
         <script>
             var regex = new RegExp("^A.*b$", 'gm');//使.包含\n
             //var regex2 = /a.*b/gmi;

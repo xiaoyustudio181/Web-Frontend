@@ -2,33 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>JavaScript Operator</title>
     <script src="helper.js"></script>
 </head>
-<body>运算符
+<body>
+<ol>
+    <li>
+        <kbd>a && b //将 a, b 转换为 Boolean 类型, 再执行逻辑与, true 返回 b, false 返回 a</kbd><br/>
+        <kbd>
+            0 && 2<br/>
+            1 && 2<br/>
+            false && 'a'<br/>
+            true && 'a'<br/>
+        </kbd>
+    </li>
+    <li>
+        <kbd>a || b //将 a, b 转换为 Boolean 类型, 再执行逻辑或, true 返回 a, false 返回 b</kbd><br/>
+        <kbd>
+            0 || 2<br/>
+            1 || 2<br/>
+            false || 'a'<br/>
+            true || 'a'<br/>
+        </kbd>
+    </li>
+    <li>
+        小数运算精度丢失。<br/>
+        <kbd>
+            0.3 - 0.1
+        </kbd>
+    </li>
+</ol>
 </body>
-<script>
-    msg('&& 与 ||', 'w');
-    //a && b : 将a, b转换为Boolean类型, 再执行逻辑与, true返回b, false返回a
-    //&& false-1 true-2
-    msg(1 && 55);//55
-    msg(1 && "aa");//aa
-    msg('', 'w');
-
-    msg(0 && 55);//0
-    msg(0 && "aa");//0
-
-    //a || b : 将a, b转换为Boolean类型, 再执行逻辑或, true返回a, false返回b
-    //|| true-1 false-2
-    msg('', 'w');
-    msg(1 || 55);//1
-    msg(1 || "aa");//1
-
-    msg('', 'w');
-    msg(0 || 55);//55
-    msg(0 || "aa");//aa
-
-    msg('小数运算精度丢失', 'w');
-    msg(0.3 - 0.1);
-</script>
 </html>

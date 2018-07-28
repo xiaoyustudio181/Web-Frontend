@@ -2,59 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <script src="helper.js"></script>
+    <title>(BOM)Browser Object Model</title>
 </head>
 <body>
-BOM 是Browser Object Model的缩写，简称浏览器对象模型
+<ol>
+    <li>
+        全局对象。<br/>
+        <kbd>
+            window<br/>
+            console.log(this === window)<hr/>
+            document<br/>
+            console.dir(document)<br/>
+            navigator<br/>
+            screen<br/>
+            location<br/>
+            history<br/>
+            Math<br/>
+        </kbd>
+    </li>
+    <li>
+        <kbd>document.referrer</kbd> 上一个页面的 url（通过链接跳转来的）。<br/>
+    </li>
+    <li>
+        <kbd>document.createElement()</kbd> 生成一个元素。<br/>
+        <kbd>
+            var div1 = document.createElement('div')<br/>
+            div1
+        </kbd>
+    </li>
+    <li>
+        <kbd>localStorage</kbd> 生命周期是永久，除非用户清除信息。<br/>
+        <kbd>
+            localStorage<br/>
+            localStorage['test_value'] = 100<br/>
+            localStorage['test_value2'] = 200<br/>
+            localStorage['test_value']<br/>
+            localStorage.getItem('test_value')<br/>
+            localStorage.removeItem("test_value")<br/>
+            delete localStorage['test_value']<br/>
+            localStorage.clear()<br/>
+            <pre>for (var i = 0; i < localStorage.length; i++) {
+    var name = localStorage.key(i);
+    var value = localStorage.getItem(name);
+    console.log(name+': '+value);
+}</pre>
+        </kbd>
+    </li>
+    <li>
+        <kbd>sessionStorage</kbd> 生命周期为当前窗口或标签页。<br/>
+        如果一个标签页包含多个 iframe，且他们属于同源页面，他们之间可以共享sessionStorage。<br/>
+        <kbd>
+            sessionStorage<br/>
+            sessionStorage['test_value'] = 100<br/>
+            sessionStorage['test_value2'] = 200<br/>
+            sessionStorage['test_value']<br/>
+            sessionStorage.getItem('test_value')<br/>
+            sessionStorage.removeItem("test_value")<br/>
+            delete sessionStorage['test_value']<br/>
+            sessionStorage.clear()<br/>
+            <pre>for (var i = 0; i < sessionStorage.length; i++) {
+    var name = sessionStorage.key(i);
+    var value = sessionStorage.getItem(name);
+    console.log(name+': '+value);
+}</pre>
+        </kbd>
+    </li>
+    <li>
+        <kbd>location.search</kbd> 获取 URL 的 get 参数。<br/>
+    </li>
+</ol>
 </body>
-<script>
-    msg(window);
-    //以下对象均是window对象的属性。JavaScript中的任何一个全局函数或变量都是window的属性。
-    msg(document, 'd');
-    msg(document);
-    msg(navigator);
-    msg(screen);
-    msg(location);
-    msg(history);
-    msg(Math);
-    msg(localStorage);//localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。
-    msg(sessionStorage);//sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。
-    //如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。
-
-    localStorage['aa']=11;
-    //msg(localStorage['aa']);//获取
-    //msg(localStorage.getItem('aa'));//获取
-    //localStorage.clear();//清空localStorage中所有信息
-    //localStorage.removeItem("aa");//删除
-    //delete localStorage['aa'];//删除
-    for (var i = 0; i < localStorage.length; i++) {
-        var name = localStorage.key(i);
-        var value = localStorage.getItem(name);
-        msg(name+': '+value);
-    }
-    //通过getItem或直接使用localStorage["key"]获取到的信息均为实际存储的副本。
-
-    msg('', 'w');
-
-    msg(this == window);
-
-    //msg(document.referrer);//上一个页面的url
-
-    //msg(document.getElementsByTagName('body')[0]);
-    //console.dir(document.getElementsByTagName('body')[0]);
-
-    //msg(document.createElement('div'));
-    //console.dir(document.createElement('div'));
-
-    //window.open('./newTest.html?a=1&b=2','name1','','');
-    //window.close();
-    //window.moveBy(10,10);//仅IE有效
-    //window.moveTo(10,10);//仅IE有效
-
-    //msg(location.search);//获取url问号及后面的参数
-
-    //history.back();//返回上一个页面
-    //history.go(-1);//功能同上
-</script>
 </html>

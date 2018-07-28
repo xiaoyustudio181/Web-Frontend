@@ -85,11 +85,21 @@ function getNowTime(mode) {
     var seconds=now.getSeconds();
     var milliseconds=now.getMilliseconds();
 
-    if(hours.toString().length==1)hours="0"+hours;
-    if(minutes.toString().length==1)minutes="0"+minutes;
-    if(seconds.toString().length==1)seconds="0"+seconds;
-    if(milliseconds.toString().length==1)milliseconds="00"+milliseconds;
-    else if(milliseconds.toString().length==2)milliseconds="0"+milliseconds;
+    if(hours.toString().length==1){
+        hours="0"+hours;
+    }
+    if(minutes.toString().length==1){
+        minutes="0"+minutes;
+    }
+    if(seconds.toString().length==1){
+        seconds="0"+seconds;
+    }
+    if(milliseconds.toString().length==1){
+        milliseconds="00"+milliseconds;
+    }
+    else if(milliseconds.toString().length==2){
+        milliseconds="0"+milliseconds;
+    }
     
     switch(day){
         case 1:day='星期一';break;
