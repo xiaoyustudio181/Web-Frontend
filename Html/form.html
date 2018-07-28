@@ -2,119 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>html form</title>
+    <title>HTML Form</title>
 </head>
 <body>
 <form method="post" action="" enctype="multipart/form-data">
-    <dl>
-        <dt>basic</dt>
-        <dd>
-            <input type="text" placeholder="username" />
-        </dd>
-        <dd>
-            <input type="password" placeholder="password" />
-        </dd>
-        <dt>gender</dt>
-        <dd>
-            <input id="male1" type="radio" name="gender" value="male" checked="checked" />
-            <label for="male1">male</label>
-            <input id="female1" type="radio" name="gender" value="female" />
-            <label for="female1">female</label>
-        </dd>
-        <dt>hobby</dt>
-        <dd>
-            <input id="reading1" type="checkbox" name="hobby[]" value="reading" />
-            <label for="reading1">reading</label>
+<ol>
+    <li>
+        文本框。<br/>
+        <input type="text" placeholder="username" />
+    </li>
+    <li>
+        文本框带验证。<br/>
+        <input type="text" name="code" pattern="[A-z]{3}" title="三个字母" placeholder="三个字母" />
+    </li>
+    <li>
+        文本框带可选值（可键入首字母搜索）。<br/>
+        <input type="text" list="list1"/>
+        <datalist id="list1">
+            <option label="Name1">Harry</option>
+            <option label="Name2" value="Jill"></option>
+            <option label="Name3" value="Jim"></option>
+        </datalist>
+    </li>
+    <li>
+        密码框。<br/>
+        <input type="password" placeholder="password" />
+    </li>
+    <li>
+        单选按钮。<br/>
+        <input id="male1" type="radio" name="gender" value="male" checked="checked" />
+        <label for="male1">男</label>
 
-            <label>
-                <input type="checkbox" name="hobby[]" value="running" />
-                running
-            </label>
+        <label>
+            <input type="radio" name="gender" value="female" /> 女
+        </label>
+    </li>
+    <li>
+        复选框。<br/>
+        <input id="reading1" type="checkbox" name="hobby[]" value="reading" />
+        <label for="reading1">看书</label>
 
-            <input id="hiking1" type="checkbox" name="hobby[]" value="hiking" />
-            <label for="hiking1">walking</label>
+        <label>
+            <input type="checkbox" name="hobby[]" value="running" /> 跑步
+        </label>
 
-            <input id="swimming1" type="checkbox" name="hobby[]" value="swim" />
-            <label for="swimming1">swimming</label>
-        </dd>
-        <dt>birth year</dt>
-        <dd>
-            <select name="birthyear" style="width: 80px">
-                <optgroup label="After 80">
-                    <option>1980</option>
-                    <option>1981</option>
-                </optgroup>
-                <optgroup label="After 90">
-                    <option>1990</option>
-                    <option>1991</option>
-                </optgroup>
-            </select>
-        </dd>
-        <dt>birthday</dt>
-        <dd>
-            <input type="date" name="birthday"/>
-            <input type="datetime-local" name="datetime"/>
-            <input type="time" name="time"/>
-        </dd>
-        <dt>e-mail</dt>
-        <dd>
-            <input type="email" name="email" />
-        </dd>
-        <dt>native place (multiple)</dt>
-        <dd>
-            <select multiple="multiple" name="native[]" style="width: 100px">
-                <optgroup label="四川省">
-                    <option value="chengdu">成都市</option>
-                    <option value="mianyang">绵阳市</option>
-                    <option value="chengdu">自贡市</option>
-                    <option value="panzhihua">攀枝花</option>
-                    <option value="luzhou">泸州</option>
-                </optgroup>
-                <optgroup label="广东省">
-                    <option value="guangzhou">广州市</option>
-                    <option value="shenzhen">深圳市</option>
-                    <option value="zhuhai">珠海市</option>
-                    <option value="shantou">汕头市</option>
-                    <option value="foshan">佛山市</option>
-                </optgroup>
-            </select>
-        </dd>
-        <dt>head image (multiple)</dt>
-        <dd>
-            <input name="img[]" type="file" multiple="multiple">
-        </dd>
-        <dt>lucky number</dt>
-        <dd>
-            <input type="number" name="lucknumber" min="1" max="9" value="1" />
-        </dd>
-        <dt>country code</dt>
-        <dd>
-            <input type="text" name="country_code" pattern="[A-z]{3}" title="3 letters only" placeholder="3 letters" />
-            <!--（用pattern属性设置了正则表达式：只能包含三个字母的文本域，不能包含数字及特殊字符）-->
-        </dd>
-        <dt>IT's degree of proficiency</dt>
-        <dd>
-            <input type="range" name="degree" min="0" max="100" value="0" />
-        </dd>
-        <dt>favorite website</dt>
-        <dd>
-            <input type="url" list="url_list" name="fsite" placeholder="website url" style="width:200px;" />
-            <datalist id="url_list">
-                <option label="Mtime">http://www.mtime.com/</option>
-                <option label="Baidu" value="http://www.baidu.com"></option>
-                <option label="Microsoft" value="http://www.microsoft.com"></option>
-            </datalist>
-        </dd>
-        <dt>more information</dt>
-        <dd>
-            <textarea style="vertical-align:top;" rows="5" cols="40" placeholder="more"></textarea>
-        </dd>
-        <dt>operation</dt>
-        <dd>
-            <input value="Submit" type="submit">
-            <input value="Reset" type="reset">
-        </dd>
-    </dl>
+        <input id="hiking1" type="checkbox" name="hobby[]" value="hiking" />
+        <label for="hiking1">走路</label>
+
+        <input id="swimming1" type="checkbox" name="hobby[]" value="swimming" checked="checked" />
+        <label for="swimming1">游泳</label>
+    </li>
+    <li>
+        下拉列表。<br/>
+        <select name="year" style="width: 80px">
+            <optgroup label="Group 1">
+                <option>1980</option>
+                <option>1981</option>
+            </optgroup>
+            <optgroup label="Group 2">
+                <option>1990</option>
+                <option>1991</option>
+            </optgroup>
+        </select>
+    </li>
+    <li>
+        多选下拉列表。<br/>
+        <select multiple="multiple" name="native[]">
+            <optgroup label="四川省">
+                <option value="chengdu">成都市</option>
+                <option value="mianyang">绵阳市</option>
+                <option value="chengdu">自贡市</option>
+                <option value="panzhihua">攀枝花</option>
+                <option value="luzhou">泸州</option>
+            </optgroup>
+            <optgroup label="广东省">
+                <option value="guangzhou">广州市</option>
+                <option value="shenzhen">深圳市</option>
+                <option value="zhuhai">珠海市</option>
+                <option value="shantou">汕头市</option>
+                <option value="foshan">佛山市</option>
+            </optgroup>
+        </select>
+    </li>
+    <li>
+        时间选择器。<br/>
+        日期：<input type="date" name="birthday"/><br/>
+        时间：<input type="time" name="time"/><br/>
+        日期时间：<input type="datetime-local" name="datetime"/><br/>
+    </li>
+    <li>
+        邮箱地址文本框（自带验证）。<br/>
+        <input type="email" name="email" />
+    </li>
+    <li>
+        文件上传。<br/>
+        <input type="file" name="file1"/>
+    </li>
+    <li>
+        多文件上传。<br/>
+        <input type="file" name="files" multiple="multiple"/>
+    </li>
+    <li>
+        数字文本框（可设置最小最大值）。<br/>
+        <input type="number" name="num1" min="1" max="9"/>
+    </li>
+    <li>
+        范围选择器。<br/>
+        <input type="range" name="degree" min="0" max="100" value="0" />
+    </li>
+    <li>
+        网址文本框。<br/>
+        <input type="url" list="url_list" name="fsite" placeholder="website url" />
+        <datalist id="url_list">
+            <option label="Mtime">http://www.mtime.com/</option>
+            <option label="Baidu" value="http://www.baidu.com"></option>
+            <option label="Microsoft" value="http://www.microsoft.com"></option>
+        </datalist>
+    </li>
+    <li>
+        富文本框。<br/>
+        <textarea name="more" placeholder="more"></textarea>
+    </li>
+    <li>
+        重置按钮。<br/>
+        <input type="reset"/>
+    </li>
+    <li>
+        提交按钮。<br/>
+        <input type="submit"/>
+    </li>
+</ol>
 </form>
 </body>
 </html>

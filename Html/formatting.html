@@ -2,83 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>html formatting</title>
+    <title>HTML Formatting</title>
 </head>
 <body>
-<dl>
-    <dt>链接</dt>
-    <dd>
-        <a name="top" href="http://www.baidu.com" target="_blank">a</a>
-    </dd>
-    <dt>粗体</dt>
-    <dd>
-        <strong>strong</strong>
-    </dd>
-    <dd>
-        <b>b</b>
-    </dd>
-    <dt>斜体</dt>
-    <dd>
-        <em>em</em>
-    </dd>
-    <dd>
-        <i>i</i>
-    </dd>
-    <dt>地址（自动换行）</dt>
-    <dd>
-        <address>address</address>
-    </dd>
-    <dt>下标</dt>
-    <dd>
-        A<sub>sub</sub>
-    </dd>
-    <dt>上标</dt>
-    <dd>
-        A<sup>sup</sup>
-    </dd>
-    <dt>缩写词</dt>
-    <dd>
-        <abbr title="abbreviation">abbr</abbr>
-    </dd>
-    <dt>引用，自动换行，增加行间距</dt>
-    <dd>
-        <blockquote>blockquote</blockquote>
-    </dd>
-    <dt>引用，自动加双引号</dt>
-    <dd>
-        <q>q</q>
-    </dd>
-    <dt>表示删去</dt>
-    <dd>
-        <del>del</del>
-    </dd>
-    <dt>表示修正</dt>
-    <dd>
-        <ins>ins</ins>
-    </dd>
-    <dt>计算机输出，自带上下外边距</dt>
-    <dd>
-		<pre>pre
-pre
-            <a href="#top">a(anchor) inside pre</a>
-            <strong>strong inside pre</strong>
-            <b>b inside pre</b>
-            <em>em inside pre</em>
-            <i>i inside pre</i>
-            <address>address inside pre</address>
-            A<sub>sub inside pre</sub>
-            A<sup>sup inside pre</sup>
-            <abbr title="abbreviation">abbr inside pre</abbr>
-            <blockquote>blockquote inside pre</blockquote>
-            <q>q inside pre</q>
-            <del>del inside pre</del>
-            <ins>ins inside pre</ins>
-            pre</pre>
-    </dd>
-  <dt>键盘按键</dt>
-  <dd>
-    <kbd>Ctrl+C</kbd> Ctrl+C
-  </dd>
-</dl>
+<ol>
+    <li>
+        链接。<kbd>&lt;a&gt;</kbd><br/>
+        <a name="top" href="https://www.baidu.com" target="_blank">访问百度</a>
+    </li>
+    <li>
+        粗体。<kbd>&lt;strong&gt;</kbd><br/>
+        <strong>我是粗体</strong>
+    </li>
+    <li>
+        斜体。<kbd>&lt;em&gt;</kbd><br/>
+        <em>我是斜体</em>
+    </li>
+    <li>
+        地址（前后自动折行）。<kbd>&lt;address&gt;</kbd><br/>
+        地址前的内容<address>我是地址</address>地址后的内容
+    </li>
+    <li>
+        下标。<kbd>&lt;sub&gt;</kbd><br/>
+        ABC<sub>123</sub>
+    </li>
+    <li>
+        上标。<kbd>&lt;sup&gt;</kbd><br/>
+        ABC<sup>123</sup>
+    </li>
+    <li>
+        缩写词。<kbd>&lt;abbr&gt;</kbd><br/>
+        <abbr title="Special Tactics And Rescue Service">S.T.A.R.S.</abbr>
+    </li>
+    <li>
+        引用（自动换行，增加行间距）。<kbd>&lt;blockquote&gt;</kbd><br/>
+        <blockquote>Where there is a will, there is a way.</blockquote>
+    </li>
+    <li>
+        引用（自动添加双引号）。<kbd>&lt;q&gt;</kbd><br/>
+        <q>Where there is a will, there is a way.</q>
+    </li>
+    <li>
+        删除线。<kbd>&lt;del&gt;</kbd><br/>
+        <del>不正确的内容。</del>
+    </li>
+    <li>
+        纠正线。<kbd>&lt;ins&gt;</kbd><br/>
+        <ins>纠正后的内容。</ins>
+    </li>
+    <li>
+        计算机输出格式。<kbd>&lt;pre&gt;</kbd><br/>
+        <pre>sdklfjlakfjlaskdfj
+sadlkfsjalfks afasd
+            adsfalskdfjlaskdfls
+        </pre>
+    </li>
+    <li>
+        键盘文本。<kbd>&lt;kbd&gt;</kbd><br/>
+        <kbd>Exit //退出</kbd>
+    </li>
+</ol>
 </body>
 </html>
