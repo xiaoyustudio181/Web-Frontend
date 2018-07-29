@@ -2,128 +2,613 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>basis</title>
+    <title>Bootstrap Basis</title>
+    <script src="../jQuery/jquery-3.0.0.min.js"></script>
     <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
-    <!--<script src="dist\js\bootstrap.min.js"></script>
-    <script src="dist\js\bootstrap.js"></script>
-    <script src="dist\js\jquery-3.0.0.min.js"></script>
-    <script src="dist\js\npm.js"></script>-->
-    <style>hr{border:1px solid;}</style>
+    <script src="dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>h1. Bootstrap heading <small>Secondary text</small></h1>
-<h2>h2. Bootstrap heading <small>Secondary text</small></h2>
-<h3>h3. Bootstrap heading <small>Secondary text</small></h3>
-<h4>h4. Bootstrap heading <small>Secondary text</small></h4>
-<h5>h5. Bootstrap heading <small>Secondary text</small></h5>
-<h6>h6. Bootstrap heading <small>Secondary text</small></h6>
-<hr />
-<p>
-    普通段落p标签, <mark>突出文本用mark标签</mark>Nullam quis <del>突出被删除或无用文本用del标签或s标签</del>risus eget <ins>突出插入或带下划线文本用ins标签或u标签</ins>urna mollis <small>小号文本用small标签</small>ornare vel<strong>强调文本用strong标签</strong> eu leo. <em>斜体文本用em标签</em>Cum sociis <abbr title="加上class=initialism可以让文本字母大写并缩小" class="initialism">缩写词用abbr标签+title属性</abbr> natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-    Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-</p>
-<p class="lead"><!--突出显示-->
-    突出段落p标签class=lead, Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-    Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-</p>
-<hr />
-<p class="text-left">class="text-left".内容左对齐</p>
-<p class="text-center">class="text-center".内容居中</p>
-<p class="text-right">class="text-right".内容右对齐</p>
-<p class="text-justify">class="text-justify".内容两端对齐</p>
-<p class="text-nowrap">class="text-nowrap".内容不绕行</p>
-
-<p class="text-lowercase">class="text-lowercase".全体小写</p>
-<p class="text-uppercase">class="text-uppercase".全体大写</p>
-<p class="text-capitalize">class="text-capitalize".首字母大写</p>
-
-<blockquote>
-    <p>blockquote标签表示引用。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer>添加footer用于标明引用来源。来源的名称可以包裹进cite标签中。Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
-<blockquote class="blockquote-reverse">
-    <p>.blockquote-reverse 类呈现内容右对齐的效果。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer>添加footer用于标明引用来源。来源的名称可以包裹进cite标签中。Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
-<hr />
-<ul>
-    <li>aa</li>
-    <li>
-        bb
-        <ul>
-            <li>bb1</li>
-            <li>bb2</li>
-        </ul>
-    </li>
-    <li>cc</li>
-</ul>
-<hr />
 <ol>
-    <li>aa</li>
     <li>
-        bb
-        <ol>
-            <li>bb1</li>
-            <li>bb2</li>
-        </ol>
+        <h1>Heading in &lt;h1&gt; <small>Secondary text in &lt;small&gt;</small></h1>
     </li>
-    <li>cc</li>
-</ol>
-<hr />
-<ul class="list-unstyled">
-    <li>aa class="list-unstyled"</li>
     <li>
-        bb
-        <ul>
-            <li>bb1</li>
-            <li>bb2</li>
+        <h2>Heading in &lt;h2&gt; <small>Secondary text in &lt;small&gt;</small></h2>
+    </li>
+    <li>
+        <h3>Heading in &lt;h3&gt; <small>Secondary text in &lt;small&gt;</small></h3>
+    </li>
+    <li>
+        <h4>Heading in &lt;h4&gt; <small>Secondary text in &lt;small&gt;</small></h4>
+    </li>
+    <li>
+        <h5>Heading in &lt;h5&gt; <small>Secondary text in &lt;small&gt;</small></h5>
+    </li>
+    <li>
+        <h6>Heading in &lt;h6&gt; <small>Secondary text in &lt;small&gt;</small></h6>
+    </li>
+    <li>
+        键盘文本。<samp>&lt;kbd&gt;</samp><br/>
+        Press <kbd>Ctrl + C</kbd>.
+    </li>
+    <li>
+        高亮显示。<samp>&lt;mark&gt;</samp><br/>
+        This is <mark>Biohzard</mark>.
+    </li>
+    <li>
+        删除的文本。<samp>&lt;del&gt;</samp><br/>
+        I am from <del>Japan</del>.
+    </li>
+    <li>
+        修正的文本。<samp>&lt;ins&gt;</samp><br/>
+        I am from <ins>China</ins>.
+    </li>
+    <li>
+        小号文本。<samp>&lt;small&gt;</samp><br/>
+        This is <small>Biohazard</small>.
+    </li>
+    <li>
+        粗体。<samp>&lt;strong&gt;</samp><br/>
+        This is <strong>Biohazard</strong>.
+    </li>
+    <li>
+        斜体。<samp>&lt;em&gt;</samp><br/>
+        This is <em>Biohazard</em>.
+    </li>
+    <li>
+        缩写词。<samp>&lt;abbr&gt;</samp><br/>
+        <abbr title="Special Tactics And Rescue Service">S.T.A.R.S.</abbr>
+    </li>
+    <li>
+        突出段落。<samp>&lt;p class="lead"&gt;</samp><br/>
+        <p>paragraph 1</p>
+        <p class="lead">paragraph 2</p>
+    </li>
+    <li>
+        内容左对齐。<samp>&lt;p class="text-left"&gt;</samp><br/>
+        <p class="text-left">paragraph<br/>paragraph</p>
+    </li>
+    <li>
+        内容居中。<samp>&lt;p class="text-center"&gt;</samp><br/>
+        <p class="text-center">paragraph<br/>paragraph</p>
+    </li>
+    <li>
+        内容右对齐。<samp>&lt;p class="text-right"&gt;</samp><br/>
+        <p class="text-right">paragraph<br/>paragraph</p>
+    </li>
+    <li>
+        内容两端对齐。<samp>&lt;p class="text-justify"&gt;</samp><br/>
+    </li>
+    <li>
+        内容不绕行。<samp>&lt;p class="text-nowrap"&gt;</samp><br/>
+    </li>
+    <li>
+        全体小写。<samp>&lt;p class="text-lowercase"&gt;</samp><br/>
+        <p class="text-lowercase">ABCDEFGH</p>
+    </li>
+    <li>
+        全体大写。<samp>&lt;p class="text-uppercase"&gt;</samp><br/>
+        <p class="text-uppercase">abcdefgh</p>
+    </li>
+    <li>
+        首字母大写。<samp>&lt;p class="text-capitalize"&gt;</samp><br/>
+        <p class="text-capitalize">abcdefgh</p>
+    </li>
+    <li>
+        引用文本。<samp>&lt;blockquote&gt;</samp><br/>
+        <blockquote>
+            Where there is a will, there is a way.
+            <footer>
+                &lt;footer&gt; 用于标明引用来源。来源名称写进 &lt;cite&gt; 标签中。
+                <cite title="Source Title">Source Title</cite>
+            </footer>
+        </blockquote>
+    </li>
+    <li>
+        引用文本（右对齐）。<samp>&lt;blockquote class="blockquote-reverse"&gt;</samp><br/>
+        <blockquote class="blockquote-reverse">Where there is a will, there is a way.</blockquote>
+    </li>
+    <li>
+        引用文本。<samp>&lt;q&gt;</samp><br/>
+        <q>Where there is a will, there is a way.</q>
+    </li>
+    <li>
+        列表（无样式）。<samp>&lt;ul class="list-unstyled"&gt;</samp><br/>
+        <ul class="list-unstyled">
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
         </ul>
     </li>
-    <li>cc</li>
-</ul>
-<hr />
-<ul class="list-inline">
-    <li>aa class="list-inline"</li>
-    <li>bb</li>
-    <li>cc</li>
-</ul>
-<hr />
-<dl>
-    <dt>dl,dd,dt Description lists</dt>
-    <dd>A description list is perfect for defining terms.</dd>
-    <dt>Euismod</dt>
-    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    <dt>Malesuada porta</dt>
-    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-</dl>
-<hr />
-<dl class="dl-horizontal">
-    <dt>class="dl-horizontal"</dt>
-    <dd>A description list is perfect for defining terms.</dd>
-    <dt>Euismod</dt>
-    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    <dt>Malesuada porta</dt>
-    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-</dl>
-<hr />
-kbd tag, To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
-To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
-<hr />
-<pre>&lt;pre&gt;Sample text here...&lt;/pre&gt;
-还可以使用 .pre-scrollable 类，其作用是设置 max-height 为 350px ，并在垂直方向展示滚动条。</pre>
-<hr />
-通过 var 标签标记变量。<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
-<hr />
-通过 samp 标签来标记程序输出的内容。<samp>This text is meant to be treated as sample output from a computer program.</samp>
-<hr />
+    <li>
+        列表（横式）。<samp>&lt;ul class="list-inline"&gt;</samp><br/>
+        <ul class="list-inline">
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
+        </ul>
+    </li>
+    <li>
+        定义列表。<samp>&lt;dl&gt;</samp><br/>
+        <dl>
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Euismod</dt>
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+            <dt>Malesuada porta</dt>
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        </dl>
+    </li>
+    <li>
+        定义列表（横式）。<samp>&lt;dl class="dl-horizontal"&gt;</samp><br/>
+        <dl class="dl-horizontal">
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Euismod</dt>
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+            <dt>Malesuada porta</dt>
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        </dl>
+    </li>
+    <li>
+        计算机输出。<samp>&lt;pre&gt;</samp><br/>
+        <!--还可以使用 .pre-scrollable 类，其作用是设置 max-height 为 350px ，并在垂直方向展示滚动条。-->
+        <pre>line 1
+line 2
+            <p>line 3 in &lt;p&gt;</p>
+line 5
+line 6</pre>
+    </li>
+    <li>
+        标记变量。<samp>&lt;var&gt;</samp><br/>
+        <var>y</var> = <var>mx</var> + <var>b</var>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="text-muted"&gt;</samp><br/>
+        <p class="text-muted">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="text-primary"&gt;</samp><br/>
+        <p class="text-primary">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="bg-primary"&gt;</samp><br/>
+        <p class="bg-primary">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="text-success"&gt;</samp><br/>
+        <p class="text-success">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="bg-success"&gt;</samp><br/>
+        <p class="bg-success">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="text-info"&gt;</samp><br/>
+        <p class="text-info">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="bg-info"&gt;</samp><br/>
+        <p class="bg-info">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="text-warning"&gt;</samp><br/>
+        <p class="text-warning">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="bg-warning"&gt;</samp><br/>
+        <p class="bg-warning">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="text-danger"&gt;</samp><br/>
+        <p class="text-danger">This is a paragraph.</p>
+    </li>
+    <li>
+        段落。<samp>&lt;p class="bg-danger"&gt;</samp><br/>
+        <p class="bg-danger">This is a paragraph.</p>
+    </li>
+    <li>
+        三角符号。<samp>&lt;span class="caret"&gt;</samp> 指示下拉菜单功能。<br/>
+        <span class="caret"></span>
+    </li>
+    <li>
+        div 样式。<samp>&lt;div class="pull-left"&gt;</samp><br/>
+        <div class="pull-left">This is in a div.</div>
+        <div class="clearfix"></div>
+    </li>
+    <li>
+        div 样式。<samp>&lt;div class="pull-right"&gt;</samp><br/>
+        <div class="pull-right">This is in a div.</div>
+        <div class="clearfix"></div>
+    </li>
+    <li>
+        div 样式。<samp>&lt;div class="center-block"&gt;</samp><br/>
+        <div class="center-block" style="width: 100px;">This is in a div.</div>
+        <div class="clearfix"></div>
+    </li>
+    <li>
+        div 样式。<samp>&lt;div class="show"&gt;</samp><br/>
+        <div class="show">This is in a div.</div>
+    </li>
+    <li>
+        div 样式。<samp>&lt;div class="hidden"&gt;</samp><br/>
+        <div class="hidden">This is in a div.</div>
+    </li>
+    <li>
+        div 样式。<samp>&lt;div class="invisible"&gt;</samp><br/>
+        <div class="invisible">This is in a div.</div>
+        <!--显示或隐藏内容
+.show 和 .hidden 类可以强制任意元素显示或隐藏(对于屏幕阅读器也能起效)。
+这些类通过 !important 来避免 CSS 样式优先级问题，就像 quick floats 一样的做法。
+注意，这些类只对块级元素起作用，另外，还可以作为 mixin 使用。
+另外，.invisible 类可以被用来仅仅影响元素的可见性，也就是说，元素的 display 属性不被改变，并且这个元素仍然能够影响文档流的排布。-->
+    </li>
+    <li>
+        链接按钮。<samp>&lt;a class="btn btn-default" role="button"&gt;</samp><br/>
+        <a class="btn btn-default" role="button" href="" target="_blank">按钮 Button</a>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-default"&gt;</samp><br/>
+        <button class="btn btn-default">按钮 Button</button>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-primary"&gt;</samp><br/>
+        <button class="btn btn-primary">按钮 Button</button>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-success"&gt;</samp><br/>
+        <button class="btn btn-success">按钮 Button</button>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-info"&gt;</samp><br/>
+        <button class="btn btn-info">按钮 Button</button>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-warning"&gt;</samp><br/>
+        <button class="btn btn-warning">按钮 Button</button>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-danger"&gt;</samp><br/>
+        <button class="btn btn-danger">按钮 Button</button>
+    </li>
+    <li>
+        按钮。<samp>&lt;button class="btn btn-link"&gt;</samp><br/>
+        <button class="btn btn-link">按钮 Button</button>
+    </li>
+    <li>
+        大按钮。<samp>&lt;button class="btn btn-default btn-lg"&gt;</samp><br/>
+        <button class="btn btn-default btn-lg">按钮 Button</button>
+    </li>
+    <li>
+        小按钮。<samp>&lt;button class="btn btn-default btn-sm"&gt;</samp><br/>
+        <button class="btn btn-default btn-sm">按钮 Button</button>
+    </li>
+    <li>
+        超小按钮。<samp>&lt;button class="btn btn-default btn-xs"&gt;</samp><br/>
+        <button class="btn btn-default btn-xs">按钮 Button</button>
+    </li>
+    <li>
+        块级按钮。<samp>&lt;button class="btn btn-default btn-block"&gt;</samp><br/>
+        <button class="btn btn-default btn-block">按钮 Button</button>
+    </li>
+    <li>
+        按钮激活。<samp>&lt;button class="btn btn-default active"&gt;</samp><br/>
+        <button class="btn btn-default active">按钮 Button</button>
+    </li>
+    <li>
+        按钮禁用。<samp>&lt;button class="btn btn-default" disabled="disabled"&gt;</samp><br/>
+        <button class="btn btn-default" disabled="disabled">按钮 Button</button>
+    </li>
+    <li>
+        按钮提示（需 bootstrap.min.js）。<samp>&lt;button class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right"&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">按钮 Button</button>
+    </li>
+    <li>
+        按钮提示（需 bootstrap.min.js）。<samp>&lt;button class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on top"&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">按钮 Button</button>
+    </li>
+    <li>
+        按钮提示（需 bootstrap.min.js）。<samp>&lt;button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">按钮 Button</button>
+    </li>
+    <li>
+        按钮提示（需 bootstrap.min.js）。<samp>&lt;button class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left"&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">按钮 Button</button>
+    </li>
+    <li>
+        Popover 按钮。<samp>&lt;button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">按钮 Button</button>
+    </li>
+    <li>
+        Popover 按钮。<samp>&lt;button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">按钮 Button</button>
+    </li>
+    <li>
+        Popover 按钮。<samp>&lt;button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">按钮 Button</button>
+    </li>
+    <li>
+        Popover 按钮。<samp>&lt;button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;</samp><br/>
+        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">按钮 Button</button>
+    </li>
+    <li>
+        数据目标按钮。<br/>
+        <samp>&lt;a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseExample"&gt;</samp><br/>
+        <samp>&lt;button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample"&gt;</samp><br/>
+        <samp>&lt;div class="collapse" id="collapseExample"&gt;</samp><br/>
+
+        <a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseExample">Link with href</a>
+
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample">Button with data-target</button>
+
+        <div class="collapse" id="collapseExample">
+            <div class="well" style="margin-top: 10px;">
+                This is content...
+            </div>
+        </div>
+    </li>
+    <li>
+        面板组按钮。<br/>
+        <samp>&lt;div class="panel-group" id="accordion" role="tablist"&gt;</samp><br/>
+        <samp>&lt;div class="panel panel-default"&gt;</samp><br/>
+        <samp>&lt;div class="panel-heading" role="tab" id="headingOne"&gt;</samp><br/>
+        <samp>&lt;h4 class="panel-title"&gt;</samp><br/>
+        <samp>&lt;a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"&gt;</samp><hr/>
+        <samp>&lt;div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"&gt;</samp><br/>
+        <div class="panel-group" id="accordion" role="tablist">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        下拉菜单。<br/>
+        <samp>&lt;div class="dropdown"&gt;</samp><br/>
+        或 <samp>&lt;div class="dropup"&gt;</samp><br/>
+        <samp>&lt;button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"&gt;</samp><br/>
+        <samp>&lt;ul class="dropdown-menu"&gt;</samp><br/>
+        <samp>&lt;li class="dropdown-header"&gt;</samp><br/>
+        <samp>&lt;li class="disabled"&gt;</samp><br/>
+        <samp>&lt;li role="separator" class="divider"&gt;</samp><br/>
+        <!--默认情况下，下拉菜单自动沿着父元素的上沿和左侧被定位为 100% 宽度。
+        为 .dropdown-menu 添加 .dropdown-menu-right 类可以让菜单右对齐。-->
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Dropdown header</li>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="disabled"><a href="#">Disabled link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        按钮式下拉菜单。<br/>
+        <samp>&lt;div class="btn-group"&gt;</samp><br/>
+        <samp>&lt;button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"&gt;</samp><br/>
+        <samp>&lt;ul class="dropdown-menu"&gt;</samp><br/>
+        <!--把任意一个按钮放入 .btn-group 中，然后加入适当的菜单标签，就可以让按钮作为菜单的触发器了。
+        单按钮下拉菜单，只要改变一些基本的标记，就能把按钮变成下拉菜单的开关。-->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        分裂式按钮下拉菜单。<br/>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">Action</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        大按钮下拉菜单。<br/>
+        <samp>&lt;button class="btn btn-default dropdown-toggle btn-lg" type="button" data-toggle="dropdown"&gt;</samp><br/>
+        <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle btn-lg" type="button" data-toggle="dropdown">
+                Large button <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+            </ul>
+        </div>
+
+    </li>
+    <li>
+        小按钮下拉菜单。<br/>
+        <samp>&lt;button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown"&gt;</samp><br/>
+        <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown">
+                Small button <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        超小按钮下拉菜单。<br/>
+        <samp>&lt;button class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"&gt;</samp><br/>
+        <samp>&lt;button class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"&gt;</samp><br/>
+        <div class="btn-group dropup">
+            <button class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown">
+                Extra small button <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        按钮组。<br/>
+        <samp>&lt;div class="btn-group" role="group"&gt;</samp><br/>
+        <!--当为 .btn-group 中的元素应用工具提示或弹出框时，必须指定 container: 'body' 选项，这样可以避免不必要的副作用。
+（例如工具提示或弹出框触发时，会让页面元素变宽和/或失去圆角）。
+确保设置正确的 role 属性并提供一个 label 标签。
+为了向使用辅助技术 - 如屏幕阅读器 - 的用户正确传达一正确的按钮分组，需要提供一个合适的 role 属性。
+对于按钮组合，应该是 role="group"，对于toolbar（工具栏）应该是 role="toolbar"。
+一个例外是按钮组合只包含一个单一的控制元素或一个下拉菜单（比如实际情况，<button> 元素组成的两端对齐排列的按钮组 ）或下拉菜单。
+此外，按钮组和工具栏应给定一个明确的label标签，尽管设置了正确的 role 属性，但是大多数辅助技术将不会正确的识读他们。在这里提供的实例中，我们使用 aria-label，但是， aria-labelledby 也可以使用。-->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+    </li>
+    <li>
+        大按钮组。<br/>
+        <samp>&lt;div class="btn-group btn-group-lg" role="group"&gt;</samp><br/>
+        <div class="btn-group btn-group-lg" role="group">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+    </li>
+    <li>
+        小按钮组。<br/>
+        <samp>&lt;div class="btn-group btn-group-sm" role="group"&gt;</samp><br/>
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+    </li>
+    <li>
+        超小按钮组。<br/>
+        <samp>&lt;div class="btn-group btn-group-xs" role="group"&gt;</samp><br/>
+        <div class="btn-group btn-group-xs" role="group">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+    </li>
+    <li>
+        按钮工具栏。<br/>
+        <samp>&lt;div class="btn-toolbar" role="toolbar"&gt;</samp><br/>
+        <!--把一组 <div class="btn-group"> 组合进一个 <div class="btn-toolbar"> 中就可以做成更复杂的组件。-->
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">1</button>
+                <button type="button" class="btn btn-default">2</button>
+                <button type="button" class="btn btn-default">3</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">4</button>
+                <button type="button" class="btn btn-default">5</button>
+                <button type="button" class="btn btn-default">6</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">7</button>
+                <button type="button" class="btn btn-default">8</button>
+                <button type="button" class="btn btn-default">9</button>
+            </div>
+        </div>
+    </li>
+    <li>
+        嵌套混合。<br/>
+        <samp>&lt;div class="btn-group" role="group"&gt;</samp><br/>
+        <!--想要把下拉菜单混合到一系列按钮中，只须把 .btn-group 放入另一个 .btn-group 中。-->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">1</button>
+            <button type="button" class="btn btn-default">2</button>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        垂直排列。<br/>
+        <samp>&lt;div class="btn-group-vertical" role="group"&gt;</samp><br/>
+        <!--想要把下拉菜单混合到一系列按钮中，只须把 .btn-group 放入另一个 .btn-group 中。-->
+        <div class="btn-group-vertical" role="group">
+            <button type="button" class="btn btn-default">1</button>
+            <button type="button" class="btn btn-default">2</button>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        两端对齐排列的按钮组。<br/>
+        <samp>&lt;div class="btn-group btn-group-justified" role="group"&gt;</samp><br/>
+        <!--让一组按钮拉长为相同的尺寸，填满父元素的宽度。对于按钮组中的按钮式下拉菜单也同样适用。
+由于对两端对齐的按钮组使用了特定的 HTML 和 CSS （即 display: table-cell），两个按钮之间的边框叠加在了一起。在普通的按钮组中，margin-left: -1px 用于将边框重叠，而没有删除任何一个按钮的边框。然而，margin 属性不支持 display: table-cell。因此，根据你对 Bootstrap 的定制，你可以删除或重新为按钮的边框设置颜色。IE8 和边框，Internet Explorer 8 不支持在两端对齐的按钮组中绘制边框，无论是 <a> 或 <button> 元素。为了照顾 IE8，把每个按钮放入另一个 .btn-group 中即可。-->
+        <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">Left</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">Middle</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">Right</button>
+            </div>
+        </div>
+    </li>
+</ol>
 <!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
 <!-- 可选: 包含 jQuery 库 -->
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- 可选: 合并了 Bootstrap JavaScript 插件 -->
-<script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
+<script>
+  $('[data-toggle="tooltip"]').on('mouseover',function () {//按钮提示
+    $(this).tooltip('toggle');
+  });
+  $('[data-toggle="popover"]').popover();//popover按钮初始化
+</script>
 </html>

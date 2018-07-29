@@ -1,96 +1,131 @@
-<!--
-<!DOCTYPE>：帮助浏览器正确地显示网页。Web世界中存在许多不同的文档。只有了解文档的类型，浏览器才能正确地显示文档。HTML也有多个不同的版本，只有完全明白页面中使用的确切HTML版本，浏览器才能完全正确地显示出HTML页面。这就是<!DOCTYPE>的用处。<!DOCTYPE>不是HTML标签。它为浏览器提供一项信息(声明)，即HTML是用什么版本编写的。常用的声明：
-　　HTML5：<!DOCTYPE html>
-　　HTML4.01：<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-　　XHTML1.0：<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
--->
 <!DOCTYPE html>
 <html lang="en">
-<!--
-<head>：所有头部元素的容器。
-<head> 内的元素可包含脚本，指示浏览器在何处可以找到样式表，提供元信息，等等。
-以下标签都可以添加到head部分：<title>、<base>、<link>、<meta>、<script> 以及 <style>。
--->
 <head>
     <meta charset="UTF-8">
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
-    <!--设定页面使用的字符集
-    http(Hyper Text Transport Protocol,超文本传输协议)
-    equiv(equivalent,等价物)
-    content(内容)
-    charset(字符集)-->
-    <!--------------------------------------------------------------------------->
-    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
-    <!--设定网页缓存到期时间（必须使用GMT时间格式），过期就会直接到网站服务器重新下载页面内容，而不是从cache调用。
-    content设为-1表示网页在任何时候都不能被Cache存储，和设置过期时间效果一样。
-    content设为正数则表示多少秒后缓存过期。-->
-    <!--------------------------------------------------------------------------->
-    <meta http-equiv="pragma" content="no-cache">
-    <!--禁止浏览器从本地缓存中调阅页面内容，访问者将无法脱机浏览-->
-    <!--------------------------------------------------------------------------->
-    <!--<meta http-equiv="refresh" content="3;url=http://www.baidu.com">-->
-    <!--定时让网页自动链接到其它网页-->
-    <!--------------------------------------------------------------------------->
-    <meta http-equiv="Set-Cookie" content="cookievalue=abc;expires=Wednesday, 21-Oct-98 16:14:21 GMT; path=/">
-    <!--如果网页过期，存储的cookie将被删除-->
-    <!--------------------------------------------------------------------------->
-    <meta http-equiv="Window-target" content="_top">
-    <!--强制页面在当前窗口以独立页面显示，防止别人在框架里调用你的页面-->
-    <!--------------------------------------------------------------------------->
-    <meta name="keywords" content="life, universe, mankind, plants">
-    <!--keywords用来告诉搜索引擎网页的关键字-->
-    <!--------------------------------------------------------------------------->
-    <meta name="description" content="This page is about the meaning of life, the universe, mankind and plants.">
-    <!--description用来告诉搜索引擎网站的主要内容-->
-    <!--------------------------------------------------------------------------->
-    <meta name="robots" content="all">
-    <!--robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。
-    content参数：
-    all(默认)，文件将被检索，且页面上的链接可以被查询；
-    none，文件将不被检索，且页面上的链接不可以被查询；
-    index，文件将被检索；
-    follow，页面上的链接可以被查询；
-    noindex，文件将不被检索，但页面上的链接可以被查询；
-    nofollow，文件可以被检索，但是页面上的链接不可以被查询。-->
-    <!--------------------------------------------------------------------------->
-    <meta name="revisit-after" content="7 days" >
-    <!--通知搜索引擎多少天访问一次-->
-    <!--------------------------------------------------------------------------->
-    <meta name="author" content="shea,shea.zh@foxmail.com">
-    <!--标注网页的作者-->
-    <!--------------------------------------------------------------------------->
-    <!--meta标签最重要的就是Keywords和description的设定。这两个语句可以让搜索引擎能准确的发现你，吸引更多的人访问你的站点! 根据现在流行搜索引擎(Lycos，AltaVista等)的工作原理，搜索引擎首先派出机器人自动在www上搜索，当发现新的网站时，便检索页面中的keywords和decription，并将其加入到自己的数据库，然后再根据关键词的密度将网站排序。也就是说：
-　　1.如果你的页面中根本没有Keywords和description的meta标签，那么机器人是无法将你的站点加入数据库，网友也就不可能搜索到你的站点。
-　　2.如果你的关键字选的不好，关键字的密度不高，被排列在几十甚至几百万个站点的后面被点击的可能性也是非常小的。所以,我们必须记住添加keywords和description的meta标签，并尽可能写好关键字和简介。
-　　写keywords的禁忌是：
-　　1.不要用常见词汇。例如www,homepage,net,web等；
-　　2.不要用形容词，副词。例如最好的，最大的等；
-　　3.不要用笼统的词汇，要尽量精确。例如不用"摩托罗拉手机",改用"V998"等。
-　　寻找合适的关键词的一个技巧是：到lycos,Alta,infoseek等搜索引擎，搜索与你内容相仿的网站，查看排名前十位的网站的meta关键字，copy下来用到自己的站点上。-->
-    <!--------------------------------------------------------------------------->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">，像这种name="viewport"的meta标签指针移动设备浏览器，用于指定用户是否可以缩放Web页面，以及缩放的最大和最小比例，它还表示文档针对移动设备进行了优化，content值是由指令及其值组成的以逗号分隔的列表。
-    例：<meta name="viewport" content="width=240,height=320,user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimun-scale=1.0">。
-    【width】和【height】指令分别指定视区的逻辑宽度和高度，其值要么是以像素为单位的数字，要么是一个特殊的标记符号。width=device-width指示视区宽度应为设备的屏幕宽度，height=device-height指示视区高度为设备的屏幕高度。
-    【user-scalable】指定用户是否可以缩放视区，即缩放Web页面视图，值为yes时允许缩放，值为no时不允许缩放。【initial-scale】用于设置Web页面的初始缩放比例，默认的初始缩放比例值在不同手机浏览器上不同，通常情况下设备会在浏览器中呈现出整个Web页面，设为1.0则显示未经缩放的Web文档。
-    【maximum-scale】和【minimum-scale】指令用于设置用户对Web页面缩放比例的限制，值范围在0.25至10.0之间，与initial-scale相同，这些指令的值是应用于视区内容的缩放比例。
-    所有智能手机浏览器都支持viewport的meta的width和user-scalabel指令。但Opera Mobile不使用user-scalable指令，而是主张用户应始终保留在移动浏览器中缩放Web页面的能力。-->
-    <!--
-    <title>：定义文档的标题。
-    title元素在所有HTML/XHTML文档中都是必需的。
-    title元素的作用：一，定义浏览器工具栏中的标题；二，提供页面被添加到收藏夹时显示的标题；三，显示在搜索引擎结果中的页面标题。
-    -->
     <title>HTML Basis</title>
 </head>
 <body>
-<!--HTML元素：指从标签开始到结束的所有代码。
-　　HTML的输出：您无法通过在HTML代码中添加额外的空格或换行来改变输出的效果。当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML代码中的所有连续的空行(换行)也被显示为一个空格。-->
-<!--HTML标签属性：提供了有关HTML元素的更多的信息。属性总是以名称/值对的形式出现，属性值应该始终被包括在引号内。双引号是最常用的，不过使用单引号也没有问题，比如：name="value"。属性总是在HTML元素的开始标签中规定。
-　　属性例1:<h1 align="center">拥有关于对齐方式的附加信息。
-　　属性例2:<body bgcolor="yellow">拥有关于背景颜色的附加信息。
-　　属性例3:<table border="1"> 拥有关于表格边框的附加信息。
-　　常用属性：class,id,style,title。-->
+<ol>
+    <li>
+        <samp>&lt;!DOCTYPE&gt;</samp> 不是HTML标签。它为浏览器提供一项声明，即 HTML 是用什么版本编写的。<br/>
+        Web 世界中存在许多不同的文档，只有了解文档的类型，浏览器才能正确地显示文档。<br/>
+        <samp>
+            <dl>
+                <dt>HTML5</dt>
+                <dd>&lt;!DOCTYPE html&gt;</dd>
+                <dt>HTML4.01</dt>
+                <dd>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd"&gt;</dd>
+                <dt>XHTML1.0</dt>
+                <dd>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</dd>
+            </dl>
+        </samp>
+    </li>
+    <li>
+        <samp>&lt;head&gt;</samp> 头部元素的容器。可包含脚本，指示浏览器在何处找样式表，提供元信息等。<br/>
+        这些标签可以添加到 head 部分：&lt;title&gt;、&lt;base&gt;、&lt;link&gt;、&lt;meta&gt;、&lt;script&gt; 以及 &lt;style&gt;。
+    </li>
+    <li>
+        <samp>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;</samp><br/>
+        设定页面使用的字符集。
+    </li>
+    <li>
+        <samp>&lt;meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"&gt;</samp><br/>
+        设定网页缓存到期时间（必须使用 GMT 时间格式），过期就会直接到网站服务器重新下载页面内容，而不是从 Cache 调用。<br/>
+        content 设为 -1 表示网页在任何时候都不能被 Cache 存储，和设置过期时间效果一样。content 设为正数表示多少秒后缓存过期。
+    </li>
+    <li>
+        <samp>&lt;meta http-equiv="Set-Cookie" content="cookievalue=abc;expires=Wednesday, 21-Oct-98 16:14:21 GMT; path=/"&gt;</samp><br/>
+        如果网页过期，存储的 cookie 将被删除。
+    </li>
+    <li>
+        <samp>&lt;meta meta http-equiv="pragma" content="no-cache"&gt;</samp><br/>
+        禁止浏览器从本地缓存中调阅页面内容，访问者将无法脱机浏览。
+    </li>
+    <li>
+        <samp>&lt;meta http-equiv="refresh" content="3;url=https://www.baidu.com"&gt;</samp><br/>
+        定时让网页自动链接到其它网页。
+    </li>
+    <li>
+        <samp>&lt;meta http-equiv="Window-target" content="_top"&gt;</samp><br/>
+        强制页面在当前窗口以独立页面显示，防止别人在框架里调用你的页面。
+    </li>
+    <li>
+        <samp>&lt;meta name="keywords" content="life, universe, mankind, plants"&gt;</samp><br/>
+        告诉搜索引擎的关键字。
+    </li>
+    <li>
+        <samp>&lt;meta name="description" content="This page is about the meaning of life, the universe, mankind and plants."&gt;</samp><br/>
+        告诉搜索引擎的主要内容。
+        <small>meta 标签最重要的就是 keywords 和 description 的设定。这两个语句可以让搜索引擎能准确的发现你，吸引更多的人访问你的站点! 根据现在流行搜索引擎(Lycos，AltaVista等)的工作原理，搜索引擎首先派出机器人自动在 www 上搜索，当发现新的网站时，便检索页面中的 keywords 和 decription，并将其加入到自己的数据库，然后再根据关键词的密度将网站排序。也就是说：1.如果你的页面中根本没有 keywords 和 description 的 meta 标签，那么机器人是无法将你的站点加入数据库，网友也就不可能搜索到你的站点。2.如果你的关键字选的不好，关键字的密度不高，被排列在几十甚至几百万个站点的后面被点击的可能性也是非常小的。所以，我们必须记住添加 keywords 和 description 的 meta 标签，并尽可能写好关键字和简介。写 keywords 的禁忌是：1.不要用常见词汇。例如 www, homepage, net, web 等；2.不要用形容词，副词。例如最好的，最大的等；3.不要用笼统的词汇，要尽量精确。例如不用"摩托罗拉手机"，改用"V998"等。寻找合适的关键词的一个技巧是：到 lycos, Alta, infoseek 等搜索引擎，搜索与你内容相仿的网站，查看排名前十位的网站的meta 关键字，copy下来用到自己的站点上。</small>
+        <!---->
+    </li>
+    <li>
+        <samp>&lt;meta name="robots" content="all"&gt;</samp><br/>
+        告诉搜索引擎哪些页面需要索引，哪些页面不需要索引。
+        <samp>
+            <dl>
+                <dt>all(默认)</dt>
+                <dd>文件将被检索，且页面上的链接可以被查询</dd>
+                <dt>none</dt>
+                <dd>文件将不被检索，且页面上的链接不可以被查询</dd>
+                <dt>index</dt>
+                <dd>文件将被检索</dd>
+                <dt>follow</dt>
+                <dd>页面上的链接可以被查询</dd>
+                <dt>noindex</dt>
+                <dd>文件将不被检索，但页面上的链接可以被查询</dd>
+                <dt>nofollow</dt>
+                <dd>文件可以被检索，但是页面上的链接不可以被查询</dd>
+            </dl>
+        </samp>
+    </li>
+    <li>
+        <samp>&lt;meta name="revisit-after" content="7 days"&gt;</samp><br/>
+        通知搜索引擎多少天访问一次。
+    </li>
+    <li>
+        <samp>&lt;meta name="author" content="xiaoyu,petezh@yeah.net"&gt;</samp><br/>
+        标注网页的作者。
+    </li>
+    <li>
+        <samp>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</samp><br/>
+        name="viewport" 的 meta 标签面向移动设备浏览器，用于指定用户是否可以缩放 Web 页面，以及缩放的最大和最小比例，它还表示文档针对移动设备进行了优化，content 值是由指令及其值组成的以逗号分隔的列表。<br/>
+        例：<samp>&lt;meta name="viewport" content="width=240,height=320,user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimun-scale=1.0"&gt;</samp><br/>
+        <samp>
+            <dl>
+                <dt>width 和 height</dt>
+                <dd>指令分别指定视区的逻辑宽度和高度，其值要么是以像素为单位的数字，要么是一个特殊的标记符号。</dd>
+                <dt>width=device-width</dt>
+                <dd>指示视区宽度应为设备的屏幕宽度。</dd>
+                <dt>height=device-height</dt>
+                <dd>指示视区高度为设备的屏幕高度。</dd>
+                <dt>user-scalable</dt>
+                <dd>指定用户是否可以缩放视区，即缩放 Web 页面视图，值为 yes 时允许缩放，值为 no 时不允许缩放。</dd>
+                <dt>initial-scale</dt>
+                <dd>用于设置Web页面的初始缩放比例，默认的初始缩放比例值在不同手机浏览器上不同，通常情况下设备会在浏览器中呈现出整个 Web 页面，设为 1.0 则显示未经缩放的 Web 文档。</dd>
+                <dt>maximum-scale 和 minimum-scale</dt>
+                <dd>指令用于设置用户对Web页面缩放比例的限制，值范围在 0.25 至 10.0 之间，与 initial-scale 相同，这些指令的值是应用于视区内容的缩放比例。</dd>
+            </dl>
+        </samp>
+    </li>
+    <li>
+        <samp>&lt;title&gt;</samp> 定义文档的标题。title 元素在所有 HTML/XHTML 文档中都是必需的。<br/>
+        作用：一，定义浏览器工具栏中的标题；二，提供页面被添加到收藏夹时显示的标题；三，显示在搜索引擎结果中的页面标题。
+    </li>
+    <li>
+        <samp>&lt;html&gt;</samp> 元素指从标签开始到结束的所有代码。<br/>
+        HTML代码中的所有连续的空行(换行)也被显示为一个空格。
+    </li>
+    <li>
+        HTML标签属性。<br/>
+        提供了有关 HTML 元素的更多的信息。属性总是以名称/值对的形式出现，属性值应该始终被包括在引号内。双引号是最常用的，不过使用单引号也没有问题，比如：name="value"。属性总是在 HTML 元素的开始标签中规定。<br/>
+        <h3 align="center" class="default">h3 align="center" class="default"</h3>
+        <table title="tab" border="1">
+            <tr><td>table title="tab" border="1"</td></tr>
+        </table>
+    </li>
+</ol>
 </body>
 </html>
