@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Components</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <style>hr{border:1px solid;}</style>
+    <script src="../jQuery/jquery-3.0.0.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script>
+        /*$(function() {
+            $(".dropdown-toggle").dropdown();
+        });*/
+    </script>
+    <script>
+      //$('#homeli a').tab('show');//默认显示
+    </script>
+</head>
+<body>
+<ol>
+    <li>
+        标签页。<br/>
+        <!--Bootstrap 中的导航组件都依赖同一个 .nav 类，状态类也是共用的。
+改变修饰类可以改变样式。确保导航组件的可访问性。
+如果你在使用导航组件实现导航条功能，务必在 <ul> 的最外侧的逻辑父元素上添加 role="navigation" 属性，或者用一个 <nav> 元素包裹整个导航组件。不要将 role 属性添加到 <ul> 上，因为这样可以被辅助设备（残疾人用的）上被识别为一个真正的列表。
+标签页：注意 .nav-tabs 类依赖 .nav 基类。-->
+        <ul class="nav nav-tabs">
+            <li id="homeli" role="presentation">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+            </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Profile</a>
+            </li>
+            <li role="presentation">
+                <a href="#messages" aria-controls="home" role="tab" data-toggle="tab">Messages</a>
+            </li>
+        </ul>
+        <!--To make tabs fade in, add .fade to each .tab-pane. The first tab pane must also have .in to make the initial content visible.-->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in" id="home">This is home.</div>
+            <div role="tabpanel" class="tab-pane fade" id="profile">This is profile.</div>
+            <div role="tabpanel" class="tab-pane fade" id="messages">This is messages.</div>
+        </div>
+    </li>
+    <li>
+        胶囊式标签页。<br/>
+        <!--HTML 标记相同，但使用 .nav-pills 类
+胶囊是标签页也是可以垂直方向堆叠排列的。只需添加 .nav-stacked 类-->
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation" class="active"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation" class="active"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+    </li>
+    <li>
+        两端对齐标签页。<br/>
+        <!--在大于 768px 的屏幕上，通过 .nav-justified 类可以很容易的让标签页或胶囊式标签呈现出同等宽度。在小屏幕上，导航链接呈现堆叠样式。
+        禁用的链接
+        对任何导航组件（标签页、胶囊式标签页），都可以添加 .disabled 类，从而实现链接为灰色且没有鼠标悬停效果。
+        链接功能不受到影响
+        这个类只改变 <a> 的外观，不改变功能。可以自己写 JavaScript 禁用这里的链接。-->
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation" class="active"><a href="#">Profile</a></li>
+            <li role="presentation" class="disabled"><a href="#">Messages</a></li>
+        </ul>
+    </li>
+    <li>
+        标签页下拉菜单。<br/>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Dropdown <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Dropdown <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        导航栏。<br/>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" src="img/B.png" width="20" height="20" />
+                    </a>
+                </div>
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <p class="navbar-text">Signed in as Mark Otto</p>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </li>
+    <li>
+        路径导航。<br/>
+        <!--在一个带有层次的导航结构中标明当前页面的位置。
+各路径间的分隔符已经自动通过 CSS 的 :before 和 content 属性添加了。-->
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+        <!--导航条内所包含元素溢出
+由于 Bootstrap 并不知道你在导航条内放置的元素需要占据多宽的空间，你可能会遇到导航条中的内容折行的情况（也就是导航条占据两行）。解决办法如下：
+减少导航条内所有元素所占据的宽度。
+在某些尺寸的屏幕上（利用 响应式工具类）隐藏导航条内的一些元素。
+修改导航条在水平排列和折叠排列互相转化时，触发这个转化的最小屏幕宽度值。可以通过修改 @grid-float-breakpoint 变量实现，或者自己重写相关的媒体查询代码，覆盖 Bootstrap 的默认值。
+
+依赖 JavaScript 插件
+如果 JavaScript 被禁用，并且视口（viewport）足够窄，致使导航条折叠起来，导航条将不能被打开，.navbar-collapse 内所包含的内容也将不可见。响应式导航条依赖 collapse 插件，定制 Bootstrap 的话时候必将其包含。
+
+修改视口的阈值，从而影响导航条的排列模式
+当浏览器视口（viewport）的宽度小于 @grid-float-breakpoint 值时，导航条内部的元素变为折叠排列，也就是变现为移动设备展现模式；当浏览器视口（viewport）的宽度大于 @grid-float-breakpoint 值时，导航条内部的元素变为水平排列，也就是变现为非移动设备展现模式。通过调整源码中的这个值，就可以控制导航条何时堆叠排列，何时水平排列。默认值是 768px （小屏幕 -- 或者说是平板 --的最小值，或者说是平板）。
+
+表单
+将表单放置于 .navbar-form 之内可以呈现很好的垂直对齐，并在较窄的视口（viewport）中呈现折叠状态。 使用对齐选项可以规定其在导航条上出现的位置。
+
+注意，.navbar-form 和 .form-inline 的大部分代码都一样，内部实现使用了 mixin。 某些表单组件，例如输入框组，可能需要设置一个固定宽度，从而在导航条内有合适的展现。
+移动设备上的注意事项
+在移动设备上，对于在 fixed 定位的元素内使用表单控件的情况有一些注意事项。请参考我们提供的浏览器支持情况相关的文档 。
+
+为输入框添加 label 标签
+如果你没有为输入框添加 label 标签，屏幕阅读器将会遇到问题。对于导航条内的表单，可以通过添加 .sr-only 类隐藏 label 标签。
+
+按钮
+对于不包含在 <form> 中的 <button> 元素，加上 .navbar-btn 后，可以让它在导航条里垂直居中。有一些对于为辅助设备提供可识别标签的方法，例如， aria-label、aria-labelledby 或者 title 属性。如果这些方法都没有，屏幕阅读器将使用 placeholder 属性（如果这个属性存在的话），但是请注意，使用 placeholder 代替其他识别标签的方式是不推荐的。
+
+基于情境的用法
+就像标准的 按钮类 一样，.navbar-btn 可以被用在 <a> 和 <input> 元素上。然而，在 .navbar-nav 内，.navbar-btn 和标准的按钮类都不应该被用在 <a> 元素上。
+
+文本
+把文本包裹在 .navbar-text中时，为了有正确的行距和颜色，通常使用 <p> 标签。
+组件排列
+通过添加 .navbar-left 和 .navbar-right 工具类让导航链接、表单、按钮或文本对齐。两个类都会通过 CSS 设置特定方向的浮动样式。例如，要对齐导航链接，就要把它们放在个分开的、应用了工具类的 <ul> 标签里。
+
+这些类是 .pull-left 和 .pull-right 的 mixin 版本，但是他们被限定在了媒体查询（media query）中，这样可以更容易的在各种尺寸的屏幕上处理导航条组件。
+
+向右侧对齐多个组件
+导航条目前不支持多个 .navbar-right 类。为了让内容之间有合适的空隙，我们为最后一个 .navbar-right 元素使用负边距（margin）。如果有多个元素使用这个类，它们的边距（margin）将不能按照你的预期正常展现。
+
+我们将在 v4 版本中重写这个组件时重新审视这个功能。
+
+反色的导航条
+通过添加 .navbar-inverse 类可以改变导航条的外观。
+-->
+    </li>
+    <li>
+        分页。<br/>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--分页
+        为您的网站或应用提供带有展示页码的分页组件，或者可以使用简单的翻页组件。
+
+        默认分页
+        受 Rdio 的启发，我们提供了这个简单的分页组件，用在应用或搜索结果中超级棒。组件中的每个部分都很大，优点是容易点击、易缩放、点击区域大。
+        Labelling the pagination component
+        The pagination component should be wrapped in a <nav> element to identify it as a navigation section to screen readers and other assistive technologies. In addition, as a page is likely to have more than one such navigation section already (such as the primary navigation in the header, or a sidebar navigation), it is advisable to provide a descriptive aria-label for the <nav> which reflects its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be aria-label="Search results pages".
+        禁用和激活状态
+        链接在不同情况下可以定制。你可以给不能点击的链接添加 .disabled 类、给当前页添加 .active 类。
+        我们建议将 active 或 disabled 状态的链接（即 <a> 标签）替换为 <span> 标签，或者在向前/向后的箭头处省略<a> 标签，这样就可以让其保持需要的样式而不能被点击。
+
+        尺寸
+        .pagination-lg 或 .pagination-sm 类提供了额外可供选择的尺寸。
+        -->
+    </li>
+    <li>
+        翻页。<br/>
+        <!--用简单的标记和样式，就能做个上一页和下一页的简单翻页。用在像博客和杂志这样的简单站点上棒极了。
+        默认实例
+        在默认的翻页中，链接居中对齐。-->
+        <nav aria-label="...">
+            <ul class="pager">
+                <li><a href="#">Previous</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </nav>
+    </li>
+    <li>
+        对齐链接。<br/>
+        <!--你还可以把链接向两端对齐
+可选的禁用状态.disabled 类也可用于翻页中的链接。-->
+        <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+        </nav>
+    </li>
+    <li>
+        标签。<br/>
+        <h2>Example heading <span class="label label-default">New</span></h2>
+        <h3>Example heading <span class="label label-default">New</span></h3>
+    </li>
+    <li>
+        可用的变体。<br/>
+        <!--用下面的任何一个类即可改变标签的外观。
+如果你有大量的设置为 inline 属性的标签全部放在一个较窄的容器元素内，在页面上展示这些标签就会出现问题，每个标签就会有自己的一个 inline-block 元素（就像图标一样）。解决的办法是为每个标签都设置为 display: inline-block; 属性。关于这个问题以及实例，请参考 #13219 。-->
+        <span class="label label-default">Default</span>
+        <span class="label label-primary">Primary</span>
+        <span class="label label-success">Success</span>
+        <span class="label label-info">Info</span>
+        <span class="label label-warning">Warning</span>
+        <span class="label label-danger">Danger</span>
+    </li>
+    <li>
+        徽章。<br/>
+        <!--给链接、导航等元素嵌套 <span class="badge"> 元素，可以很醒目的展示新的或未读的信息条目。
+        Self collapsing
+        如果没有新的或未读的信息条目，也就是说不包含任何内容，徽章组件能够自动隐藏（通过CSS的 :empty 选择符实现) 。
+
+        跨浏览器兼容性
+        徽章组件在 Internet Explorer 8 浏览器中不会自动消失，因为 IE8 不支持 :empty 选择符。
+        适配导航元素的激活状态
+
+        Bootstrap 提供了内置的样式，让胶囊式导航内处于激活状态的元素所包含的徽章展示相匹配的样式。-->
+        <a href="#">Inbox <span class="badge">42</span></a>
+
+        <button class="btn btn-primary" type="button">
+            Button <span class="badge">4</span>
+        </button>
+
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+        </ul>
+    </li>
+    <li>
+        巨幕。<br/>
+        <!--这是一个轻量、灵活的组件，它能延伸至整个浏览器视口来展示网站上的关键内容。
+如果需要让巨幕组件的宽度与浏览器宽度一致并且没有圆角，请把此组件放在所有 .container 元素的外面，并在组件内部添加一个 .container 元素。-->
+        <div class="jumbotron">
+            <h1>Hello, world!</h1>
+            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+        </div>
+    </li>
+    <li>
+        页头。<br/>
+        <!--页头组件能够为 h1 标签增加适当的空间，并且与页面的其他部分形成一定的分隔。它支持 h1 标签内内嵌 small 元素的默认效果，还支持大部分其他组件（需要增加一些额外的样式）。-->
+        <div class="page-header">
+            <h1>Example page header <small>Subtext for header</small></h1>
+        </div>
+    </li>
+    <li>
+        警告框。<br/>
+        <!--警告框组件通过提供一些灵活的预定义消息，为常见的用户动作提供反馈消息。
+将任意文本和一个可选的关闭按钮组合在一起就能组成一个警告框，.alert 类是必须要设置的，另外我们还提供了有特殊意义的4个类（例如，.alert-success），代表不同的警告信息。
+警告框没有默认类，只有基类和修饰类。默认的灰色警告框并没有多少意义。所以您要使用一种有意义的警告类。目前提供了成功、消息、警告或危险。
+可关闭的警告框
+为警告框添加一个可选的 .alert-dismissible 类和一个关闭按钮。
+为了让警告框在关闭时表现出动画效果，请确保为其添加了 .fade 和 .in 类。
+警告框中的链接
+用 .alert-link 工具类，可以为链接设置与当前警告框相符的颜色。-->
+        <div class="alert alert-success" role="alert">
+            <b>Well done!</b> You successfully <a class="alert-link" href="http://baidu.com" target="_blank">read  this important alert</a> message.
+        </div>
+        <div class="alert alert-info" role="alert">
+            <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <strong>Warning!</strong> Better check yourself, you're not looking too good.
+        </div>
+        <div class="alert alert-danger alert-dismissible in fade" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+        </div>
+    </li>
+    <li>
+        进度条。<br/>
+        <!--通过这些简单、灵活的进度条，为当前工作流程或动作提供实时反馈。
+在展示很低的百分比时，如果需要让文本提示能够清晰可见，可以为进度条设置 min-width 属性。
+根据情境变化效果
+进度条组件使用与按钮和警告框相同的类，根据不同情境展现相应的效果。
+条纹效果
+通过渐变可以为进度条创建条纹效果，IE9 及更低版本不支持。
+动画效果
+为 .progress-bar-striped 添加 .active 类，使其呈现出由右向左运动的动画效果。IE9 及更低版本的浏览器不支持。
+堆叠效果
+把多个进度条放入同一个 .progress 中，使它们呈现堆叠的效果。-->
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">30%
+                <!--<span class="sr-only">60% Complete</span>-->
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">30%
+                <!--<span class="sr-only">60% Complete</span>-->
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 30%">30%
+                <!--<span class="sr-only">30% Complete</span>-->
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                <span class="sr-only">40% Complete (success)</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                <span class="sr-only">20% Complete</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                <span class="sr-only">60% Complete (warning)</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                <span class="sr-only">80% Complete (danger)</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" style="width: 35%">
+                <span class="sr-only">35% Complete (success)</span>
+            </div>
+            <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
+                <span class="sr-only">20% Complete (warning)</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" style="width: 10%">
+                <span class="sr-only">10% Complete (danger)</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        列表组。<br/>
+        <!--列表组是灵活又强大的组件，不仅能用于显示一组简单的元素，还能用于复杂的定制的内容。
+        徽章
+        给列表组加入徽章组件，它会自动被放在右边。-->
+        <ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item"><span class="badge">14</span>Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </li>
+    <li>
+        链接列表。<br/>
+        <!--用 <a> 标签代替 <li> 标签可以组成一个全部是链接的列表组（还要注意的是，我们需要将 <ul> 标签替换为 <div> 标签）。没必要给列表组中的每个元素都加一个父元素。-->
+        <div class="list-group">
+            <a href="#" class="list-group-item">Cras justo odio</a>
+            <a href="#" class="list-group-item active">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item">Morbi leo risus</a>
+            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>
+    </li>
+    <li>
+        按钮列表。<br/>
+        <!--列表组中的元素也可以直接就是按钮（也同时意味着父元素必须是 <div> 而不能用 <ul> 了），并且无需为每个按钮单独包裹一个父元素。注意不要使用标准的 .btn 类！
+被禁用的条目
+为 .list-group-item 添加 .disabled 类可以让单个条目显示为灰色，表现出被禁用的效果。-->
+        <div class="list-group">
+            <button type="button" class="list-group-item">Cras justo odio</button>
+            <button type="button" class="list-group-item disabled">Dapibus ac facilisis in</button>
+            <button type="button" class="list-group-item">Morbi leo risus</button>
+            <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+            <button type="button" class="list-group-item">Vestibulum at eros</button>
+        </div>
+    </li>
+    <li>
+        情境类。<br/>
+        <!--为列表中的条目添加情境类，默认样式或链接列表都可以。还可以为列表中的条目设置 .active 状态。-->
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success active">Dapibus ac facilisis in</li>
+            <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+            <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+            <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+        </ul>
+
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+            <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+        </div>
+    </li>
+    <li>
+        定制内容。<br/>
+        <!--列表组中的每个元素都可以是任何 HTML 内容，甚至是像下面的带链接的列表组。-->
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">List group item heading</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            </a>
+            <a href="#" class="list-group-item active">
+                <h4 class="list-group-item-heading">List group item heading</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            </a>
+            <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">List group item heading</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            </a>
+        </div>
+    </li>
+    <li>
+        面版。<br/>
+        <!--虽然不总是必须，但是某些时候你可能需要将某些 DOM 内容放到一个盒子里。对于这种情况，可以试试面板组件。
+基本实例
+默认的 .panel 组件所做的只是设置基本的边框（border）和内补（padding）来包含内容。-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Basic panel example
+            </div>
+        </div>
+    </li>
+    <li>
+        带标题的面版。<br/>
+        <!--通过 .panel-heading 可以很简单地为面板加入一个标题容器。你也可以通过添加设置了 .panel-title 类的 <h1>-<h6> 标签，添加一个预定义样式的标题。不过，<h1>-<h6> 标签的字体大小将被 .panel-heading 的样式所覆盖。
+为了给链接设置合适的颜色，务必将链接放到带有 .panel-title 类的标题标签内。-->
+        <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">Panel title</h1>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+    </li>
+    <li>
+        带脚注的面板。<br/>
+        <!--把按钮或次要的文本放入 .panel-footer 容器内。注意面版的脚注不会从情境效果中继承颜色，因为他们并不是主要内容。-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+        </div>
+    </li>
+    <li>
+        面板情景效果。<br/>
+
+        <!--像其他组件一样，可以简单地通过加入有情境效果的状态类，给特定的内容使用更针对特定情境的面版。-->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Panel title</h1>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h1 class="panel-title">Panel title</h1>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h1 class="panel-title">Panel title</h1>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h1 class="panel-title">Panel title</h1>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h1 class="panel-title">Panel title</h1>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+    </li>
+    <li>
+        带表格的面板。<br/>
+        <!--为面板中不需要边框的表格添加 .table 类，是整个面板看上去更像是一个整体设计。如果是带有 .panel-body 的面板，我们为表格的上方添加一个边框，看上去有分隔效果。
+如果没有 .panel-body ，面版标题会和表格连接起来，没有空隙。-->
+        <div class="panel panel-default">
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <p>Panel content</p>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>First Name</th><th>Last Name</th><th>Username</th>
+                </tr>
+                <tr>
+                    <td>Mark</td><td>Otto</td><td>@mdo</td>
+                </tr>
+                <tr>
+                    <td>Jacob</td><td>Thornton</td><td>@fat</td>
+                </tr>
+                <tr>
+                    <td>Larry</td><td>the Bird</td><td>@twitter</td>
+                </tr>
+            </table>
+        </div>
+    </li>
+    <li>
+        带列表组的面版。<br/>
+        <!--可以简单地在任何面版中加入具有最大宽度的列表组。-->
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <p>Panel content</p>
+            </div>
+            <!-- List group -->
+            <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        Well 嵌入效果。<br/>
+        <div class="well">Look, I'm in a well!</div>
+        <div class="well well-lg">Look, I'm in a large well!</div>
+        <div class="well well-sm">Look, I'm in a small well!</div>
+    </li>
+</ol>
+</body>
+</html>

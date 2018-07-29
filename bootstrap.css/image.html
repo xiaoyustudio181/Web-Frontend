@@ -2,87 +2,295 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>image</title>
+    <title>Bootstrap Image</title>
     <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
     <style>hr{border:1px solid;}</style>
     <script src="../jQuery/jquery-3.0.0.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-<!--
-在 Bootstrap 版本 3 中，通过为图片添加 .img-responsive 类可以让图片支持响应式布局。其实质是为图片设置了 max-width: 100%;、 height: auto; 和 display: block; 属性，从而让图片在其父元素中更好的缩放。
+<ol>
+    <li>
+        响应式。<br/>
+        <img src="img/sample.jpg" class="img-responsive" alt="Cinque Terre" width="304" height="236">
+    </li>
+    <!--在 Bootstrap 版本 3 中，通过为图片添加 .img-responsive 类可以让图片支持响应式布局。其实质是为图片设置了 max-width: 100%;、 height: auto; 和 display: block; 属性，从而让图片在其父元素中更好的缩放。
+    如果需要让使用了 .img-responsive 类的图片水平居中，请使用 .center-block 类，不要用 .text-center。 请参考助手类章节 了解更多关于 .center-block 的用法。
+    SVG 图像和 IE 8-10
+    在 Internet Explorer 8-10 中，设置为 .img-responsive 的 SVG 图像显示出的尺寸不匀称。为了解决这个问题，在出问题的地方添加 width: 100% \9; 即可。Bootstrap 并没有自动为所有图像元素设置这一属性，因为这会导致其他图像格式出现错乱。-->
+    <li>
+        圆角、圆形、缩略图。<br/>
+        <img src="img/sample.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        <img src="img/sample.jpg" class="img-circle" alt="Cinque Terre" width="304" height="236">
+        <img src="img/sample.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+    </li>
+    <li>
+        滚动图。<br/>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 627px;height: 350px;">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            </ol>
 
-如果需要让使用了 .img-responsive 类的图片水平居中，请使用 .center-block 类，不要用 .text-center。 请参考助手类章节 了解更多关于 .center-block 的用法。
+            <div class="carousel-inner" role="listbox" style="text-align: center">
+                <div class="item active">
+                    <img src="img/bg.svg" alt="alt">
+                    <div class="carousel-caption">
+                        <h3>Title 1</h3>
+                        Content 1
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/bg.svg" alt="alt">
+                    <div class="carousel-caption">
+                        <h3>Title 2</h3>
+                        Content 2
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/bg.svg" alt="alt">
+                    <div class="carousel-caption">
+                        <h3>Title 3</h3>
+                        Content 3
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/bg.svg" alt="alt">
+                    <div class="carousel-caption">
+                        <h3>Title 4</h3>
+                        Content 4
+                    </div>
+                </div>
+            </div>
 
-SVG 图像和 IE 8-10
-在 Internet Explorer 8-10 中，设置为 .img-responsive 的 SVG 图像显示出的尺寸不匀称。为了解决这个问题，在出问题的地方添加 width: 100% \9; 即可。Bootstrap 并没有自动为所有图像元素设置这一属性，因为这会导致其他图像格式出现错乱。
--->
-<img src="img/sample.jpg" class="img-responsive" alt="Cinque Terre" width="304" height="236">
-<hr />
-<img src="img/sample.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-<img src="img/sample.jpg" class="img-circle" alt="Cinque Terre" width="304" height="236">
-<img src="img/sample.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-
-<hr />
-
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 627px;height: 350px;">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox" style="text-align: center">
-        <div class="item active">
-            <img src="img/bg.svg" alt="alt">
-            <div class="carousel-caption">
-                <h3>Title 1</h3>
-                Content 1
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </li>
+    <li>
+        缩略图。<br/>
+        <!--通过缩略图组件扩展 Bootstrap 的 栅格系统，可以很容易地展示栅格样式的图像、视频、文本等内容。
+如果你想实现一个类似 Pinterest 的页面效果（不同高度和/宽度的缩略图顺序排列）的话，你需要使用一个第三方插件，比如 Masonry、Isotope 或 Salvattore。
+默认样式的实例
+Boostrap 缩略图的默认设计仅需最少的标签就能展示带链接的图片。随浏览器尺寸变化可缩放。-->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a class="thumbnail" href="http://baidu.com" target="_blank">
+                        <img src="img/sample.jpg" alt="..." />
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a class="thumbnail">
+                        <img src="img/sample.jpg" alt="..." />
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="item">
-            <img src="img/bg.svg" alt="alt">
-            <div class="carousel-caption">
-                <h3>Title 2</h3>
-                Content 2
+    </li>
+    <li>
+        自定义内容。<br/>
+        <!--添加一点点额外的标签，就可以把任何类型的 HTML 内容，例如标题、段落或按钮，加入缩略图组件内。-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <a class="thumbnail">
+                            <img src="img/sample.jpg" alt="...">
+                        </a>
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <a class="thumbnail">
+                            <img src="img/sample.jpg" alt="...">
+                        </a>
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="item">
-            <img src="img/bg.svg" alt="alt">
-            <div class="carousel-caption">
-                <h3>Title 3</h3>
-                Content 3
+    </li>
+    <li>
+        媒体对象。<br/>
+        <!--这是一个抽象的样式，用以构建不同类型的组件，这些组件都具有在文本内容的左或右侧对齐的图片（就像博客评论或 Twitter 消息等）。
+默认样式
+默认样式的媒体对象组件允许在一个内容块的左边或右边展示一个多媒体内容（图像、视频、音频）。
+.pull-left 和 .pull-right 这两个类以前也曾经被用在了媒体组件上，但是，从 v3.3.0 版本开始，他们就不再被建议使用了。.media-left 和 .media-right 替代了他们，不同之处是，在 html 结构中， .media-right 应当放在 .media-body 的后面。-->
+        <div class="container">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+                <div class="media-body media-right">
+                    <h4 class="media-heading">media-right</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">media-top</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br /><br />
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">media-middle</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br /><br />
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="media-left media-bottom">
+                    <a href="#">
+                        <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">media-bottom</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<br /><br />
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
             </div>
         </div>
-        <div class="item">
-            <img src="img/bg.svg" alt="alt">
-            <div class="carousel-caption">
-                <h3>Title 4</h3>
-                Content 4
-            </div>
+    </li>
+    <li>
+        媒体对象列表。<br/>
+        <!--用一点点额外的标记，就能在列表内使用媒体对象组件（对评论或文章列表很有用）。-->
+        <div class="container">
+            <ul class="media-list">
+                <li class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            </div>
+                        </div>
+
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/sample.jpg" width="80px" height="80px" />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </li>
+            </ul>
         </div>
-        this is ...
-    </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-
-<script>
-    $('.carousel').carousel({
-        interval: 3000
-    });
-</script>
+    </li>
+</ol>
 </body>
+<script>
+  $('.carousel').carousel({//滚动图滚动间隔
+      interval: 1000
+  });
+</script>
 </html>
