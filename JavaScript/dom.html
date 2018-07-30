@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>JavaScript Dom</title>
-    <script src="helper.js"></script>
+  <meta charset="UTF-8">
+  <title>JavaScript DOM(Document Object Model，文档对象模型)</title>
+  <script src="helper.js"></script>
+  <style>
+    #parag1 {
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-<!--
-DOM 是 Document Object Model（文档对象模型）的缩写。
-HTML DOM 定义了访问和操作 HTML 文档的标准方法。
+<!--HTML DOM 定义了访问和操作 HTML 文档的标准方法。
 DOM 将 HTML 文档表达为树结构。
 DOM 是 W3C（万维网联盟）的标准。
 DOM 定义了访问 HTML 和 XML 文档的标准：
-“W3C 文档对象模型 （DOM） 是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。”
+“W3C 文档对象模型 （DOM） 是中立于平台和语言的接口，
+它允许程序和脚本动态地访问和更新文档的内容、结构和样式。”
 W3C DOM 标准被分为 3 个不同的部分：
 1，核心 DOM - 针对任何结构化文档的标准模型
 2，XML DOM - 针对 XML 文档的标准模型
@@ -50,98 +54,116 @@ DOM 节点，根据 W3C 的 HTML DOM 标准，HTML 文档中的所有内容都�
 
 所有 HTML 元素被定义为对象，而编程接口则是对象方法和对象属性。
 方法是您能够执行的动作（比如添加或修改元素）。
-属性是您能够获取或设置的值（比如节点的名称或内容）。
--->
-<div id="container">
-    <p id="p1" class="default default2" attr1="usa">
-        this is a paragraph
-    </p>
-    <input id="i1" type="text" value="hello sea" />
-</div>
+属性是您能够获取或设置的值（比如节点的名称或内容）。-->
+<ol>
+  <li>
+    获取 DOM 对象。<br/>
+    <samp>
+      document.getElementById('parag1')<br/>
+      document.getElementsByClassName('parags')[0]<br/>
+      document.getElementsByTagName('p')[0]<br/>
+    </samp>
+    <p id="parag1" class="parags default" title="Paragraph 1" attr1="hello"><strong>A paragraph.</strong></p>
+  </li>
+  <li>
+    获取或设置 DOM 对象的内容。<br/>
+    <samp>
+      parag1.innerHTML //内部内容<br/>
+      parag1.innerHTML = '&lt;em&gt;Another paragraph.&lt;/em&gt;'<br/>
+      parag1.outerHTML //包括自身的内容<br/>
+      parag1.outerHTML = '&lt;span&gt;A line.&lt;/span&gt;'<br/>
+    </samp>
+  </li>
+  <li>
+    获取或设置 DOM 对象属性值。<br/>
+    <script>var parag1 = document.getElementById('parag1')</script>
+    <samp>
+      var parag1 = document.getElementById('parag1')<br/>
+      parag1.id //ID<br/>
+      parag1.className //类名<br/>
+      parag1.getAttribute('title') //获取属性值<br/>
+      parag1.getAttribute('attr1') //获取属性值<br/>
+      parag1.setAttribute('attr1','hello world') //设置属性值<br/>
+      parag1.removeAttribute('attr1') //移除属性<br/>
+    </samp>
+    <!--元素节点的 nodeName 与标签名相同
+    属性节点的 nodeName 与属性名相同
+    文本节点的 nodeName 始终是 #text
+    文档节点的 nodeName 始终是 #document
+
+    nodeType：
+    元素	1
+    属性	2
+    文本	3
+    注释	8
+    文档	9-->
+  </li>
+  <li>
+    获取 DOM 对象的关联结点。<br/>
+    <samp>
+      parag1.parentNode //父结点<br/>
+      parag1.childNodes //子结点<br/>
+      parag1.childNodes[0].childNodes[0].data //子结点的文本结点的内容<br/>
+      parag1.childNodes[0].childNodes[0].nodeName //子结点的文本结点的结点名<br/>
+      parag1.attributes //属性结点<br/>
+      parag1.nodeName //结点名<br/>
+    </samp>
+  </li>
+  <li>
+    获取或设置 DOM 对象样式。<br/>
+    <samp>
+      parag1.style //样式<br/>
+      parag1.style.color = 'red' //设置样式<br/>
+      parag1.style.color //获取样式<br/>
+      parag1.style.fontFamily = 'Comic Sans MS';<br/>
+      parag1.style.fontSize = '15px';<br/>
+      parag1.style.backgroundColor = 'pink';<br/>
+      parag1.style = 'font-family:"Consolas"; font-size:20px; background-color:lightgray;';<br/>
+    </samp>
+  </li>
+  <li>
+    控制表单控件。<br/>
+    <input type="text" id="txt1" value="hello world"/><br/>
+    <script>var txt1 = document.getElementById('txt1')</script>
+    <samp>
+      var txt1 = document.getElementById('txt1')<br/>
+      txt1.value<br/>
+      txt1.value = '你好世界'<br/>
+    </samp>
+  </li>
+  <li>
+    元素操作。<br/>
+    <p id="parag2"></p>
+    <script>var parag2 = document.getElementById('parag2')</script>
+    <samp>
+      var parag2 = document.getElementById('parag2')<br/>
+      var em1 = document.createElement('em') //新增子结点<br/>
+      var string1 = document.createTextNode('hello earth') //新增文本结点<br/>
+      var string2 = document.createTextNode('hi UFO')<br/>
+      em1.appendChild(string1) //插入子结点<br/>
+      parag2.appendChild(em1)<br/>
+      em1.firstChild === string1<br/>
+      em1.lastChild === string1<br/>
+      em1.insertBefore(string2,string1) //在指定的子节点前面插入新的子节点<br/>
+      em1.replaceChild(string2,string1) //替换子结点<br/>
+      em1.removeChild(string2) //移除子结点<br/>
+    </samp>
+  </li>
+  <li>
+    操作属性结点。<br/>
+    <p id="parag3">A paragraph.</p>
+    <script>var parag3 = document.getElementById('parag3')</script>
+    <samp>
+      var parag3 = document.getElementById('parag3')<br/>
+      var attr1 = document.createAttribute('attr1') //创建属性结点<br/>
+      attr1.value = 'attr1_value' //设置属性值<br/>
+      parag3.setAttributeNode(attr1) //设置属性<br/>
+    </samp>
+  </li>
+</ol>
 </body>
 <script>
-    msg('innerHTML,outerHTML','w');
-    var p1 = findID('p1');
-    msg(p1.innerHTML);
-    p1.innerHTML = 'hello world';
-    msg(p1.innerHTML);
-    msg(p1.outerHTML);
-    msg(p1.parentNode);//父节点
-    msg(p1.childNodes);//子节点
-    msg(p1.attributes);//属性节点
-    msg(p1.nodeName);//节点名称（只读属性）
-    /*元素节点的 nodeName 与标签名相同
-     属性节点的 nodeName 与属性名相同
-     文本节点的 nodeName 始终是 #text
-     文档节点的 nodeName 始终是 #document*/
-    /*nodeType
-     元素	1
-     属性	2
-     文本	3
-     注释	8
-     文档	9*/
-
-    msg('id','w');
-    msg(p1.id);
-    p1.id = 'p2';
-    msg(p1.id);
-
-    msg('className','w');
-    msg(p1.className);
-    p1.className = 'default3 default4';
-    msg(p1.className);
-
-    msg('Attribute','w');
-    msg(p1.getAttribute('attr1'));
-    p1.setAttribute('attr1', 'ufo');
-    msg(p1.getAttribute('attr1'));
-
-    p1.removeAttribute('attr1');
-    msg(p1.getAttribute('attr1'));
-
-    msg('style','w');
-    msg(p1.style);
-    p1.style.fontFamily = 'Comic Sans MS';
-    p1.style.fontSize = '15px';
-    p1.style.backgroundColor = 'pink';
-    msg(p1.style);
-    p1.style = 'font-family:"Consolas"; font-size:20px; background-color:skyblue';
-    msg(p1.style);
-
-    msg('value','w');
-    var i1 = findID('i1');
-    msg(i1.value);
-    i1.value = 'hello beach';
-    msg(i1.value);
-
-    msg('append child,insertbefore,replacechild,removechild,createAtrribute','w');
-    var span1=newElement('span');
-    span1.style.color='red';
-    var text1=newTextNode('this is span1');
-    msg(text1.nodeName);
-    msg(text1.nodeType);//3
-    msg(text1.nodeValue);
-    var text2=newTextNode('hahahaha...');
-    span1.appendChild(text1);
-    msg(span1.firstChild==text1);
-    msg(span1.lastChild==text1);
-    //span1.insertBefore(text2,text1);//在指定的子节点前面插入新的子节点
-    //span1.replaceChild(text2,text1);//替换子节点
-    p1.appendChild(span1);
-    //p1.removeChild(span1);
-
-    var new_attr=document.createAttribute('new_attr');//创建属性节点
-    new_attr.value='new1';
-    p1.setAttributeNode(new_attr);
-
-    msg('','w');
-    msg(document.body);
-    msg(document.documentElement);
+  //console.log(document.body);
+  //console.log(document.documentElement);
 </script>
-<style>
-    * {
-        font-size: large;
-        font-family: "Calibri";
-    }
-</style>
 </html>
