@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyEdit</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <edit :structs="structs" ref="inputs"></edit>
+</div>
+</body>
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+
+<!--文本框组件-->
+<script type="text/x-template" id="my_textbox">
+    <p class="my_textbox">
+        {{data.title}} <input type="text" v-model="value" :placeholder="data.placeholder" />
+    </p>
+</script>
+
+<!--单选按钮组件-->
+<script type="text/x-template" id="my_radio">
+    <p class="my_radio">
+        {{data.title}}
+        <label v-for="each in data.options">
+            <input :value="each.value" v-model="value" type="radio" />
+            {{each.text}}
+        </label>
+    </p>
+</script>
+
+<!--数字文本框组件-->
+<script type="text/x-template" id="my_numberbox">
+    <p class="my_numberbox">
+        {{data.title}} <input type="number" v-model="value" />
+    </p>
+</script>
+
+<!--下拉菜单组件-->
+<script type="text/x-template" id="my_listbox">
+    <p class="my_listbox">
+        {{data.title}}
+        <select v-model="value">
+            <option v-for="each in data.options" :value="each.value">{{each.text}}</option>
+        </select>
+    </p>
+</script>
+
+<!--复选框组件-->
+<script type="text/x-template" id="my_checkbox">
+    <p class="my_checkbox">
+        {{data.title}}
+        <label v-for="each in data.options">
+            <input :value="each.value" v-model="value" type="checkbox"/>
+            {{each.text}}
+        </label>
+    </p>
+</script>
+
+<!--父组件-->
+<script type="text/x-template" id="my_edit">
+    <div class="my_edit">
+        <div v-for="struct in structs">
+            <component :is="struct.type" :data="struct.data"></component>
+        </div>
+    </div>
+</script>
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------->
+<script>
+  /*文本框组件*/
+  Vue.component('textbox', {
+    template: '#my_textbox',
+    props: ['data'],
+    data() {
+      return {
+        value: this.data.value
+      };
+    }
+  });
+
+  /*单选按钮组件*/
+  Vue.component('radio', {
+    template: '#my_radio',
+    props: ['data'],
+    data() {
+      return {
+        value: this.data.value
+      };
+    }
+  });
+
+  /*数字文本框组件*/
+  Vue.component('numberbox', {
+    template: '#my_numberbox',
+    props: ['data'],
+    data() {
+      return {
+        value: this.data.value
+      };
+    }
+  });
+
+  /*下拉菜单组件*/
+  Vue.component('listbox', {
+    template: '#my_listbox',
+    props: ['data'],
+    data() {
+      return {
+        value: this.data.value
+      };
+    }
+  });
+
+  /*复选框组件*/
+  Vue.component('checkbox', {
+    template: '#my_checkbox',
+    props: ['data'],
+    data() {
+      return {
+        value: this.data.value
+      };
+    }
+  });
+
+  /*父组件*/
+  Vue.component('edit', {
+    template: '#my_edit',
+    props: ['structs'],
+    computed: {
+      data: function () {
+        let data = [];
+        for (let each in this.$refs.input) //提取所有控件的数据，给父级组件用
+          data.push(this.$refs.input[each].value);
+        return data;
+      }
+    }
+  });
+  /**************************************************************************/
+  /**************************************************************************/
+  /**************************************************************************/
+  /**************************************************************************/
+  /**************************************************************************/
+  /**************************************************************************/
+  /**************************************************************************/
+  /**************************************************************************/
+//app.structs[0].data.value='Jill'
+  let app = new Vue({
+    el:'#app',
+    data:{
+      structs:[
+        {
+          type:'textbox',
+          data:{
+            title:'名字',
+            placeholder:'your name',
+            value:'Helen'
+          }
+        },
+        {
+          type: 'radio',
+          data: {
+            title: '性别',
+            value: 0,
+            options: [
+              {text: '男', value: 1},
+              {text: '女', value: 0}
+            ]
+          }
+        },
+        {
+          type:'numberbox',
+          data:{
+            title:'年龄',
+            value:23
+          }
+        },
+        {
+          type:'listbox',
+          data:{
+            title:'家乡',
+            value:'place 2',
+            options:[
+              {text:'地方1',value:'place 1'},
+              {text:'地方2',value:'place 2'}
+            ]
+          }
+        },
+        {
+          type:'checkbox',
+          data:{
+            title:'爱好',
+            value:['running','walking'],
+            options:[
+              {text:'游泳',value:'swimming'},
+              {text:'跑步',value:'running'},
+              {text:'走路',value:'walking'}
+            ]
+          }
+        }
+      ]
+    }
+  });
+</script>
+</html>
