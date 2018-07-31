@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="app">
-    <edit :structs="structs" ref="inputs"></edit>
+    <edit :structs="structs"></edit>
 </div>
 </body>
 <!--------------------------------------------------------------------------->
@@ -22,8 +22,14 @@
 <!--文本框组件-->
 <script type="text/x-template" id="my_textbox">
     <p class="my_textbox">
-        {{data.title}} <input type="text" v-model="value" :placeholder="data.placeholder" />
+        {{data.title}} <input type="text" v-model="data.value" :placeholder="data.placeholder" />
     </p>
+</script>
+<script>
+  Vue.component('textbox', {
+    template: '#my_textbox',
+    props: ['data']
+  });
 </script>
 
 <!--单选按钮组件-->
@@ -31,27 +37,45 @@
     <p class="my_radio">
         {{data.title}}
         <label v-for="each in data.options">
-            <input :value="each.value" v-model="value" type="radio" />
+            <input :value="each.value" v-model="data.value" type="radio" />
             {{each.text}}
         </label>
     </p>
+</script>
+<script>
+  Vue.component('radio', {
+    template: '#my_radio',
+    props: ['data']
+  });
 </script>
 
 <!--数字文本框组件-->
 <script type="text/x-template" id="my_numberbox">
     <p class="my_numberbox">
-        {{data.title}} <input type="number" v-model="value" />
+        {{data.title}} <input type="number" v-model="data.value" />
     </p>
+</script>
+<script>
+  Vue.component('numberbox', {
+    template: '#my_numberbox',
+    props: ['data']
+  });
 </script>
 
 <!--下拉菜单组件-->
 <script type="text/x-template" id="my_listbox">
     <p class="my_listbox">
         {{data.title}}
-        <select v-model="value">
+        <select v-model="data.value">
             <option v-for="each in data.options" :value="each.value">{{each.text}}</option>
         </select>
     </p>
+</script>
+<script>
+  Vue.component('listbox', {
+    template: '#my_listbox',
+    props: ['data']
+  });
 </script>
 
 <!--复选框组件-->
@@ -59,10 +83,16 @@
     <p class="my_checkbox">
         {{data.title}}
         <label v-for="each in data.options">
-            <input :value="each.value" v-model="value" type="checkbox"/>
+            <input :value="each.value" v-model="data.value" type="checkbox"/>
             {{each.text}}
         </label>
     </p>
+</script>
+<script>
+  Vue.component('checkbox', {
+    template: '#my_checkbox',
+    props: ['data']
+  });
 </script>
 
 <!--父组件-->
@@ -73,6 +103,12 @@
         </div>
     </div>
 </script>
+<script>
+  Vue.component('edit', {
+    template: '#my_edit',
+    props: ['structs']
+  });
+</script>
 <!--------------------------------------------------------------------------->
 <!--------------------------------------------------------------------------->
 <!--------------------------------------------------------------------------->
@@ -82,86 +118,19 @@
 <!--------------------------------------------------------------------------->
 <!--------------------------------------------------------------------------->
 <script>
-  /*文本框组件*/
-  Vue.component('textbox', {
-    template: '#my_textbox',
-    props: ['data'],
-    data() {
-      return {
-        value: this.data.value
-      };
-    }
-  });
-
-  /*单选按钮组件*/
-  Vue.component('radio', {
-    template: '#my_radio',
-    props: ['data'],
-    data() {
-      return {
-        value: this.data.value
-      };
-    }
-  });
-
-  /*数字文本框组件*/
-  Vue.component('numberbox', {
-    template: '#my_numberbox',
-    props: ['data'],
-    data() {
-      return {
-        value: this.data.value
-      };
-    }
-  });
-
-  /*下拉菜单组件*/
-  Vue.component('listbox', {
-    template: '#my_listbox',
-    props: ['data'],
-    data() {
-      return {
-        value: this.data.value
-      };
-    }
-  });
-
-  /*复选框组件*/
-  Vue.component('checkbox', {
-    template: '#my_checkbox',
-    props: ['data'],
-    data() {
-      return {
-        value: this.data.value
-      };
-    }
-  });
-
-  /*父组件*/
-  Vue.component('edit', {
-    template: '#my_edit',
-    props: ['structs'],
-    computed: {
-      data: function () {
-        let data = [];
-        for (let each in this.$refs.input) //提取所有控件的数据，给父级组件用
-          data.push(this.$refs.input[each].value);
-        return data;
-      }
-    }
-  });
-  /**************************************************************************/
-  /**************************************************************************/
-  /**************************************************************************/
-  /**************************************************************************/
-  /**************************************************************************/
-  /**************************************************************************/
-  /**************************************************************************/
-  /**************************************************************************/
-//app.structs[0].data.value='Jill'
   let app = new Vue({
-    el:'#app',
-    data:{
+    el: '#app',
+    methods: {
+      submit: function () {
+        let result = {};
+        let structs = this.structs;
+        for (let i = 0; i < structs.length; i++) {
+          let each = structs[0];
+
+        }
+      }
+    },
+    data: {
       structs:[
         {
           type:'textbox',
