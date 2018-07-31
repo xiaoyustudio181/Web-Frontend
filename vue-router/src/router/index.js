@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Project1 from '@/components/project1/Project1'
 import Detail1_1 from '@/components/project1/Detail1_1'
 import Detail1_2 from '@/components/project1/Detail1_2'
-import TestComp from '@/components/frame/test/TestComp'
 import List from '@/components/project1/List'
 import Edit from '@/components/project1/Edit'
 
