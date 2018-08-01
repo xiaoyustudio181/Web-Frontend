@@ -1,13 +1,13 @@
 <template>
-  <div>
-    【项目1】
+  <div class="project1">
+    <h2>项目一</h2>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  //name: 'Project1'
+
 }
 </script>
 

@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Project1 from '@/components/project1/Project1'
-import Detail1_1 from '@/components/project1/Detail1_1'
-import Detail1_2 from '@/components/project1/Detail1_2'
-import List from '@/components/project1/List'
-import Edit from '@/components/project1/Edit'
 
-import Project2 from '@/components/project2/Project2'
-import Detail2_1 from '@/components/project2/Detail2_1'
+import project1 from '@/components/project1/project1'
+import detail1_1 from '@/components/project1/detail1_1'
+import list from '@/components/project1/list'
+import edit from '@/components/project1/edit'
+import detail1_2 from '@/components/project1/detail1_2'
+
+import project2 from '@/components/project2/project2'
+import detail2_1 from '@/components/project2/detail2_1'
 
 Vue.use(Router)
 
@@ -15,50 +16,49 @@ export default new Router({
   routes: [
     {
       name: '项目1',
-      path: '/project1',//每个组件对应一个路径
-      component:Project1,
-      redirect:{name:'细节1-1'},
-      children:[
+      path: '/project1',
+      component: project1,
+      redirect: {name:'详细1-1'},
+      children: [
         {
-          name:'细节1-1',
-          path:'1-1',
-          component:Detail1_1,
-          redirect:{name:'列表'},
-          children:[
+          name:'详细1-1',
+          path: 'detail1-1',
+          component: detail1_1,
+          // redirect: {name:'列表'},
+          children: [
             {
               name:'列表',
-              path:'list',
-              component:List
+              path: 'list',
+              component: list
             },
             {
               name:'编辑',
-              path:'edit',
-              component:Edit
+              path: 'edit',
+              component: edit
             }
           ]
         },
         {
-          name:'细节1-2',
-          path:'1-2',
-          component:Detail1_2
+          name:'详细1-2',
+          path: 'detail1-2',
+          component: detail1_2
         }
       ]
     },
     {
       name: '项目2',
-      //path: '/project2',
       path: '/project2',
-      component: Project2,
-      children:[
+      component: project2,
+      children: [
         {
-          name:'细节2-1',
-          path:'2-1/:id/:parent',
-          component:Detail2_1
+          name:'详细2-1',
+          path: 'detail2-1/:id/:parent',
+          component: detail2_1
         },
         {
-          name:'细节2-2',
-          path:'2-2',
-          component:null
+          name:'详细2-2',
+          path: 'detail2-2',
+          component: null
         }
       ]
     }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    【项目2】
+    <h2>项目二</h2>
     <router-view/>
   </div>
 </template>

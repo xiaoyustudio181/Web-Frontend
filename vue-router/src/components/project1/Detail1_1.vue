@@ -1,13 +1,19 @@
 <template>
-  <div>
-    【细节1-1】
+  <div class="detail1_1">
+    query 参数：<br/>
+    id: {{id}}, parent: {{parent}}
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  //name: 'Project1'
+  data(){
+    return {
+      id:this.$route.query.id,
+      parent:this.$route.query.parent
+    }
+  }
 }
 </script>
 

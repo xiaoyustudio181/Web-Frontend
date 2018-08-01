@@ -1,15 +1,13 @@
 <template>
-  <div>
-    【项目2-1】
-    id:{{id}},
-    parent:{{parent}}
+  <div class="detail2-1">
+    params 参数：<br/>
+    id: {{id}}, parent: {{parent}}
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  //name: 'Project2'
   data(){
     return {
       id:this.$route.params.id,
