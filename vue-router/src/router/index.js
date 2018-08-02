@@ -24,7 +24,7 @@ export default new Router({
           name:'详细1-1',
           path: 'detail1-1',
           component: detail1_1,
-          // redirect: {name:'列表'},
+          redirect: {name:'列表'},
           children: [
             {
               name:'列表',

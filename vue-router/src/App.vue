@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!--<h1>树结构导航</h1>
+    <h1>树结构导航</h1>
     <ul>
       <li v-for="mainRoute in $router.options.routes">
         <router-link :to="{name:mainRoute.name}">{{mainRoute.name}}</router-link>
@@ -11,7 +11,7 @@
         </ul>
       </li>
     </ul>
-    <hr />-->
+    <hr />
 
     <h1>链接测试</h1>
     <ul>

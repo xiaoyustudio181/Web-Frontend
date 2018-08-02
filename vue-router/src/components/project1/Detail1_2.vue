@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <span class="red">【细节1-2】</span>
+  <div class="detail1_2">
     <button type="button" class="btn btn-default">（默认样式）btn-default</button>
     <button type="button" class="btn btn-primary">（首选项）btn-primary</button>
     <ul class="nav nav-tabs">
