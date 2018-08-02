@@ -4,9 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-/*import './assets/dist/css/bootstrap.min.css'
+import './assets/dist/css/bootstrap.min.css'
 import './assets/jquery-3.0.0.min.js'
-import './assets/dist/js/bootstrap.min.js'*/
+import './assets/dist/js/bootstrap.min.js'
 import './assets/jquery_exposer.js'
 
 Vue.config.productionTip = false

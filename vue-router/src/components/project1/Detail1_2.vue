@@ -37,26 +37,17 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <button id="b" @click="click">$('#myModal').modal('toggle')</button>
-
     <router-view/>
   </div>
 </template>
 <script>
-  import $ from 'jquery';
-  /*window.jQuery=$;
-  window.$=$;
-  window.jQuery = $;
-  export default $;*/
+  // import $ from 'jquery';//npm安装jquery的情况
+  // import 'bootstrap/dist/css/bootstrap.min.css';
+  import {Test} from '@/assets/myjs.js'
 
-  //import 'jquery/jquery.js';
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import 'popper.js/dist/popper-utils.min.js';
-  //import 'bootstrap/dist/js/bootstrap.min.js';
-export default {
-  //name: 'Project1'
+  export default {
   mounted(){
-
+    Test()
   },
   methods:{
     save(){

@@ -1,7 +1,8 @@
 function Test() {
-    alert(1)
+  let a = 1;
+  alert(a)
 }
-/*
-Test.prototype.al=function () {
-    alert(1);
-}*/
+
+export {
+  Test
+}
