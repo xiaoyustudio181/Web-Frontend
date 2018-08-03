@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ES6 let</title>
+  <title>ES6 let & const</title>
 </head>
 <body>
 <ol>
@@ -189,7 +189,7 @@ if (true)
     </samp>
   </li>
   <li>
-    const声明一个只读的常量。一旦声明，常量的值就不能改变。声明时必须初始化。<br/>
+    const 声明一个只读的常量。一旦声明，常量的值就不能改变。声明时必须初始化。<br/>
     作用域与 let 命令相同。也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。<br/>
     <samp>
       const PI = 3.1415;<br/>
@@ -198,7 +198,7 @@ if (true)
     </samp>
   </li>
   <li>
-    const本质。只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就不能控制了。<br/>
+    const 本质。只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就不能控制了。<br/>
     <samp>
       const foo = {};<br/>
       foo.prop = 123;// 为 foo 添加一个属性，可以成功<br/>
