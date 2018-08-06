@@ -25,6 +25,33 @@
             new Function('alert(1)')()<br/>
         </samp>
     </li>
+    <li>
+        方法默认值。<br/>
+        <samp>
+            function log(x, y = 'World') { console.log(x, y); }<br/>
+            log('Hello') // Hello World<br/>
+            log('Hello', 'China') // Hello China
+        </samp>
+    </li>
+    <li>
+        箭头函数。<br/>
+      <ul>
+        <li>函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</li>
+        <li>不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</li>
+        <li>不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</li>
+        <li>不可以使用yield命令，因此箭头函数不能用作 Generator 函数。</li>
+      </ul>
+        <samp>
+          <pre>(() => {
+  alert('hello world');
+})();
+
+var arrow=()=>{
+  alert('hello world');
+}
+arrow();</pre>
+        </samp>
+    </li>
 </ol>
 </body>
 </html>

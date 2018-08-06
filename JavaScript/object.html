@@ -65,6 +65,17 @@
             JSON.parse(result)
         </kbd>
     </li>
+    <li>
+        属性的简洁表示法。<br/>
+        <samp>
+            const foo = 'bar';<br/>
+            const baz = {foo};<br/>
+            baz // {foo: "bar"}<br/>
+
+            // 等同于<br/>
+            const baz = {foo: foo};
+        </samp>
+    </li>
 </ol>
 </body>
 </html>

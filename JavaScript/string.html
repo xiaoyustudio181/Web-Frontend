@@ -63,6 +63,20 @@
         </kbd>
     </li>
     <li>
+        检查字符串是否以指定子串结尾。endsWith<br/>
+        <kbd>
+            str = 'abcb';<br/>
+            str.endsWith('cb');
+        </kbd>
+    </li>
+    <li>
+        检查字符串是否包含指定子串。includes<br/>
+        <kbd>
+            str = 'abcb';<br/>
+            str.includes('bc');
+        </kbd>
+    </li>
+    <li>
         从开头处插入字符串到指定长度。padStart<br/>
         <kbd>
             str = 'abc';<br/>
@@ -176,6 +190,57 @@
             var url = 'http%3A%2F%2Fwww.baidu.com%2F';<br/>
             decodeURIComponent(url);
         </kbd>
+    </li>
+    <li>
+        用\uxxxx形式表示一个字符，其中xxxx表示字符的 Unicode 码点。<br/>
+        这种表示法只限于码点在\u0000~\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表示。<br/>
+        <samp>
+            "\u0061" //"a"<br/>
+            "\uD842\uDFB7" //"𠮷"<br/>
+            "\u20BB7" //"₻7"，JavaScript 会理解成\u20BB+7。由于\u20BB是一个不可打印字符，所以只会显示一个空格，后面跟着一个7<br/>
+            "\u{20BB7}" //"𠮷"
+        </samp>
+    </li>
+    <li>
+        JavaScript 内部，字符以 UTF-16 的格式储存，每个字符固定为2个字节。<br/>
+        对于那些需要4个字节储存的字符（Unicode 码点大于0xFFFF的字符），JavaScript 会认为它们是两个字符。<br/>
+        "𠮷"的码点是0x20BB7，UTF-16 编码为0xD842 0xDFB7（十进制为55362 57271），需要4个字节储存。<br/>
+        对于这种4个字节的字符，JavaScript 不能正确处理，字符串长度会误判为2，而且charAt方法无法读取整个字符。<br/>
+        charCodeAt方法只能分别返回前两个字节和后两个字节的值。<br/>
+        <samp>
+            "𠮷".length // 2<br/>
+            "𠮷".charAt(0) // ''<br/>
+            "𠮷".charAt(1) // ''<br/>
+            "𠮷".charCodeAt(0) // 55362<br/>
+            "𠮷".charCodeAt(1) // 57271<br/>
+        </samp>
+    </li>
+    <li>
+        ES6 提供了codePointAt方法，能够正确处理 4 个字节储存的字符，返回一个字符的码点。<br/>
+        <samp>
+            "𠮷a".codePointAt(0) //134071，JavaScript 将“𠮷a”视为三个字符，codePointAt 方法在第一个字符上，正确地识别了“𠮷”，返回了它的十进制码点 134071（即十六进制的20BB7）。<br/>
+            //在第二个字符（即“𠮷”的后两个字节）和第三个字符“a”上，codePointAt方法的结果与charCodeAt方法相同。<br/>
+            "𠮷a".codePointAt(1) // 57271<br/>
+            "𠮷a".codePointAt(2) // 97
+        </samp>
+    </li>
+    <li>
+        字符串遍历接口。<br/>
+        <samp>
+            for (let codePoint of 'abc') { console.log(codePoint) }
+        </samp>
+    </li>
+    <li>
+        模板字符串。<br/>
+        如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。<br/>
+        大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。<br/>
+        模板字符串之中还能调用函数。
+        <p id="para1">this is <em>para1</em>. </p>
+        <script>let basket={count:100};</script>
+        <samp>
+            $('#para1').append('There are ' + basket.count + '.');<br/>
+            $('#para1').append(`There are ${basket.count}.`);
+        </samp>
     </li>
 </ol>
 </body>
