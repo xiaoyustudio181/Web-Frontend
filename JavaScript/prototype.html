@@ -25,6 +25,15 @@ Person.prototype.eat = function () { //类方法
             person1<br/>
             person1.eat()
         </kbd>
+      <script>
+        function Person(name,age) { //构造函数
+          this.name = name;
+          this.age = age;
+        }
+        Person.prototype.eat = function () { //类方法
+          console.log(this.name + ' is eating.');
+        };
+      </script>
     </li>
     <li>
         类的继承。<br/>
@@ -49,6 +58,17 @@ Student.prototype.eat = function () {
             student1 instanceof Object //true<br/>
             student1 instanceof Function //false<br/>
         </kbd>
+      <script>
+        function Student(name, age, school) {
+          Person.call(this, name, age); //调用父类构造函数
+          this.school = 'no.1 primary school';
+        }
+        Student.prototype = new Person(); //继承
+        Student.prototype.eat = function () {
+          Person.prototype.eat.call(this);//调用父类方法
+          console.log('... at ' + this.school);
+        };
+      </script>
     </li>
 </ol>
 </body>

@@ -39,6 +39,12 @@
 - 操作符的用法。
 - 关于 this 的绑定。
 - 正则表达式。
+- ES6 class 写法。
+- ES6 解构赋值法。
+- jsonp 跨域法。
+- postMessage 跨域法。
+- 表单值本地恢复法。
+- ActiveXObjectADODB操作Access数据库。
 
 ## jQuery
 - 获取或修改 DOM 元素的属性。
