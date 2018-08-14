@@ -62,6 +62,16 @@ document.getElementById('ch1').addEventListener('click',function (e) {
 });</pre>
         </kbd>
     </li>
+    <li>
+        文件上传事件。<kbd>change</kbd><br/>
+        <input type="file" id="file1"/>
+        <script>
+            let upload1=document.getElementById('file1');
+            upload1.addEventListener('change',function () {
+              alert('已选择文件。');
+            })
+        </script>
+    </li>
 </ol>
 </body>
 </html>
