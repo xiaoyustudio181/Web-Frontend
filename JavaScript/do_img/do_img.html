@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Image</title>
+  <script src="narrow_img_api.js"></script>
+  <!--参考链接 https://juejin.im/post/5a98c5c26fb9a028d82b34ee-->
+</head>
+<body>
+<ol>
+  <li id="li1">
+    缩放图像；生成 base64 图像。<br/>
+    <script>
+      let img1_path = 'story.jpg';
+
+      function narrow() {
+        let li1 = document.getElementById('li1');
+        let img = newImage(img1_path);
+        li1.appendChild(img);
+
+        img.onload = () => {//图片必须先载入，否则无法访问图片属性
+          let imgRatio = img.naturalWidth / img.naturalHeight;// 获取原图片长宽比例
+          let canvas = document.createElement('canvas');// 创建一个画布容器
+          let canvas_2d = canvas.getContext('2d');// 获取容器中的画板
+          canvas.width = 300;
+          canvas.height = canvas.width / imgRatio;
+          canvas_2d.drawImage(img, 0, 0, canvas.width, canvas.height);
+          li1.appendChild(canvas);
+
+          let b64 = canvas.toDataURL('image/jpeg', 0.8);//将绘制后的图导出成 base64 格式的图片
+          let img_b64 = newImage(b64);
+          li1.appendChild(img_b64);
+
+          img = null;// 使用完后清空该对象，释放内存
+        };
+
+        img.onerror = () => {
+          console.error('图片载入失败！');
+        };
+      }
+
+      narrow();
+    </script>
+  </li>
+</ol>
+<hr/>
+<script>
+  newNarrowImage(img1_path,200,document.body);
+  newNarrowImage(img1_path,150,document.body);
+  newNarrowImage(img1_path,100,document.body);
+</script>
+</body>
+</html>
