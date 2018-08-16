@@ -4,7 +4,8 @@
 * @param width 图片的宽度。
 * @param container 要添加到的元素。
 * */
-function newNarrowImage(src, width, container) {
+let base64;
+function newNarrowImage(src, width) {
   let img = newImage(src);
   loadElement(img);
 
@@ -15,12 +16,11 @@ function newNarrowImage(src, width, container) {
     canvas.width = width;
     canvas.height = canvas.width / imgRatio;
     canvas_2d.drawImage(img, 0, 0, canvas.width, canvas.height);
-    loadElement(canvas);
+    // loadElement(canvas);
 
-    let b64 = canvas.toDataURL('image/jpeg', 0.8);//将绘制后的图导出成 base64 格式的图片
-    let img_b64 = newImage(b64);
-    container.appendChild(img_b64);
-    img_b64 = null;
+    base64 = canvas.toDataURL('image/jpeg', 0.8);//将绘制后的图导出成 base64 格式的图片
+    // let img_base64 = newImage(base64);
+    img_base64 = null;
   };
 }
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Narrow Image</title>
+  <script src="resource/jquery-3.0.0.min.js"></script>
+  <script src="resource/do_img_api.js"></script>
+  <!--参考链接 https://juejin.im/post/5a98c5c26fb9a028d82b34ee-->
+</head>
+<body>
+<form id="form1">
+  <input type="file" id="file1"/>
+  <input id="submit" type="submit"/>
+</form>
+<img id="img1"/>
+
+<script>
+  /*
+  * 选择图片后，生成缩小图的base64数据
+  * */
+  document.getElementById('file1').addEventListener('change', function () {
+    let img1 = document.getElementById('img1');
+    let blob = URL.createObjectURL(this.files[0]);//通过js代码获取上传图片的src
+    img1.src = blob;
+    newNarrowImage(blob, 200);
+  });
+
+  /*
+  * 提交数据，保存到服务器
+  * */
+  document.getElementById('submit').addEventListener('click',function (e) {
+    let formData = new FormData();
+    formData.append('img', base64);
+
+    $.ajax({
+      url: '/js_do_img/server.php?op=doImg',
+      type: 'post',
+      async: true,
+      data: formData,
+      dataType: 'json',
+      success: function (result) {
+        console.log(result);
+      },
+      error: function (xhr, status, message) {
+        console.log('ajax error : ' + status + ' --> ' + message);
+      },
+      // cache:true,
+      contentType: false,
+      processData: false
+    });
+  });
+</script>
+</body>
+</html>
