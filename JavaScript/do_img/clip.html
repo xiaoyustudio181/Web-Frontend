@@ -4,48 +4,6 @@
   <meta charset="UTF-8">
   <title>JavaScript Clip Image</title>
   <link type="text/css" rel="stylesheet" href="resource/clip.css"/>
-  <style type="text/css">
-    .schmenu {
-      height: 33px;
-      line-height: 33px;
-      background: #636871;
-      width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .schmenu ul {
-      width: 1180px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .schmenu ul li {
-      float: left;
-      list-style: none;
-    }
-
-    .schmenu ul li a {
-      height: 33px;
-      line-height: 33px;
-      display: block;
-      color: #fff;
-      font-size: 13px;
-      padding: 0 10px;
-      text-decoration: none;
-    }
-
-    .schmenu ul li a:hover {
-      color: #fff;
-      background: #000;
-      text-decoration: none;
-      -moz-transition: all 0.2s ease;
-      -webkit-transition: all 0.2s ease;
-      -o-transition: all 0.2s ease;
-      -moz-transition: all 0.2s ease;
-      transition: all 0.2s ease;
-    }
-  </style>
   <script src="resource/jquery-3.0.0.min.js"></script>
   <script src="resource/cropbox.js"></script>
   <script src="resource/do_img_api.js"></script>
@@ -63,12 +21,12 @@
       </a>
       <input type="file" class="" name="upload-file" id="upload-file">
     </div>
+    <input type="button" id="save" class="Btnsty_peyton" value="保存">
     <input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切">
     <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
     <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
   </div>
   <div class="cropped"></div>
-  <button id="save">　保存　</button>
 </div>
 </body>
 <script>
@@ -84,6 +42,7 @@
   * 载入图像
   * */
   $('#upload-file').on('change', function () {
+    base64 = undefined;
     var reader = new FileReader();
     reader.onload = function (e) {
       options.imgSrc = e.target.result;
@@ -94,17 +53,17 @@
   });
 
   /*
-  * 裁剪
+  * 裁剪，并缩小
   * */
   $('#btnCrop').on('click', function () {
-    var cliped_img = cropper.getDataURL();//裁剪后的图像数据
+    var cliped_img = cropper.getDataURL();//裁剪后的数据
 
     $('.cropped').html('');
     $('.cropped').append('<img src="' + cliped_img + '" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
     $('.cropped').append('<img src="' + cliped_img + '" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
     $('.cropped').append('<img src="' + cliped_img + '" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
 
-    newNarrowImage(cliped_img, 100);//生成缩小图
+    newNarrowImage(cliped_img, 100);//缩小
   });
 
   /*
@@ -121,7 +80,15 @@
     cropper.zoomOut();
   });
 
+  /*
+  * 保存图片到服务器
+  * */
   $("#save").on('click',function () {
+    if(base64 === undefined){
+      alert('图片还没有裁剪。');
+      return;
+    }
+
     let formData = new FormData();
     formData.append('img', base64);
 
